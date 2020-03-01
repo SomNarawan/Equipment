@@ -12,7 +12,7 @@ require_once Router::getSourcePath()."inc/helper_func.inc.php";
 $products = $_SESSION['productList'];
 
 // เริ่มต้นการเขียน view
-$title = "My Cart";
+$title = "Type";
 ob_start();
 
 ?>

@@ -16,6 +16,10 @@
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
             <a class="nav-link" href="<?= Router::getSourcePath()."index.php?controller=Member&action=menu_type" ?>">
+                <span>เจ้าหน้าที่</span></a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="<?= Router::getSourcePath()."index.php?controller=Member&action=menu_type" ?>">
             <i class="fas fa-fw fa-cog"></i>
                 <span>หมวดอุปกรณ์</span></a>
         </li>
@@ -29,7 +33,31 @@
             <i class="fas fa-fw fa-table"></i>
                 <span>การยืม</span></a>
         </li>
-
+        <li class="nav-item active">
+            <a class="nav-link" href="<?= Router::getSourcePath()."index.php?controller=Member&action=menu_type" ?>">
+            <i class="fas fa-fw fa-table"></i>
+                <span>รายงานสถิติ</span></a>
+        </li>
+        <!-- ----------------------------------------------- -->
+        <li class="nav-item active">
+            <a class="nav-link" href="<?= Router::getSourcePath()."index.php?controller=Member&action=menu_type" ?>">
+                <span>นิสิต-อาจารย์</span></a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="<?= Router::getSourcePath()."index.php?controller=Member&action=menu_type" ?>">
+            <i class="fas fa-fw fa-wrench"></i>
+                <span>อุปกรณ์ทั้งหมด</span></a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="<?= Router::getSourcePath()."index.php?controller=Member&action=menu_type" ?>">
+            <i class="fas fa-fw fa-table"></i>
+                <span>การยืม</span></a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="<?= Router::getSourcePath()."index.php?controller=Member&action=menu_type" ?>">
+            <i class="fas fa-fw fa-table"></i>
+                <span>คำร้อง</span></a>
+        </li>
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 
