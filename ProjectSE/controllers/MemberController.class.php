@@ -27,6 +27,14 @@ class MemberController {
             case "logout":
                 $this->$action();
             case "menu_type":
+            case "menu_equipmentO":
+            case "menu_equipmentST":
+            case "menu_borrowingO":
+            case "menu_borrowOT":
+            case "menu_borrowS":
+            case "menu_borrowingST":
+            case "menu_report":
+            case "menu_confirm":
                 $this->$action();
             case "index":
                 $this->index();
@@ -35,6 +43,87 @@ class MemberController {
                 break;
         }
 
+    }
+    private function menu_report(){
+        session_start();
+        if ($_SESSION['member'] !== null){
+            include Router::getSourcePath()."views/report.inc.php";
+        }
+        else {
+            header("Location: ".Router::getSourcePath()."index.php?msg=invalid user");
+        }
+    }
+    private function menu_confirm(){
+        session_start();
+        if ($_SESSION['member'] !== null){
+            include Router::getSourcePath()."views/confirm.inc.php";
+        }
+        else {
+            header("Location: ".Router::getSourcePath()."index.php?msg=invalid user");
+        }
+    }
+    private function menu_borrowS(){
+        session_start();
+        if ($_SESSION['member'] !== null){
+            include Router::getSourcePath()."views/borrow.inc.php";
+        }
+        else {
+            header("Location: ".Router::getSourcePath()."index.php?msg=invalid user");
+        }
+    }
+    private function menu_borrowOT(){
+        session_start();
+        if ($_SESSION['member'] !== null){
+            include Router::getSourcePath()."views/borrowOperator.inc.php";
+        }
+        else {
+            header("Location: ".Router::getSourcePath()."index.php?msg=invalid user");
+        }
+    }
+    private function menu_borrowingST(){
+        session_start();
+        if ($_SESSION['member'] !== null){
+            include Router::getSourcePath()."views/borrowing.inc.php";
+        }
+        else {
+            header("Location: ".Router::getSourcePath()."index.php?msg=invalid user");
+        }
+    }
+    private function menu_borrowingOT(){
+        session_start();
+        if ($_SESSION['member'] !== null){
+            include Router::getSourcePath()."views/equipmentOperator.inc.php";
+        }
+        else {
+            header("Location: ".Router::getSourcePath()."index.php?msg=invalid user");
+        }
+    }
+    private function menu_borrowingO(){
+        session_start();
+        if ($_SESSION['member'] !== null){
+            include Router::getSourcePath()."views/borrowingOperator.inc.php";
+        }
+        else {
+            header("Location: ".Router::getSourcePath()."index.php?msg=invalid user");
+        }
+    }
+    private function menu_equipmentST(){
+        session_start();
+        if ($_SESSION['member'] !== null){
+            include Router::getSourcePath()."views/equipment.inc.php";
+        }
+        else {
+            header("Location: ".Router::getSourcePath()."index.php?msg=invalid user");
+        }
+    }
+    private function menu_equipmentO(){
+        session_start();
+        if ($_SESSION['member'] !== null){
+            include Router::getSourcePath()."views/equipmentOperator.inc.php";
+        }
+        else {
+            header("Location: ".Router::getSourcePath()."index.php?msg=invalid user");
+        }
     }
     private function menu_type(){
         session_start();
