@@ -164,8 +164,11 @@ ob_start();
     </div>
 </div>
 <!-- /.container-fluid -->
-
-
+<div align="center">
+<button type="button" class="btn btn-success" style="width:150px;">ยืนยัน</button>
+<button type="button" class="btn btn-danger" style="width:150px;">ยกเลิก</button>
+</div>
+</br>
 
 <?php
 $content = ob_get_clean();

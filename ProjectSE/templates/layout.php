@@ -21,9 +21,9 @@
 
 </html>
 
-<?= $modal ?>
+<?php if(isset($modal)) echo $modal; ?>
+<?php if(isset($js)) echo $js; ?>
 
-<?= $js ?>
 <?php //include Router::getSourcePath()."views/typeModal.inc.php"; ?>
 
 

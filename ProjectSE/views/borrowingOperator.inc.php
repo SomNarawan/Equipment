@@ -71,7 +71,7 @@ ob_start();
 
         <!-- Pending Requests Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2" id="addType" style="cursor:pointer;">
+            <div class="card border-left-success shadow h-100 py-2" id="addBorrowOpeType" style="cursor:pointer;">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
@@ -183,7 +183,13 @@ ob_start();
 
 <?php
 $content = ob_get_clean();
+ob_start();
+    include Router::getSourcePath()."views/borrowingOperationModal.inc.php"; 
+$modal = ob_get_clean();
 
+ob_start();
+    echo "<script src='js/equipment/borrowingOperation.js'></script>";
+$js = ob_get_clean();
 include Router::getSourcePath()."templates/layout.php";
 } catch (Throwable $e) { // PHP 7++
     echo "Access denied: No Permission to view this page";
