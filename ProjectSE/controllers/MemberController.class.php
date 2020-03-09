@@ -35,6 +35,7 @@ class MemberController {
             case "menu_borrowingST":
             case "menu_report":
             case "menu_confirm":
+            case "menu_borrow":
                 $this->$action();
             case "index":
                 $this->index();
@@ -43,6 +44,15 @@ class MemberController {
                 break;
         }
 
+    }
+    private function menu_borrow(){
+        session_start();
+        if ($_SESSION['member'] !== null){
+            include Router::getSourcePath()."views/borrow.inc.php";
+        }
+        else {
+            header("Location: ".Router::getSourcePath()."index.php?msg=invalid user");
+        }
     }
     private function menu_report(){
         session_start();

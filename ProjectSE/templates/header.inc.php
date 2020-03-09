@@ -34,6 +34,11 @@
                 <span>การยืม</span></a>
         </li>
         <li class="nav-item active">
+            <a class="nav-link" href="<?= Router::getSourcePath()."index.php?controller=Member&action=menu_borrow" ?>">
+            <i class="fas fa-fw fa-table"></i>
+                <span>ยืม</span></a>
+        </li>
+        <li class="nav-item active">
             <a class="nav-link" href="<?= Router::getSourcePath()."index.php?controller=Member&action=menu_report" ?>">
             <i class="fas fa-fw fa-table"></i>
                 <span>รายงานสถิติ</span></a>
