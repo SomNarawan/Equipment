@@ -52,7 +52,7 @@ ob_start();
 
         <!-- Earnings (Monthly) Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
+            <div class="card border-left-danger shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
@@ -128,11 +128,11 @@ ob_start();
                                 <td>น.ส.นัก เรียน</td>
                                 <td>เมาส์</td>
                                 <td>M0001
-                                <button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" titile="แก้ไข"><i class="fas fa-edit"></i></button>
+                                <button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip" titile="แก้ไข"><i class="fas fa-edit"></i></button>
                                 </td>
                                 <td><a href="#">1</a></td>
                                 <td>17/ม.ค./63  13.21</td>
-                                <td></td>
+                                <td><button type="button" class="btn btn-info" style="width:150px;">คืนของ</button></td>
                                 <td><a href="#">43</a></td>
                                 <td>
                                 <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" titile="รายละเอียด"><i class="fas fa-list"></i></button>
@@ -145,8 +145,8 @@ ob_start();
                                 <td>android</td>
                                 <td>-</td>
                                 <td><a href="#">1</a></td>
-                                <td></td>
-                                <td></td>
+                                <td><button type="button" class="btn btn-success" style="width:150px;">มารับของ</button></td>
+                                <td><button type="button" class="btn btn-info" style="width:150px;">คืนของ</button></td>
                                 <td><a href="#">0</a></td>
                                 <td>
                                 <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" titile="รายละเอียด"><i class="fas fa-list"></i></button>
@@ -158,7 +158,7 @@ ob_start();
                                 <td>น.ส.พนัก งาน</td>
                                 <td>จอ</td>
                                 <td>I0001
-                                <button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" titile="แก้ไข"><i class="fas fa-edit"></i></button>
+                                <button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip" titile="แก้ไข"><i class="fas fa-edit"></i></button>
                                 </td>
                                 <td><a href="#">2</a></td>
                                 <td>3/ก.พ./63  09.40</td>
