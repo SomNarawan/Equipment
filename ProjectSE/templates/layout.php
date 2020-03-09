@@ -21,7 +21,10 @@
 
 </html>
 
-<?php include Router::getSourcePath()."views/typeModal.inc.php"; ?>
+<?= $modal ?>
+
+<?= $js ?>
+<?php //include Router::getSourcePath()."views/typeModal.inc.php"; ?>
 
 
-<script src="js/equipment/type.js"></script>
+<!-- <script src="js/equipment/type.js"></script> -->

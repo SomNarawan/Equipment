@@ -124,6 +124,13 @@ ob_start();
 <?php
 $content = ob_get_clean();
 
+ob_start();
+    include Router::getSourcePath()."views/typeModal.inc.php"; 
+$modal = ob_get_clean();
+
+ob_start();
+    echo "<script src='js/equipment/type.js'></script>";
+$js = ob_get_clean();
 include Router::getSourcePath()."templates/layout.php";
 } catch (Throwable $e) { // PHP 7++
     echo "Access denied: No Permission to view this page";
