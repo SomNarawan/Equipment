@@ -128,7 +128,11 @@ class MemberController {
     private function menu_type(){
         session_start();
         if ($_SESSION['member'] !== null){
+            // include Router::getSourcePath()."js/equipment/type.js";
             include Router::getSourcePath()."views/type.inc.php";
+            // include Router::getSourcePath()."views/typeModal.inc.php";
+            // echo "<script src='js/equipment/type.js'></script>";
+
         }
         else {
             header("Location: ".Router::getSourcePath()."index.php?msg=invalid user");

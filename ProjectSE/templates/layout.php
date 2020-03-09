@@ -20,3 +20,8 @@
 </body>
 
 </html>
+
+<?php include Router::getSourcePath()."views/typeModal.inc.php"; ?>
+
+
+<script src="js/equipment/type.js"></script>
