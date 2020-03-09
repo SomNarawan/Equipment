@@ -132,7 +132,7 @@ ob_start();
                                 </td>
                                 <td><a href="#">1</a></td>
                                 <td>17/ม.ค./63  13.21</td>
-                                <td><button type="button" class="btn btn-info" style="width:150px;">คืนของ</button></td>
+                                <td><button type="button" class="btn btn-primary" style="width:150px;">คืนของ</button></td>
                                 <td><a href="#">43</a></td>
                                 <td>
                                 <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" titile="รายละเอียด"><i class="fas fa-list"></i></button>
@@ -146,7 +146,7 @@ ob_start();
                                 <td>-</td>
                                 <td><a href="#">1</a></td>
                                 <td><button type="button" class="btn btn-success" style="width:150px;">มารับของ</button></td>
-                                <td><button type="button" class="btn btn-info" style="width:150px;">คืนของ</button></td>
+                                <td><button type="button" class="btn btn-primary" style="width:150px;">คืนของ</button></td>
                                 <td><a href="#">0</a></td>
                                 <td>
                                 <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" titile="รายละเอียด"><i class="fas fa-list"></i></button>

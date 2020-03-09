@@ -147,7 +147,7 @@ ob_start();
                                 <td><a href="#">3</a></td>
                                 <td>
                                 <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" titile="รายละเอียด"><i class="fas fa-list"></i></button>
-                                <button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" titile="แก้ไข"><i class="fas fa-edit"></i></button>
+                                <button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip" titile="แก้ไข"><i class="fas fa-edit"></i></button>
                                 <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" titile="ลบ"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
@@ -160,7 +160,7 @@ ob_start();
                                 <td><a href="#">5</a></td>
                                 <td>
                                 <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" titile="รายละเอียด"><i class="fas fa-list"></i></button>
-                                <button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" titile="แก้ไข"><i class="fas fa-edit"></i></button>
+                                <button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip" titile="แก้ไข"><i class="fas fa-edit"></i></button>
                                 <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" titile="ลบ"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
@@ -173,7 +173,7 @@ ob_start();
                                 <td><a href="#">6</a></td>
                                 <td>
                                 <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" titile="รายละเอียด"><i class="fas fa-list"></i></button>
-                                <button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" titile="แก้ไข"><i class="fas fa-edit"></i></button>
+                                <button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip" titile="แก้ไข"><i class="fas fa-edit"></i></button>
                                 <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" titile="ลบ"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
@@ -186,7 +186,7 @@ ob_start();
                                 <td><a href="#">3</a></td>
                                 <td>
                                 <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" titile="รายละเอียด"><i class="fas fa-list"></i></button>
-                                <button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" titile="แก้ไข"><i class="fas fa-edit"></i></button>
+                                <button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip" titile="แก้ไข"><i class="fas fa-edit"></i></button>
                                 <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" titile="ลบ"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
@@ -199,7 +199,7 @@ ob_start();
                                 <td><a href="#">2</a></td>
                                 <td>
                                 <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" titile="รายละเอียด"><i class="fas fa-list"></i></button>
-                                <button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" titile="แก้ไข"><i class="fas fa-edit"></i></button>
+                                <button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip" titile="แก้ไข"><i class="fas fa-edit"></i></button>
                                 <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" titile="ลบ"><i class="fas fa-trash"></i></button>
 
                                 </td>
