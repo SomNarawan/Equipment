@@ -125,7 +125,7 @@ ob_start();
 $content = ob_get_clean();
 
 ob_start();
-    include Router::getSourcePath()."views/typeModal.inc.php"; 
+    include Router::getSourcePath()."views/type/typeModal.inc.php"; 
 $modal = ob_get_clean();
 
 ob_start();

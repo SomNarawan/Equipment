@@ -48,7 +48,7 @@ class MemberController {
     private function menu_borrow(){
         session_start();
         if ($_SESSION['member'] !== null){
-            include Router::getSourcePath()."views/borrow.inc.php";
+            include Router::getSourcePath()."views/borrow/borrow.inc.php";
         }
         else {
             header("Location: ".Router::getSourcePath()."index.php?msg=invalid user");
@@ -66,7 +66,7 @@ class MemberController {
     private function menu_confirm(){
         session_start();
         if ($_SESSION['member'] !== null){
-            include Router::getSourcePath()."views/confirm.inc.php";
+            include Router::getSourcePath()."views/confirm/confirm.inc.php";
         }
         else {
             header("Location: ".Router::getSourcePath()."index.php?msg=invalid user");
@@ -75,7 +75,7 @@ class MemberController {
     private function menu_borrowS(){
         session_start();
         if ($_SESSION['member'] !== null){
-            include Router::getSourcePath()."views/borrow.inc.php";
+            include Router::getSourcePath()."views/borrow/borrow.inc.php";
         }
         else {
             header("Location: ".Router::getSourcePath()."index.php?msg=invalid user");
@@ -84,7 +84,7 @@ class MemberController {
     private function menu_borrowOT(){
         session_start();
         if ($_SESSION['member'] !== null){
-            include Router::getSourcePath()."views/borrowOperator.inc.php";
+            include Router::getSourcePath()."views/borrow/borrowOperator.inc.php";
         }
         else {
             header("Location: ".Router::getSourcePath()."index.php?msg=invalid user");
@@ -93,7 +93,7 @@ class MemberController {
     private function menu_borrowingST(){
         session_start();
         if ($_SESSION['member'] !== null){
-            include Router::getSourcePath()."views/borrowing.inc.php";
+            include Router::getSourcePath()."views/borrowing/borrowing.inc.php";
         }
         else {
             header("Location: ".Router::getSourcePath()."index.php?msg=invalid user");
@@ -102,7 +102,7 @@ class MemberController {
     private function menu_borrowingOT(){
         session_start();
         if ($_SESSION['member'] !== null){
-            include Router::getSourcePath()."views/equipmentOperator.inc.php";
+            include Router::getSourcePath()."views/equipment/equipmentOperator.inc.php";
         }
         else {
             header("Location: ".Router::getSourcePath()."index.php?msg=invalid user");
@@ -111,7 +111,7 @@ class MemberController {
     private function menu_borrowingO(){
         session_start();
         if ($_SESSION['member'] !== null){
-            include Router::getSourcePath()."views/borrowingOperator.inc.php";
+            include Router::getSourcePath()."views/borrowing/borrowingOperator.inc.php";
         }
         else {
             header("Location: ".Router::getSourcePath()."index.php?msg=invalid user");
@@ -120,7 +120,7 @@ class MemberController {
     private function menu_equipmentST(){
         session_start();
         if ($_SESSION['member'] !== null){
-            include Router::getSourcePath()."views/equipment.inc.php";
+            include Router::getSourcePath()."views/equipment/equipment.inc.php";
         }
         else {
             header("Location: ".Router::getSourcePath()."index.php?msg=invalid user");
@@ -129,7 +129,7 @@ class MemberController {
     private function menu_equipmentO(){
         session_start();
         if ($_SESSION['member'] !== null){
-            include Router::getSourcePath()."views/equipmentOperator.inc.php";
+            include Router::getSourcePath()."views/equipment/equipmentOperator.inc.php";
         }
         else {
             header("Location: ".Router::getSourcePath()."index.php?msg=invalid user");
@@ -139,7 +139,7 @@ class MemberController {
         session_start();
         if ($_SESSION['member'] !== null){
             // include Router::getSourcePath()."js/equipment/type.js";
-            include Router::getSourcePath()."views/type.inc.php";
+            include Router::getSourcePath()."views/type/type.inc.php";
             // include Router::getSourcePath()."views/typeModal.inc.php";
             // echo "<script src='js/equipment/type.js'></script>";
 

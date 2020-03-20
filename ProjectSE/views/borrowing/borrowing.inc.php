@@ -147,7 +147,7 @@ ob_start();
 <?php
 $content = ob_get_clean();
 ob_start();
-    include Router::getSourcePath()."views/borrowingModal.inc.php"; 
+    include Router::getSourcePath()."views/borrowing/borrowingModal.inc.php"; 
 $modal = ob_get_clean();
 
 ob_start();
