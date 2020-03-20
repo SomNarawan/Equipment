@@ -138,10 +138,8 @@ class MemberController {
     private function menu_type(){
         session_start();
         if ($_SESSION['member'] !== null){
-            // include Router::getSourcePath()."js/equipment/type.js";
+            $typeList = Type::findAll();
             include Router::getSourcePath()."views/type/type.inc.php";
-            // include Router::getSourcePath()."views/typeModal.inc.php";
-            // echo "<script src='js/equipment/type.js'></script>";
 
         }
         else {
@@ -153,8 +151,8 @@ class MemberController {
         if ($member !== null){
             session_start();
             $_SESSION['member'] = $member;
-            $_SESSION['productList'] = Product::findAll();
-            include Router::getSourcePath()."views/type.inc.php";
+            $typeList = Type::findAll();
+            include Router::getSourcePath()."views/type/type.inc.php";
         }
         else {
             header("Location: ".Router::getSourcePath()."index.php?msg=invalid user");

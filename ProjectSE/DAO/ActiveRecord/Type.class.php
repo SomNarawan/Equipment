@@ -8,52 +8,60 @@
 
 class Type {
     //------------- Properties
-    private $product_id;
-    private $product_name;
-    private $price;
-    private const TABLE = "products";
+    private $id_t;
+    private $name_t;
+    private $note;
+    private $count_equipment;
+    private const TABLE = "type";
 
     //----------- Getters & Setters
-    public function getProductId():int {
-        return $this->product_id;
+    public function getId_t():int {
+        return $this->id_t;
     }
-    public function setProductId(int $id) {
-        $this->product_id = $id;
+    public function setId_t(int $id) {
+        $this->id_t = $id;
     }
-    public function getProductName():string
+    public function getName_t()
     {
-        return $this->product_name;
+        return $this->name_t;
     }
 
-    public function setProductName(string $name) {
-        $this->product_name = $name;
+    public function setName_t($name_t) {
+        $this->name_t = $name_t;
     }
-    public function getPrice(): float {
-        return $this->price;
+    public function getNote(){
+        return $this->note;
     }
-    public function setPrice(float $price) {
-        $this->price = $price;
+    public function setNote(string $note) {
+        $this->note = $note;
     }
-
+    public function getCount_equipment(): int {
+        return $this->count_equipment;
+    }
+    public function setCount_equipment(int $count) {
+        $this->count_equipment = $count;
+    }
     //----------- CRUD
     public static function findAll(): array {
         $con = Db::getInstance();
-        $query = "SELECT * FROM ".self::TABLE;
+        $query = "SELECT type.id_t,type.name_t,type.note,COUNT(equipment.id_t) AS count_equipment FROM ".self::TABLE." LEFT JOIN equipment ON type.id_t = equipment.id_t
+        GROUP BY type.id_t,type.name_t,type.note";
+        // $query = "SELECT * FROM ".self::TABLE;
         $stmt = $con->prepare($query);
-        $stmt->setFetchMode(PDO::FETCH_CLASS, "Product");
+        $stmt->setFetchMode(PDO::FETCH_CLASS, "Type");
         $stmt->execute();
-        $productList  = array();
+        $typeList  = array();
         while ($prod = $stmt->fetch())
         {
-            $productList[$prod->getProductId()] = $prod;
+            $typeList[$prod->getId_t()] = $prod;
         }
-        return $productList;
+        return $typeList;
     }
-    public static function findById(int $id): ?Product {
+    public static function findById(int $id): ?Type {
         $con = Db::getInstance();
-        $query = "SELECT * FROM ".self::TABLE." WHERE product_id = $id";
+        $query = "SELECT * FROM ".self::TABLE." WHERE id_t = $id";
         $stmt = $con->prepare($query);
-        $stmt->setFetchMode(PDO::FETCH_CLASS, "Product");
+        $stmt->setFetchMode(PDO::FETCH_CLASS, "Type");
         $stmt->execute();
         if ($prod = $stmt->fetch())
         {
@@ -65,9 +73,13 @@ class Type {
         $con = Db::getInstance();
         $values = "";
         foreach ($this as $prop => $val) {
-            $values .= "'$val',";
+            if($prop != "count_equipment")
+                $values .= "'$val',";
         }
+        // print_r($values);
         $values = substr($values,0,-1);
+        // print_r($values);
+
         $query = "INSERT INTO ".self::TABLE." VALUES ($values)";
         //echo $query;
         $res = $con->exec($query);
@@ -78,11 +90,18 @@ class Type {
     public function update() {
         $query = "UPDATE ".self::TABLE." SET ";
         foreach ($this as $prop => $val) {
-            $query .= " $prop='$val',";
+            if($prop != "count_equipment")
+                $query .= " $prop='$val',";
         }
         $query = substr($query, 0, -1);
-        $query .= " WHERE product_id = ".$this->getProductId();
+        $query .= " WHERE id_t = ".$this->getId_t();
         $con = Db::getInstance();
+        $res = $con->exec($query);
+        return $res;
+    }
+    public function delete() {
+        $con = Db::getInstance();
+        $query = "DELETE FROM ".self::TABLE." WHERE id_t = ".$this->getId_t();
         $res = $con->exec($query);
         return $res;
     }

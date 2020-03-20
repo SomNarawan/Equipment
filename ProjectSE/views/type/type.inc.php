@@ -93,24 +93,23 @@ ob_start();
 
                         </tfoot>
                         <tbody>
+                            <?php
+                            foreach ($typeList as $prod) { ?>
                             <tr>
-                                <td>คอมพิวเตอร์</td>
-                                <td></td>
-                                <td><a href="#">3</a></td>
+                                <td><?= $prod->getName_t(); ?></td>
+                                <td><?= $prod->getNote(); ?></td>
+                                <td><a href="#"><?= $prod->getCount_equipment(); ?></a></td>
                                 <td>
-                                <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" titile="รายละเอียด"><i class="fas fa-list"></i></button>
-                                <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" titile="ลบ"><i class="fas fa-trash"></i></button>
+                                <button type="button" class="tt editType btn btn-info btn-sm" data-toggle="tooltip" id="<?= $prod->getId_t(); ?>" 
+                                id_t = "<?= $prod->getId_t(); ?>" name_t="<?= $prod->getName_t(); ?>" note="<?= $prod->getNote(); ?>" titile="รายละเอียด"><i class=" fas fa-list"></i></button>
+                                <button type="button" class="tt btn btn-danger btn-sm" onclick="delfunction('<?= $prod->getName_t(); ?>','<?= $prod->getId_t(); ?>')"
+                                data-toggle="tooltip" titile="ลบ"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>โทรศัพท์</td>
-                                <td></td>
-                                <td><a href="#">2</a></td>
-                                <td>
-                                <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" titile="รายละเอียด"><i class="fas fa-list"></i></button>
-                                <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" titile="ลบ"><i class="fas fa-trash"></i></button>
-                                </td>
-                            </tr>
+                            
+                            
+                            <?php } ?>
+    
                         </tbody>
                     </table>
                 </div>
