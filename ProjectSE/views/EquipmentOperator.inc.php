@@ -94,7 +94,7 @@ ob_start();
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">เพิ่มหมวดอุปกรณ์</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">เพิ่มอุปกรณ์</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-plus fa-2x text-green-300"></i>
