@@ -25,13 +25,38 @@ ob_start();
     </div>
     <div class="card-body">
         <div class="chart-bar">
-            <canvas id="myBarChart"></canvas>
+            <canvas id="myBarChartAll"></canvas>
         </div>
         <hr>
         กำลังปรับปรุงหน้านี้อยู่ กรุณารอสักประเดี๋ยว <code>เข้าใจไหม</code> ขอบคุณ
     </div>
 </div>
-
+<!-- -------------- content 2--------------- -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">สถิติรายเดือน</h6>
+    </div>
+    <div class="card-body">
+        <div class="chart-bar">
+            <canvas id="myBarChartMount"></canvas>
+        </div>
+        <hr>
+        กำลังปรับปรุงหน้านี้อยู่ กรุณารอสักประเดี๋ยว <code>เข้าใจไหม</code> ขอบคุณ
+    </div>
+</div>
+<!-- -------------- content 3--------------- -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">สถิติรายปี</h6>
+    </div>
+    <div class="card-body">
+        <div class="chart-bar">
+            <canvas id="myBarChartYear"></canvas>
+        </div>
+        <hr>
+        กำลังปรับปรุงหน้านี้อยู่ กรุณารอสักประเดี๋ยว <code>เข้าใจไหม</code> ขอบคุณ
+    </div>
+</div>
 
 
 <?php
