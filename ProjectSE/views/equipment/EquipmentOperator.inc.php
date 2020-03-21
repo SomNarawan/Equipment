@@ -148,14 +148,16 @@ ob_start();
                                 <td><a href="#"><?= $prod->getCount_lend_equipment(); ?></a></td>
                                 <td><a href="#"><?= $prod->getCount_remain_equipment(); ?></a></td>
                                 <td>
-                                    <button type="button" class="tt editEquipType btn btn-info btn-sm" data-toggle="tooltip" id="<?= $prod->getId_e(); ?>" 
-                                id_e = "<?= $prod->getId_e(); ?>" name_e="<?= $prod->getName_t(); ?>" id_t="<?= $prod->getId_t(); ?>" note="<?= $prod->getNote(); ?>" titile="รายละเอียด"><i class=" fas fa-list"></i></button>
+                                    <button type="button" class="btn btn-info btn-sm detail" data-toggle="tooltip"
+                                        titile="รายละเอียด"><i class="fas fa-list"></i></button>
                                     <button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip"
                                         titile="แก้ไข"><i class="fas fa-edit"></i></button>
                                     <button type="button" class="tt btn btn-danger btn-sm" onclick="delfunction('<?= $prod->getName_e(); ?>','<?= $prod->getId_e(); ?>')"
                                 data-toggle="tooltip" titile="ลบ"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
+
+
                             <?php } ?>
                         </tbody>
                     </table>

@@ -83,6 +83,6 @@ function delfunction(_name_e,_id_e) {
     };
     xhttp.open("POST", "./index.php?controller=Equipment&action=delete", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send(`id_t=${_id_t}&request=delete&name_e=${_name_e}`);
+    xhttp.send(`id_e=${_id_e}&request=delete&name_e=${_name_e}`);
     
     }
