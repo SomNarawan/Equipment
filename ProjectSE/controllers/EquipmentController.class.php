@@ -16,6 +16,7 @@ class EquipmentController {
      * @param array $params พารามิเตอร์ที่ใช้เพื่อในการทำ action หนึ่งๆ
      */
     public function handleRequest(string $action="index", array $params) {
+        //echo $action;
         switch ($action) {
             case "login":
                 $username = $params["POST"]["username"]??"";
@@ -41,7 +42,7 @@ class EquipmentController {
     private function delete(){
         session_start();
         if ($_SESSION['member'] !== null){
-            print_r($_POST);
+            //print_r($_POST);
             echo $_POST['id_e'];
             $id_e = $_POST['id_e'];
             $equipment = new Equipment(); 
@@ -57,19 +58,21 @@ class EquipmentController {
         }
     }
     private function insert(){
+        echo "testtt";
         session_start();
         if ($_SESSION['member'] !== null){
-             print_r($_POST);
+            print_r($_POST);
             $name_e = $_POST['name_e_add'];
-            $name_t=$_POST['name_t_edit'];
+            $id_t=$_POST['id_t_add'];
             $note = $_POST['note_add'];
             $equipment = new Equipment(); 
             $equipment->setName_e($name_e);
-            $equipment->setId_t($name_t);
+            $equipment->setId_t($id_t);
             $equipment->setNote($note);
             // echo $type->getName_t();
             $equipment->insert();
             $equipmentList = Equipment::findAll();
+            $typeList = Type::findAll();
 
             include Router::getSourcePath()."views/equipment/EquipmentOperator.inc.php";
 
@@ -79,21 +82,23 @@ class EquipmentController {
         }
     }
     private function update(){
+        //echo "this";
         session_start();
         if ($_SESSION['member'] !== null){
             //print_r($_POST);
-            //$id_e = $_POST['id_e_edit'];
+            $id_e = $_POST['id_e_edit'];
             $name_e = $_POST['name_e_edit'];
-            $name_t=$_POST['name_t_edit'];
+            $id_t=$_POST['id_t_edit'];
             $note = $_POST['note_edit'];
             $equipment = new Equipment(); 
-            //$equipment->setId_e($id_e);
+            $equipment->setId_e($id_e);
             $equipment->setName_e($name_e);
-            $equipment->setName_t($name_t);
+            $equipment->setId_t($id_t);
             $equipment->setNote($note);
             // echo $equipment->getName_e();
             $equipment->update();
             $equipmentList = Equipment::findAll();
+            $typeList = Type::findAll();
 
             include Router::getSourcePath()."views/equipment/EquipmentOperator.inc.php";
 

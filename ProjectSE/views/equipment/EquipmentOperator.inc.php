@@ -153,7 +153,7 @@ ob_start();
                                     <button type="button" class="tt editEquip btn btn-warning btn-sm"
                                         data-toggle="tooltip" id="<?= $prod->getId_e(); ?>"
                                         id_e="<?= $prod->getId_e(); ?>" name_e="<?= $prod->getName_e(); ?>"
-                                        name_t="<?= $prod->getName_t(); ?>" note="<?= $prod->getNote(); ?>"
+                                        id_t="<?= $prod->getId_t(); ?>" note="<?= $prod->getNote(); ?>"
                                         titile=" แก้ไข"><i class="fas fa-edit"></i></button>
                                     <button type="button" class="tt btn btn-danger btn-sm"
                                         onclick="delfunction('<?= $prod->getName_e(); ?>','<?= $prod->getId_e(); ?>')"

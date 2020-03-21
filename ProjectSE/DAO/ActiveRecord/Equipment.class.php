@@ -110,10 +110,11 @@ class Equipment {
         return null;
     }
     public function insert() {
+        echo "insert";
         $con = Db::getInstance();
         $values = "";
         foreach ($this as $prop => $val) {
-            if($prop != "count_equipment" && $prop != "count_lend_equipment" && $prop != "count_remain_equipment"  )
+            if($prop != "name_t" && $prop != "count_equipment" && $prop != "count_lend_equipment" && $prop != "count_remain_equipment"  )
                 $values .= "'$val',";
         }
         print_r($values);
@@ -134,6 +135,7 @@ class Equipment {
                 $query .= " $prop='$val',";
         }
         $query = substr($query, 0, -1);
+        //echo $query;
         $query .= " WHERE id_e = ".$this->getId_e();
         $con = Db::getInstance();
         $res = $con->exec($query);

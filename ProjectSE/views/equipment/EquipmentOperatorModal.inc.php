@@ -14,7 +14,7 @@
                     <div>ชื่ออุปกรณ์ <label style="color:red;">*</label><input type="text" id="name_e_add"
                             name="name_e_add" class="form-control"></input></div>
                     <div>หมวดอุปกรณ์ <label style="color:red;">*</label>
-                        <select id="name_t_edit" name="name_t_edit" class="form-control">
+                        <select id="id_t_add" name="id_t_add" class="form-control">
                             <!-- <option selected value="0">เลือกหมวดอุปกรณ์</option> -->
                             <?php foreach ($typeList as $prod) { ?>
                             <option value="<?= $prod->getId_t(); ?>"><?= $prod->getName_t(); ?></option>
@@ -50,10 +50,10 @@
                             name="name_e_edit" class="form-control"></input>
                     </div>
                     <div>หมวดอุปกรณ์ <label style="color:red;">*</label>
-                        <select id="name_t_edit" name="name_t_edit" class="form-control">
+                        <select id="id_t_edit" name="id_t_edit" class="form-control">
                             <!-- <option selected>เลือกหมวดอุปกรณ์</option> -->
                             <?php foreach ($typeList as $prod) { ?>
-                            <option selected value="<?= $prod->getName_t(); ?>"><?= $prod->getName_t(); ?></option>
+                            <option value="<?= $prod->getId_t(); ?>"><?= $prod->getName_t(); ?></option>
                             <?php } ?>
                         </select>
                     </div>

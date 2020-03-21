@@ -12,13 +12,13 @@ $( document ).ready(function() {
 
         var id_e = $(this).attr('id_e');
         var name_e = $(this).attr('name_e');
-        var name_t = $(this).attr('name_t');
+        var id_t = $(this).attr('id_t');
         var note = $(this).attr('note');
         // alert(name_t);
         // document.getElementById("name_e_edit").value = name_t;
         $("#id_e_edit").val(id_e);
         $("#name_e_edit").val(name_e);
-        $("#name_t_edit").val(name_t); //.attr("selected","selected");
+        $("#id_t_edit").val(id_t); //.attr("selected","selected");
         $("#note_edit").val(note);
     });
     $('#addEqu').click(function(){
