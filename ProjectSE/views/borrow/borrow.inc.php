@@ -69,20 +69,14 @@ ob_start();
                                 <?php
                             foreach ($equipmentList as $prod) { ?>
                                 <tr>
-                                    <td>
-                                    <input type='hidden' name="name_e" value="<?= $prod->getName_e(); ?>" />
-                                    <?= $prod->getName_e(); ?></td>
-                                    <td>
-                                    <input type='hidden'  name="name_t" value="<?= $prod->getName_t(); ?>"/>
-                                    <?= $prod->getName_t(); ?></td>
-                                    <td name="note" value="<?= $prod->getNote(); ?>">
-                                    <input type='hidden' name='prod_$i' id='prod_$i' value='0' min='0' />
-                                    <?= $prod->getNote(); ?></td>
-                                    <td name="id_e" value="<?= $prod->getId_e(); ?>">
-                                    <input type='hidden' name='prod_$i' id='prod_$i' value='0' min='0' />
-                                    <a href="#"><?= $prod->getCount_remain_equipment(); ?></a></td>
-                                    <td><input type='number' name='prod_$i' id='prod_$i' value='0' min='0' /></td>
+                                    <td><?= $prod->getName_e(); ?></td>
+                                    <td><?= $prod->getName_t(); ?></td>
+                                    <td><?= $prod->getNote(); ?></td>
+                                    <td><a href="#"><?= $prod->getCount_remain_equipment(); ?></a></td>
+                                    <td><input type='number' name='<?= $prod->getId_e(); ?>' id='<?= $prod->getId_e(); ?>' value='0' min='0' /></td>
                                     <td><button type="submit" class="btn btn-success addBorrow" name="add_borrow" value="เพิ่ม"
+                                    id_e ="<?= $prod->getId_e(); ?>" name_e="<?= $prod->getName_e(); ?>" name_t="<?= $prod->getName_t(); ?>" 
+                                    note="<?= $prod->getNote(); ?>"
                                             style="width:150px;">เพิ่ม</button>
                                     </td>
                                 </tr>

@@ -26,7 +26,6 @@ class BorrowController {
                 break;
             case "logout":
                 $this->$action();
-            case "borrow":
             case "addBorrow":
             case "insert":
             case "delete":
@@ -43,64 +42,44 @@ class BorrowController {
     private function addBorrow(){
         session_start();
         if ($_SESSION['member'] !== null){
+            if($_POST['action'] == "add"){
+            $id_e = $_POST['id_e'];
+            $name_e = $_POST['name_e'];
+            $name_t = $_POST['name_t'];
+            $note = $_POST['note'];
+            $num = $_POST['num'];
 
-            $json = '{"name":"John", "age":25, "Tel":["0956542121","0996563366"],
-                "address": {"street":"Sathorn", "province":"Bangkok"}}';
-            $obj = json_decode($json);
+            $add_b = array();
+
+            $add_b['id_e'] = $id_e;
+            $add_b['name_e'] = $name_e;
+            $add_b['name_t'] = $name_t;
+            $add_b['note'] = $note;
+            $add_b['num'] = $num;
+
+            $_SESSION['equipment_borrow'][]= $add_b;
             header('Content-Type: application/json');
-            echo json_encode($obj);
-            // print_r($obj);
+            echo json_encode($_SESSION['equipment_borrow']);
+            }else if($_POST['action'] == "del"){
+                $id_e = $_POST['id_e'];
+                $arr_ok = array();
+                foreach($_SESSION['equipment_borrow'] as $eq){
+                    // echo $eq['id_e'];
+                    if($eq['id_e'] != $id_e){
+                        // echo "yes ";
+                        $arr_ok[]=$eq;
+                    }
+                }
+                $_SESSION['equipment_borrow']= $arr_ok;
+                header('Content-Type: application/json');
+                echo json_encode($_SESSION['equipment_borrow']);
+            }
         }
         else {
             header("Location: ".Router::getSourcePath()."index.php?msg=invalid user");
         }
     }
-    private function borrow(){
-        session_start();
-        if ($_SESSION['member'] !== null){
-            print_r($_POST);
-            if(isset($_POST["add_borrow"])){
-                if(isset($_SESSION["equip_borrow"]))
-                {
-                     $item_array_id = array_column($_SESSION["equip_borrow"], "item_id");
-                     if(!in_array($_GET["id"], $item_array_id))
-                     {
-                          $count = count($_SESSION["equip_borrow"]);
-                          $item_array = array(
-                               'id_e'               =>     $_POST["id_e"],
-                               'name_e'               =>     $_POST["name_e"],
-                               'name_t'          =>     $_POST["name_t"],
-                               'quantity'          =>     $_POST["quantity"]
-                          );
-                          $_SESSION["equip_borrow"][$count] = $item_array;
-                     }
-                     else
-                     {
-                          echo '<script>alert("สินค้าถูกเพิ่มแล้ว")</script>';
-                        //   echo '<script>window.location="index.php"</script>';
-                     }
-                }
-                else
-                {
-                     $item_array = array(
-                          'item_id'               =>     $_GET["id"],
-                          'item_name'               =>     $_POST["hidden_name"],
-                          'item_price'          =>     $_POST["hidden_price"],
-                          'item_quantity'          =>     $_POST["quantity"]
-                     );
-                     $_SESSION["equip_borrow"][0] = $item_array;
-                }
-           }
-
-            $equipmentList  = Equipment::findAll();
-
-            include Router::getSourcePath()."views/borrow/borrow.inc.php";
-
-        }
-        else {
-            header("Location: ".Router::getSourcePath()."index.php?msg=invalid user");
-        }
-    }
+    
     private function delete(){
         session_start();
         if ($_SESSION['member'] !== null){

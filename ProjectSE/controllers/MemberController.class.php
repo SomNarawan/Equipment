@@ -48,7 +48,7 @@ class MemberController {
     private function menu_borrow(){
         session_start();
         if ($_SESSION['member'] !== null){
-            
+            unset($_SESSION['equipment_borrow']);
             $equipmentList = Equipment::findAll();
             include Router::getSourcePath()."views/borrow/borrow.inc.php";
         }
