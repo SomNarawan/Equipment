@@ -6,7 +6,7 @@
  * Time: 15:07
  */
 
-class EquipmentController {
+class ItemController {
 
     /**
      * handleRequest จะทำการตรวจสอบ action และพารามิเตอร์ที่ส่งเข้ามาจาก Router
@@ -16,7 +16,7 @@ class EquipmentController {
      * @param array $params พารามิเตอร์ที่ใช้เพื่อในการทำ action หนึ่งๆ
      */
     public function handleRequest(string $action="index", array $params) {
-        // echo $action;
+        //echo $action;
         switch ($action) {
             case "login":
                 $username = $params["POST"]["username"]??"";
@@ -27,7 +27,6 @@ class EquipmentController {
                 break;
             case "logout":
                 $this->$action();
-            case "item":
             case "insert":
             case "delete":
             case "update":
@@ -40,30 +39,18 @@ class EquipmentController {
         }
 
     }
-    private function item(){
-        session_start();
-        if ($_SESSION['member'] !== null){
-            $id_e = $_GET['id_e'];
-            $name_e=$_GET['name_e'];
-            include Router::getSourcePath()."views/item/item.inc.php";
-
-        }
-        else {
-            header("Location: ".Router::getSourcePath()."index.php?msg=invalid user");
-        }
-    }
     private function delete(){
         session_start();
         if ($_SESSION['member'] !== null){
             //print_r($_POST);
-            echo $_POST['id_e'];
-            $id_e = $_POST['id_e'];
-            $equipment = new Equipment(); 
-            $equipment->setId_e($id_e);
-            $equipment->delete();
-            $equipmentList = Equipment::findAll();
+            echo $_POST['id_i'];
+            $id_i = $_POST['id_i'];
+            $item = new Item(); 
+            $item->setId_i($id_i);
+            $item->delete();
+            $itemList = Item::findAll();
 
-            include Router::getSourcePath()."views/equipment/EquipmentOperator.inc.php";
+            include Router::getSourcePath()."views/item/item.inc.php";
 
         }
         else {
@@ -75,19 +62,21 @@ class EquipmentController {
         session_start();
         if ($_SESSION['member'] !== null){
             print_r($_POST);
-            $name_e = $_POST['name_e_add'];
-            $id_t=$_POST['id_t_add'];
-            $note = $_POST['note_add'];
-            $equipment = new Equipment(); 
-            $equipment->setName_e($name_e);
-            $equipment->setId_t($id_t);
-            $equipment->setNote($note);
+            $id_i = $_POST['id_i_add'];
+            $note=$_POST['note_add'];
+            $id_e = $_POST['id_e_add'];
+            $status_i=$_POST['status_i_add'];
+            $item = new Item(); 
+            $item->setId_i($id_i);
+            $item->setNote($note);
+            $item->setId_e($id_e);
+            $item->setStatus_i($status_i);
             // echo $type->getName_t();
-            $equipment->insert();
-            $equipmentList = Equipment::findAll();
-            $typeList = Type::findAll();
+            $item->insert();
+            $itemList = Item::findAll();
+            //$equipmentList = Equipment::findAll();
 
-            include Router::getSourcePath()."views/equipment/EquipmentOperator.inc.php";
+            include Router::getSourcePath()."views/item/item.inc.php";
 
         }
         else {
@@ -99,21 +88,22 @@ class EquipmentController {
         session_start();
         if ($_SESSION['member'] !== null){
             //print_r($_POST);
-            $id_e = $_POST['id_e_edit'];
-            $name_e = $_POST['name_e_edit'];
-            $id_t=$_POST['id_t_edit'];
-            $note = $_POST['note_edit'];
-            $equipment = new Equipment(); 
-            $equipment->setId_e($id_e);
-            $equipment->setName_e($name_e);
-            $equipment->setId_t($id_t);
-            $equipment->setNote($note);
+            $id_i = $_POST['id_i_add'];
+            $note=$_POST['note_add'];
+            $id_e = $_POST['id_e_add'];
+            //$status_i=$_POST['status_i_add'];
+            $item = new Item(); 
+            $item->setId_i($id_i);
+            $item->setNote($note);
+            $item->setId_e($id_e);
+            //$item->setStatus_i($status_i);
+            
             // echo $equipment->getName_e();
-            $equipment->update();
-            $equipmentList = Equipment::findAll();
-            $typeList = Type::findAll();
+            $item->update();
+            $itemList = Item::findAll();
+            //$typeList = Type::findAll();
 
-            include Router::getSourcePath()."views/equipment/EquipmentOperator.inc.php";
+            include Router::getSourcePath()."views/item/item.inc.php";
 
         }
         else {
