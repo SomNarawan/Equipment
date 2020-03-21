@@ -27,6 +27,7 @@ class BorrowController {
             case "logout":
                 $this->$action();
             case "borrow":
+            case "addBorrow":
             case "insert":
             case "delete":
             case "update":
@@ -39,13 +40,61 @@ class BorrowController {
         }
 
     }
+    private function addBorrow(){
+        session_start();
+        if ($_SESSION['member'] !== null){
+
+            $json = '{"name":"John", "age":25, "Tel":["0956542121","0996563366"],
+                "address": {"street":"Sathorn", "province":"Bangkok"}}';
+            $obj = json_decode($json);
+            header('Content-Type: application/json');
+            echo json_encode($obj);
+            // print_r($obj);
+        }
+        else {
+            header("Location: ".Router::getSourcePath()."index.php?msg=invalid user");
+        }
+    }
     private function borrow(){
         session_start();
         if ($_SESSION['member'] !== null){
             print_r($_POST);
-            echo $_POST['add_borrow'];
+            if(isset($_POST["add_borrow"])){
+                if(isset($_SESSION["equip_borrow"]))
+                {
+                     $item_array_id = array_column($_SESSION["equip_borrow"], "item_id");
+                     if(!in_array($_GET["id"], $item_array_id))
+                     {
+                          $count = count($_SESSION["equip_borrow"]);
+                          $item_array = array(
+                               'id_e'               =>     $_POST["id_e"],
+                               'name_e'               =>     $_POST["name_e"],
+                               'name_t'          =>     $_POST["name_t"],
+                               'quantity'          =>     $_POST["quantity"]
+                          );
+                          $_SESSION["equip_borrow"][$count] = $item_array;
+                     }
+                     else
+                     {
+                          echo '<script>alert("สินค้าถูกเพิ่มแล้ว")</script>';
+                        //   echo '<script>window.location="index.php"</script>';
+                     }
+                }
+                else
+                {
+                     $item_array = array(
+                          'item_id'               =>     $_GET["id"],
+                          'item_name'               =>     $_POST["hidden_name"],
+                          'item_price'          =>     $_POST["hidden_price"],
+                          'item_quantity'          =>     $_POST["quantity"]
+                     );
+                     $_SESSION["equip_borrow"][0] = $item_array;
+                }
+           }
 
-            include Router::getSourcePath()."views/type/type.inc.php";
+            $equipmentList  = Equipment::findAll();
+
+            include Router::getSourcePath()."views/borrow/borrow.inc.php";
 
         }
         else {
