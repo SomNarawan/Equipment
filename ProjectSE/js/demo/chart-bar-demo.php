@@ -28,12 +28,30 @@ function number_format(number, decimals, dec_point, thousands_sep) {
   return s.join(dec);
 }
 //ส่วนนี้ริวจะลองทำ -------------------------
-
+    // ค่าโดยปกติ
+    var default_year  = "2020";
+    var default_mount = "01"
     var _year = sessionStorage.getItem("getYear");
     var _mount = sessionStorage.getItem("getMount");
-    var URL ="js/json/json_list.php?"+"id_year="+_year+"&id_mount="+_mount;
+    var URL="";
+    if( _year != null && _mount != null)
+    {
+      URL ="js/json/json_list.php?"+"id_year="+_year+"&id_mount="+_mount;
+    }
+    else if( _year == null && _mount != null )
+    {
+      URL ="js/json/json_list.php?"+"id_year="+default_year+"&id_mount="+_mount;
+    }
+    else if( _year != null && _mount == null)
+    {
+      URL ="js/json/json_list.php?"+"id_year="+_year+"&id_mount="+default_mount;
+    }
+    else
+    {
+      URL ="js/json/json_list.php?"+"id_year="+default_year+"&id_mount="+default_mount;
+    }
     //chack link URL to read qry at js/json/json_list.php path.
-    console.log(URL);
+    console.log("PATH is :: "+URL);
   $.get(URL,function(response){
     let groupItems = $.parseJSON(response);
     console.log(groupItems);
@@ -41,39 +59,112 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 
     // ความยาวของเจสันแต่ละหมวด ที่ถูกแปลงเป็น js Obj.
     var LenObjALL = groupItems.ALL.length;
-    var LenObjYEAR =groupItems.YEAR.length;
-    var LenObjMOUNT =groupItems.MOUNT.length;
-
+    var testLen = Object.keys(groupItems.ALL).length;
+    
+    var LenObjYEAR =Object.keys(groupItems.YEAR).length
+    var LenObjMOUNT =Object.keys(groupItems.MOUNT).length
+    // var size = Object.size(groupItems);
+    // console.log(LenObjALL);
+    // console.log(testLen);
+    // console.log(LenObjYEAR);
+    // console.log(LenObjMOUNT);
     var itemNameArr = [];
     var itemNumArr = [];
     var itemNameArrY = [];
     var itemNumArrY = [];
     var itemNameArrM = [];
     var itemNumArrM = [];
-
-
-
-    for(i=0;i<LenObjALL;i++)
-    {
-      itemNameArr.push(groupItems.ALL[i].name_e);
-      itemNumArr.push(groupItems.ALL[i].numItem);
-    }
-    for(j=0;j<LenObjYEAR;j++)
-    {
-      itemNameArrY.push(groupItems.YEAR[j].name_e_y);
-      itemNumArrY.push(groupItems.YEAR[j].numItem_y);
-    }  
-    for(k=0;k<LenObjMOUNT;k++)
-    {
-      itemNameArrM.push(groupItems.MOUNT[k].name_e_m);
-      itemNumArrM.push(groupItems.MOUNT[k].numItem_m);
-    } 
+  
+    if(groupItems.MOUNT[0] == null)
+     {
+      console.log("True");
+     }
+     else
+      console.log("Fulse");
+     for(i=0;i<testLen;i++)
+     {
+       itemNameArr.push(groupItems.ALL[i].name_e);
+       itemNumArr.push(groupItems.ALL[i].numItem);
+     }
+    
+     for(j=0;j<LenObjYEAR;j++)
+     {
+       if(LenObjYEAR < 1)
+       {
+         itemNameArrY.push(null);
+         itemNumArrY.push(null);
+         
+       }
+       else if (groupItems.YEAR[0] != null)
+       {
+        itemNameArrY.push(groupItems.YEAR[j].name_e_y);
+        itemNumArrY.push(groupItems.YEAR[j].numItem_y);
+       }
+       else if (groupItems.YEAR[0] == null)
+       {
+        break;
+       }
+      }  
+     for(k=0;k<LenObjMOUNT;k++)
+     {
+      if(LenObjMOUNT < 1)
+      {
+        itemNameArrM.push(null);
+        itemNumArrM.push(null);
+      }
+      else if(groupItems.MOUNT[0] != null)
+      {
+        itemNameArrM.push(groupItems.MOUNT[k].name_e_m);
+        itemNumArrM.push(groupItems.MOUNT[k].numItem_m);
+      }
+      else if(groupItems.MOUNT[0] == null)
+      {
+        break;
+      }
+     }
+     //ex.var name = cars[0];
+     var forNumArrY = [];
+     var forNumArrM = [];
+    //  var objShow = {
+    //     name_e :itemNameArr,
+    //      //ไม่ควรเป็นตัวนี้
+    //  };
+     
+     //looping year array num
+     for(i=0;i<testLen;i++)
+     {
+       for(j=0;j<LenObjYEAR;j++)
+       {
+        if(itemNameArr[i].localeCompare(itemNameArrY[j])==0)
+              {
+                forNumArrY[i]=itemNumArrY[j];
+              }
+       }
+      // forNumArrY[i]=0;
+     }
+     //looping mount array num
+     for(i=0;i<testLen;i++)
+     {
+       for(j=0;j<LenObjMOUNT;j++)
+       {
+        if(itemNameArr[i].localeCompare(itemNameArrM[j])==0)
+          {
+              forNumArrM[i]=itemNumArrM[j];
+          }
+       }
+      // forNumArrM[i]=0;
+     }
+     //test forNumArrM forNumArrY
+     console.log(forNumArrY);
+     console.log(forNumArrM);
+     
     //console.log(itemNameArr);
-    <?php session_start(); ?>
-    console.log(groupItems.ALL[1].name_e);
-    console.log(groupItems.YEAR.length);
-    console.log(_year);
-    console.log(_mount);
+    // <?php session_start(); ?>
+    // console.log(groupItems.ALL[1].name_e);
+    // console.log(groupItems.YEAR.length);
+    // console.log(_year);
+    // console.log(_mount);
+    // console.log(Array.isArray(itemNameArrY) && itemNameArrY.length);
 
   //}); ย้ายไปปิดท้ายโค้ดเพราะไม่รู้จักตัวแปร
 //---------------------------------------
@@ -117,7 +208,7 @@ var myBarChartAll = new Chart(ctxAll, {
         },
         ticks: {
           //ลิมิตของตาราง ควรมีเท่ากับตารางคอลั่มที่มี
-          maxTicksLimit: LenObjALL
+          maxTicksLimit: testLen
         },
         //ความหนาของกราฟแต่ละแถว
         maxBarThickness: 25,
@@ -171,16 +262,16 @@ var myBarChartAll = new Chart(ctxAll, {
   
 
 //-------- 2
-var myBarChartMount = new Chart(ctxMount, {
+var myBarChartYear = new Chart(ctxYear, {
   type: 'bar',
   data: {
-       labels: itemNameArrY,
+       labels: itemNameArr,
       datasets: [{
       label: "จำนวน",
       backgroundColor: "#3b5e8c",
       hoverBackgroundColor: "#2e59d9",
       borderColor: "#3b5e8c",
-      data: itemNumArrY,
+      data: forNumArrY,
     }],
   
   },
@@ -207,7 +298,7 @@ var myBarChartMount = new Chart(ctxMount, {
         },
         ticks: {
           //ลิมิตของตาราง ควรมีเท่ากับตารางคอลั่มที่มี
-          maxTicksLimit: LenObjYEAR
+          maxTicksLimit: testLen
         },
         //ความหนาของกราฟแต่ละแถว
         maxBarThickness: 25,
@@ -215,7 +306,7 @@ var myBarChartMount = new Chart(ctxMount, {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 15,
+          max: 10,
           // จำนวนเส้นที่ไว้ใช้แบ่งความละเอียดแกน Y maxTicksLimit ยิ่งมาก ยิ่งละเอียด
           maxTicksLimit: 10,
           padding: 10,
@@ -259,16 +350,16 @@ var myBarChartMount = new Chart(ctxMount, {
 });
 
 //-------------3
-var myBarChartYear = new Chart(ctxYear, {
+var myBarChartMount = new Chart(ctxMount, {
   type: 'bar',
   data: {
-       labels: itemNameArrM,
+       labels: itemNameArr,
       datasets: [{
       label: "จำนวน",
       backgroundColor: "#3b5e8c",
       hoverBackgroundColor: "#2e59d9",
       borderColor: "#3b5e8c",
-      data: itemNumArrM,
+      data: forNumArrM,
     }],
   
   },
@@ -295,7 +386,7 @@ var myBarChartYear = new Chart(ctxYear, {
         },
         ticks: {
           //ลิมิตของตาราง ควรมีเท่ากับตารางคอลั่มที่มี
-          maxTicksLimit: LenObjMOUNT
+          maxTicksLimit: testLen
         },
         //ความหนาของกราฟแต่ละแถว
         maxBarThickness: 25,
@@ -303,7 +394,7 @@ var myBarChartYear = new Chart(ctxYear, {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 10,
+          max: 5,
           // จำนวนเส้นที่ไว้ใช้แบ่งความละเอียดแกน Y maxTicksLimit ยิ่งมาก ยิ่งละเอียด
           maxTicksLimit: 10,
           padding: 10,
