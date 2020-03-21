@@ -32,14 +32,24 @@ var ctx = document.getElementById("myBarChart");
 var myBarChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ["January", "February", "March", "April", "May", "June"],
-    datasets: [{
-      label: "Revenue",
-      backgroundColor: "#4e73df",
+    // เราต้องดึงมาจากฐานข้อมูลในส่วนของหมวดอุปกรณ์
+    // labels: ["January", "February", "March", "April", "May", "June","wow","eiei","not wow","1","2","3"],
+    // datasets: [{
+    //   label: "Revenue.test",
+    //   backgroundColor: "#0917d9",
+    //   hoverBackgroundColor: "#2e59d9",
+    //   borderColor: "#0917d9",
+    //   data: [17000, 5312, 6251, 7841, 9821, 14984,5555,1234,20000,1000,2000,3000],
+       labels: ["หมวด:1", "หมวด:2", "หมวด:3", "หมวด:4", "หมวด:5", "หมวด:6","หมวด:7",
+       "หมวด:8","หมวด:9","หมวด:10","หมวด:11","หมวด:อื่นๆ++"],
+      datasets: [{
+      label: "จำนวน",
+      backgroundColor: "#a4eff5",
       hoverBackgroundColor: "#2e59d9",
-      borderColor: "#4e73df",
-      data: [4215, 5312, 6251, 7841, 9821, 14984],
+      borderColor: "#a4eff5",
+      data: [10, 5, 12, 15, 4, 0,4,7,11,20,25,27],
     }],
+  
   },
   options: {
     maintainAspectRatio: false,
@@ -54,31 +64,36 @@ var myBarChart = new Chart(ctx, {
     scales: {
       xAxes: [{
         time: {
-          unit: 'month'
+          //รายละเอียดแกน X
+          unit: 'หมวดอุปกรณ์'
+
         },
         gridLines: {
-          display: false,
+          display: true,
           drawBorder: false
         },
         ticks: {
-          maxTicksLimit: 6
+          //ลิมิตของตาราง ควรมีเท่ากับตารางคอลั่มที่มี
+          maxTicksLimit: 12
         },
+        //ความหนาของกราฟแต่ละแถว
         maxBarThickness: 25,
       }],
       yAxes: [{
         ticks: {
           min: 0,
-          max: 15000,
-          maxTicksLimit: 5,
+          max: 30,
+          // จำนวนเส้นที่ไว้ใช้แบ่งความละเอียดแกน Y maxTicksLimit ยิ่งมาก ยิ่งละเอียด
+          maxTicksLimit: 10,
           padding: 10,
           // Include a dollar sign in the ticks
           callback: function(value, index, values) {
-            return '$' + number_format(value);
+            return 'จำนวน ' + number_format(value) + ' ชิ้น';
           }
         },
         gridLines: {
-          color: "rgb(234, 236, 244)",
-          zeroLineColor: "rgb(234, 236, 244)",
+          color: "rgb(245, 137, 196)",
+          zeroLineColor: "rgb(245, 137, 196)",
           drawBorder: false,
           borderDash: [2],
           zeroLineBorderDash: [2]
@@ -91,7 +106,7 @@ var myBarChart = new Chart(ctx, {
     tooltips: {
       titleMarginBottom: 10,
       titleFontColor: '#6e707e',
-      titleFontSize: 14,
+      titleFontSize: 24,
       backgroundColor: "rgb(255,255,255)",
       bodyFontColor: "#858796",
       borderColor: '#dddfeb',
@@ -103,7 +118,7 @@ var myBarChart = new Chart(ctx, {
       callbacks: {
         label: function(tooltipItem, chart) {
           var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+          return datasetLabel + ': ' + number_format(tooltipItem.yLabel)+' ชิ้น';
         }
       }
     },
