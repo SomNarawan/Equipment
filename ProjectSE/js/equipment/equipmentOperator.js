@@ -2,31 +2,33 @@
 $( document ).ready(function() {
     console.log("test");
 
-    $('#addEquipType').click(function(){
+    $('#addEquip').click(function(){
         console.log("hh");
         $("#addEquipmentOperatorModal").modal();
     });
-    $('.editEquipType').click(function(){
+    $('.editEquip').click(function(){
+
         $("#editEquipmentOperatorModal").modal();
 
         var id_e = $(this).attr('id_e');
         var name_e = $(this).attr('name_e');
         var id_t = $(this).attr('id_t');
         var note = $(this).attr('note');
-        
+        // alert(name_t);
+        // document.getElementById("name_e_edit").value = name_t;
         $("#id_e_edit").val(id_e);
         $("#name_e_edit").val(name_e);
-        $("#id_t_edit").val(id_t);
+        $("#id_t_edit").val(id_t); //.attr("selected","selected");
         $("#note_edit").val(note);
     });
-    $('#add').click(function(){
+    $('#addEqu').click(function(){
         // alert("ass");
-        $('#add').attr("equipment","submit");
+        $('#addEqu').attr("type","submit");
     });
-    $('#edit').click(function(){
+    $('#editEqu').click(function(){
         // alert("ass");
         
-        $('#edit').attr("equipment","submit");
+        $('#editEqu').attr("type","submit");
     });
 });
 

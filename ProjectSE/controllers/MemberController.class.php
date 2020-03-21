@@ -133,6 +133,8 @@ class MemberController {
     private function menu_equipmentO(){
         session_start();
         if ($_SESSION['member'] !== null){
+            $typeList = Type::findAll();
+            // print_r($typeList);
             $equipmentList = Equipment::findAll();
             include Router::getSourcePath()."views/equipment/equipmentOperator.inc.php";
         }
