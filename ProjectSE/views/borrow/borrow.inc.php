@@ -42,43 +42,48 @@ ob_start();
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>อุปกรณ์</th>
-                                <th>หมวดอุปกรณ์</th>
-                                <th>รายละเอียด</th>
-                                <th>คงเหลือ</th>
-                                <th>จำนวน(ชิ้น)</th>
-                                <th>เพิ่มการยืมอุปกรณ์</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th>อุปกรณ์</th>
-                                <th>หมวดอุปกรณ์</th>
-                                <th>รายละเอียด</th>
-                                <th>คงเหลือ</th>
-                                <th>จำนวน(ชิ้น)</th>
-                                <th>เพิ่มการยืมอุปกรณ์</th>
-                            </tr>
+                    <!-- <form method="post" action="./index.php?controller=Borrow&action=borrow"> -->
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>อุปกรณ์</th>
+                                    <th>หมวดอุปกรณ์</th>
+                                    <th>รายละเอียด</th>
+                                    <th>คงเหลือ</th>
+                                    <th>จำนวน(ชิ้น)</th>
+                                    <th>เพิ่มการยืมอุปกรณ์</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>อุปกรณ์</th>
+                                    <th>หมวดอุปกรณ์</th>
+                                    <th>รายละเอียด</th>
+                                    <th>คงเหลือ</th>
+                                    <th>จำนวน(ชิ้น)</th>
+                                    <th>เพิ่มการยืมอุปกรณ์</th>
+                                </tr>
 
-                        </tfoot>
-                        <tbody>
-                            <?php
+                            </tfoot>
+                            <tbody>
+                                <?php
                             foreach ($equipmentList as $prod) { ?>
-                            <tr>
-                                <td><?= $prod->getName_e(); ?></td>
-                                <td><?= $prod->getName_t(); ?></td>
-                                <td><?= $prod->getNote(); ?></td>
-                                <td><a href="#"><?= $prod->getCount_remain_equipment(); ?></a></td>
-                                <td><input type='number' name='prod_$i' id='prod_$i' value='0' min='0' /></td>
-                                <td><button type="button" class="btn btn-success" style="width:150px;">เพิ่ม</button>
-                                </td>
-                            </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
+                                <tr>
+                                    <td><?= $prod->getName_e(); ?></td>
+                                    <td><?= $prod->getName_t(); ?></td>
+                                    <td><?= $prod->getNote(); ?></td>
+                                    <td><a href="#"><?= $prod->getCount_remain_equipment(); ?></a></td>
+                                    <td><input type='number' name='<?= $prod->getId_e(); ?>' id='<?= $prod->getId_e(); ?>' value='0' min='0' /></td>
+                                    <td><button type="submit" class="btn btn-success addBorrow" name="add_borrow" value="เพิ่ม"
+                                    id_e ="<?= $prod->getId_e(); ?>" name_e="<?= $prod->getName_e(); ?>" name_t="<?= $prod->getName_t(); ?>" 
+                                    note="<?= $prod->getNote(); ?>"
+                                            style="width:150px;">เพิ่ม</button>
+                                    </td>
+                                </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    <!-- </form> -->
                 </div>
             </div>
         </div>
@@ -113,21 +118,8 @@ ob_start();
                             </tr>
 
                         </tfoot>
-                        <tbody>
-                            <tr>
-                                <td>เมาส์</td>
-                                <td>คอมพิวเตอร์</td>
-                                <td>Logitec</td>
-                                <td><input type='number' name='prod_$i' id='prod_$i' value='0' min='0' /></td>
-                                <td><button type="button" class="btn btn-danger" style="width:150px;">ลบ</button></td>
-                            </tr>
-                            <tr>
-                                <td>android</td>
-                                <td>โทรศัพท์</td>
-                                <td>OPPO A 38</td>
-                                <td><input type='number' name='prod_$i' id='prod_$i' value='0' min='0' /></td>
-                                <td><button type="button" class="btn btn-danger" style="width:150px;">ลบ</button></td>
-                            </tr>
+                        <tbody id="borrow_e">
+                            
                         </tbody>
                     </table>
                 </div>
@@ -144,6 +136,9 @@ ob_start();
 
 <?php
 $content = ob_get_clean();
+ob_start();
+    echo "<script src='js/equipment/borrow.js'></script>";
+$js = ob_get_clean();
 
 include Router::getSourcePath()."templates/layout.php";
 } catch (Throwable $e) { // PHP 7++
