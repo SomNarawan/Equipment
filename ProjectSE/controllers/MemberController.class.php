@@ -131,6 +131,7 @@ class MemberController {
     private function menu_equipmentO(){
         session_start();
         if ($_SESSION['member'] !== null){
+            $equipmentList = Equipment::findAll();
             include Router::getSourcePath()."views/equipment/equipmentOperator.inc.php";
         }
         else {

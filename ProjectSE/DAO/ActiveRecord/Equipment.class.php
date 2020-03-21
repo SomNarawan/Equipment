@@ -51,10 +51,10 @@ class Equipment {
         $this->count_equipment = $count;
     }
     public function getCount_lend_equipment(): int {
-        return $this->count_equipment;
+        return $this->count_lend_equipment;
     }
     public function setCount_lend_equipment(int $count) {
-        $this->count_equipment = $count;
+        $this->count_lend_equipment = $count;
     }
     public function getCount_remain_equipment(): int {
         return $this->count_remain_equipment;
@@ -65,7 +65,7 @@ class Equipment {
     //----------- CRUD
     public static function findAll(): array {
         $con = Db::getInstance();
-        $query = "SELECT t4.id_e,t4.name_e,type.name_t,t4.note,count_all,lend,remain FROM(SELECT t3.id_t,t3.id_e,t3.name_e,type.name_t,t3.note,count_all,lend,remain FROM (SELECT t2.id_t,t2.id_e,t2.name_e,t2.note,count_all,if(count_no IS NULL,0,count_no)AS lend,(count_all-if(count_no IS NULL,0,count_no))AS remain FROM 
+        $query = "SELECT t4.id_e,t4.name_e,type.name_t,t4.note,count_all as count_equipment,lend as count_lend_equipment,remain as count_remain_equipment  FROM(SELECT t3.id_t,t3.id_e,t3.name_e,type.name_t,t3.note,count_all,lend,remain FROM (SELECT t2.id_t,t2.id_e,t2.name_e,t2.note,count_all,if(count_no IS NULL,0,count_no)AS lend,(count_all-if(count_no IS NULL,0,count_no))AS remain FROM 
         (SELECT equipment.id_t,equipment.id_e,COUNT(item.id_e) AS count_no FROM equipment 
         LEFT JOIN item ON equipment.id_e = item.id_e 
          WHERE item.status_i = 2 
