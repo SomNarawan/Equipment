@@ -23,6 +23,7 @@
 
 <?php if(isset($modal)) echo $modal; ?>
 <?php if(isset($js)) echo $js; ?>
+<?php require_once "js/demo/chart-bar-demo.php"; ?>
 
 <?php //include Router::getSourcePath()."views/typeModal.inc.php"; ?>
 

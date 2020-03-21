@@ -1,3 +1,4 @@
+<script>
 // Set new default font family and font color to mimic Bootstrap's default styling
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
@@ -28,23 +29,52 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 }
 //ส่วนนี้ริวจะลองทำ -------------------------
 
-  $.get("js/json/json_list.php",function(response){
+    var _year = sessionStorage.getItem("getYear");
+    var _mount = sessionStorage.getItem("getMount");
+    var URL ="js/json/json_list.php?"+"id_year="+_year+"&id_mount="+_mount;
+    //chack link URL to read qry at js/json/json_list.php path.
+    console.log(URL);
+  $.get(URL,function(response){
     let groupItems = $.parseJSON(response);
     console.log(groupItems);
-    var i;
-    var LenObj = groupItems.ALL.length;
+    var i,j,k;
+
+    // ความยาวของเจสันแต่ละหมวด ที่ถูกแปลงเป็น js Obj.
+    var LenObjALL = groupItems.ALL.length;
+    var LenObjYEAR =groupItems.YEAR.length;
+    var LenObjMOUNT =groupItems.MOUNT.length;
+
     var itemNameArr = [];
     var itemNumArr = [];
-    for(i=0;i<LenObj;i++)
+    var itemNameArrY = [];
+    var itemNumArrY = [];
+    var itemNameArrM = [];
+    var itemNumArrM = [];
+
+
+
+    for(i=0;i<LenObjALL;i++)
     {
       itemNameArr.push(groupItems.ALL[i].name_e);
       itemNumArr.push(groupItems.ALL[i].numItem);
+    }
+    for(j=0;j<LenObjYEAR;j++)
+    {
+      itemNameArrY.push(groupItems.YEAR[j].name_e_y);
+      itemNumArrY.push(groupItems.YEAR[j].numItem_y);
     }  
+    for(k=0;k<LenObjMOUNT;k++)
+    {
+      itemNameArrM.push(groupItems.MOUNT[k].name_e_m);
+      itemNumArrM.push(groupItems.MOUNT[k].numItem_m);
+    } 
     //console.log(itemNameArr);
+    <?php session_start(); ?>
     console.log(groupItems.ALL[1].name_e);
-    console.log(groupItems.ALL.length);
-    // console.log(rows);
-    // $("tbody").html(rows);
+    console.log(groupItems.YEAR.length);
+    console.log(_year);
+    console.log(_mount);
+
   //}); ย้ายไปปิดท้ายโค้ดเพราะไม่รู้จักตัวแปร
 //---------------------------------------
 // Bar Chart Example
@@ -87,7 +117,7 @@ var myBarChartAll = new Chart(ctxAll, {
         },
         ticks: {
           //ลิมิตของตาราง ควรมีเท่ากับตารางคอลั่มที่มี
-          maxTicksLimit: LenObj
+          maxTicksLimit: LenObjALL
         },
         //ความหนาของกราฟแต่ละแถว
         maxBarThickness: 25,
@@ -144,14 +174,13 @@ var myBarChartAll = new Chart(ctxAll, {
 var myBarChartMount = new Chart(ctxMount, {
   type: 'bar',
   data: {
-       labels: ["หมวด:1", "หมวด:2", "หมวด:3", "หมวด:4", "หมวด:5", "หมวด:6","หมวด:7",
-       "หมวด:8","หมวด:9","หมวด:10","หมวด:11","หมวด:อื่นๆ++"],
+       labels: itemNameArrY,
       datasets: [{
       label: "จำนวน",
       backgroundColor: "#3b5e8c",
       hoverBackgroundColor: "#2e59d9",
       borderColor: "#3b5e8c",
-      data: [2, 5, 7, 10, 15, 18,20,22,24,26,27,28,30],
+      data: itemNumArrY,
     }],
   
   },
@@ -178,7 +207,7 @@ var myBarChartMount = new Chart(ctxMount, {
         },
         ticks: {
           //ลิมิตของตาราง ควรมีเท่ากับตารางคอลั่มที่มี
-          maxTicksLimit: 12
+          maxTicksLimit: LenObjYEAR
         },
         //ความหนาของกราฟแต่ละแถว
         maxBarThickness: 25,
@@ -186,7 +215,7 @@ var myBarChartMount = new Chart(ctxMount, {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 30,
+          max: 15,
           // จำนวนเส้นที่ไว้ใช้แบ่งความละเอียดแกน Y maxTicksLimit ยิ่งมาก ยิ่งละเอียด
           maxTicksLimit: 10,
           padding: 10,
@@ -233,14 +262,13 @@ var myBarChartMount = new Chart(ctxMount, {
 var myBarChartYear = new Chart(ctxYear, {
   type: 'bar',
   data: {
-       labels: ["หมวด:1", "หมวด:2", "หมวด:3", "หมวด:4", "หมวด:5", "หมวด:6","หมวด:7",
-       "หมวด:8","หมวด:9","หมวด:10","หมวด:11","หมวด:อื่นๆ++"],
+       labels: itemNameArrM,
       datasets: [{
       label: "จำนวน",
       backgroundColor: "#3b5e8c",
       hoverBackgroundColor: "#2e59d9",
       borderColor: "#3b5e8c",
-      data: [30, 27, 25, 20, 17, 15,13,12,11,10,5,2,1],
+      data: itemNumArrM,
     }],
   
   },
@@ -267,7 +295,7 @@ var myBarChartYear = new Chart(ctxYear, {
         },
         ticks: {
           //ลิมิตของตาราง ควรมีเท่ากับตารางคอลั่มที่มี
-          maxTicksLimit: 12
+          maxTicksLimit: LenObjMOUNT
         },
         //ความหนาของกราฟแต่ละแถว
         maxBarThickness: 25,
@@ -275,7 +303,7 @@ var myBarChartYear = new Chart(ctxYear, {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 30,
+          max: 10,
           // จำนวนเส้นที่ไว้ใช้แบ่งความละเอียดแกน Y maxTicksLimit ยิ่งมาก ยิ่งละเอียด
           maxTicksLimit: 10,
           padding: 10,
@@ -319,3 +347,4 @@ var myBarChartYear = new Chart(ctxYear, {
 });
 
   }); // ปิด GET จากริว
+  </script>
