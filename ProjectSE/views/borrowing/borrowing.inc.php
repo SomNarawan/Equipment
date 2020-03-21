@@ -9,7 +9,7 @@ try {
 require_once Router::getSourcePath()."inc/helper_func.inc.php";
 
 // เก็บข้อมูลจากสิ่งที่ controller เตรียมไว้ให้
-$products = $_SESSION['productList'];
+//$products = $_SESSION['productList'];
 
 // เริ่มต้นการเขียน view
 $title = "Type";
@@ -114,7 +114,7 @@ ob_start();
                                 <td></td>
                                 <td></td>
                                 <td>
-                                <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" titile="รายละเอียด"><i class="fas fa-list"></i></button>
+                                <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" id="detailE" titile="รายละเอียด"><i class="fas fa-list"></i></button>
                                 <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" titile="ลบ"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
