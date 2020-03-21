@@ -20,7 +20,7 @@ class Equipment {
     public function getId_e():int {
         return $this->id_e;
     }
-    public function setId_t(int $id) {
+    public function setId_e(int $id) {
         $this->id_e = $id;
     }
     public function getName_e()
@@ -57,10 +57,21 @@ class Equipment {
     //----------- CRUD
     public static function findAll(): array {
         $con = Db::getInstance();
-        $query = "SELECT t2.id_e,t2.name_e,t2.note,count_all,if(count_no IS NULL,0,count_no)AS lend,(count_all-if(count_no IS NULL,0,count_no))AS remain FROM (SELECT equipment.id_e,COUNT(item.id_e) AS count_no FROM equipment 
-        LEFT JOIN item ON equipment.id_e = item.id_e WHERE item.status_i = 2 GROUP BY equipment.id_e) AS t1 RIGHT JOIN (SELECT equipment.id_e,name_e,equipment.note,COUNT(item.id_e) AS count_all FROM equipment LEFT JOIN item ON equipment.id_e = item.id_e WHERE item.status_i = 1 OR item.status_i = 2
-        GROUP BY equipment.id_e,name_e,equipment.note)AS t2
-        ON t1.id_e = t2.id_e";
+        $query = "SELECT t4.id_e,t4.name_e,type.name_t,t4.note,count_all,lend,remain FROM(SELECT t3.id_t,t3.id_e,t3.name_e,type.name_t,t3.note,count_all,lend,remain FROM (SELECT t2.id_t,t2.id_e,t2.name_e,t2.note,count_all,if(count_no IS NULL,0,count_no)AS lend,(count_all-if(count_no IS NULL,0,count_no))AS remain FROM 
+        (SELECT equipment.id_t,equipment.id_e,COUNT(item.id_e) AS count_no FROM equipment 
+        LEFT JOIN item ON equipment.id_e = item.id_e 
+         WHERE item.status_i = 2 
+         GROUP BY equipment.id_t,equipment.id_e) AS t1 
+        RIGHT JOIN 
+        (SELECT equipment.id_t,equipment.id_e,name_e,equipment.note,COUNT(item.id_e) AS count_all FROM equipment 
+         LEFT JOIN item ON equipment.id_e = item.id_e 
+         WHERE item.status_i = 1 OR item.status_i = 2
+        GROUP BY equipment.id_t,equipment.id_e,name_e,equipment.note) AS t2
+        ON t1.id_e = t2.id_e)AS t3
+        LEFT JOIN type
+        ON t3.id_e = type.id_t)AS t4
+        INNER JOIN type
+        ON t4.id_t = type.id_t";
         // $query = "SELECT * FROM ".self::TABLE;
         $stmt = $con->prepare($query);
         $stmt->setFetchMode(PDO::FETCH_CLASS, "Equipment");
@@ -68,7 +79,7 @@ class Equipment {
         $equipmentList  = array();
         while ($prod = $stmt->fetch())
         {
-            $equipmentList[$prod->getId_t()] = $prod;
+            $equipmentList[$prod->getId_e()] = $prod;
         }
         return $equipmentList;
     }
