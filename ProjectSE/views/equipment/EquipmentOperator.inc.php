@@ -138,22 +138,27 @@ ob_start();
 
                         </tfoot>
                         <tbody>
+                            <?php
+                            foreach ($equipmentList as $prod) { ?>
                             <tr>
-                                <td>เมาส์</td>
-                                <td>คอมพิวเตอร์</td>
-                                <td>Logitec</td>
-                                <td><a href="#">4</a></td>
-                                <td><a href="#">1</a></td>
-                                <td><a href="#">3</a></td>
+                                <td><?= $prod->getName_e(); ?></td>
+                                <td><?= $prod->getName_t(); ?></td>
+                                <td><?= $prod->getNote(); ?></td>
+                                <td><a href="#"><?= $prod->getCount_equipment(); ?></a></td>
+                                <td><a href="#"><?= $prod->getCount_lend_equipment(); ?></a></td>
+                                <td><a href="#"><?= $prod->getCount_remain_equipment(); ?></a></td>
                                 <td>
-                                <button type="button" class="btn btn-info btn-sm detail" data-toggle="tooltip" titile="รายละเอียด"><i class="fas fa-list"></i></button>
-                                <button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip" titile="แก้ไข"><i class="fas fa-edit"></i></button>
-                                <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" titile="ลบ"><i class="fas fa-trash"></i></button>
+                                    <button type="button" class="btn btn-info btn-sm detail" data-toggle="tooltip"
+                                        titile="รายละเอียด"><i class="fas fa-list"></i></button>
+                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip"
+                                        titile="แก้ไข"><i class="fas fa-edit"></i></button>
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip"
+                                        titile="ลบ"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
 
 
-                            
+
                             <tr>
                                 <td>จอ</td>
                                 <td>คอมพิวเตอร์</td>
@@ -162,9 +167,12 @@ ob_start();
                                 <td><a href="#">0</a></td>
                                 <td><a href="#">5</a></td>
                                 <td>
-                                <button type="button" class="btn btn-info btn-sm detail" data-toggle="tooltip" id="test" titile="รายละเอียด"><i class="fas fa-list"></i></button>
-                                <button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip" titile="แก้ไข"><i class="fas fa-edit"></i></button>
-                                <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" titile="ลบ"><i class="fas fa-trash"></i></button>
+                                    <button type="button" class="btn btn-info btn-sm detail" data-toggle="tooltip"
+                                        id="test" titile="รายละเอียด"><i class="fas fa-list"></i></button>
+                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip"
+                                        titile="แก้ไข"><i class="fas fa-edit"></i></button>
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip"
+                                        titile="ลบ"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
                             <tr>
@@ -175,9 +183,12 @@ ob_start();
                                 <td><a href="#">0</a></td>
                                 <td><a href="#">6</a></td>
                                 <td>
-                                <button type="button" class="btn btn-info btn-sm detail" data-toggle="tooltip" titile="รายละเอียด"><i class="fas fa-list"></i></button>
-                                <button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip" titile="แก้ไข"><i class="fas fa-edit"></i></button>
-                                <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" titile="ลบ"><i class="fas fa-trash"></i></button>
+                                    <button type="button" class="btn btn-info btn-sm detail" data-toggle="tooltip"
+                                        titile="รายละเอียด"><i class="fas fa-list"></i></button>
+                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip"
+                                        titile="แก้ไข"><i class="fas fa-edit"></i></button>
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip"
+                                        titile="ลบ"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
                             <tr>
@@ -188,9 +199,12 @@ ob_start();
                                 <td><a href="#">2</a></td>
                                 <td><a href="#">3</a></td>
                                 <td>
-                                <button type="button" class="btn btn-info btn-sm detail" data-toggle="tooltip" titile="รายละเอียด"><i class="fas fa-list"></i></button>
-                                <button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip" titile="แก้ไข"><i class="fas fa-edit"></i></button>
-                                <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" titile="ลบ"><i class="fas fa-trash"></i></button>
+                                    <button type="button" class="btn btn-info btn-sm detail" data-toggle="tooltip"
+                                        titile="รายละเอียด"><i class="fas fa-list"></i></button>
+                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip"
+                                        titile="แก้ไข"><i class="fas fa-edit"></i></button>
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip"
+                                        titile="ลบ"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
                             <tr>
@@ -201,9 +215,12 @@ ob_start();
                                 <td><a href="#">0</a></td>
                                 <td><a href="#">2</a></td>
                                 <td>
-                                <button type="button" class="btn btn-info btn-sm detail" data-toggle="tooltip" titile="รายละเอียด"><i class="fas fa-list"></i></button>
-                                <button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip" titile="แก้ไข"><i class="fas fa-edit"></i></button>
-                                <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" titile="ลบ"><i class="fas fa-trash"></i></button>
+                                    <button type="button" class="btn btn-info btn-sm detail" data-toggle="tooltip"
+                                        titile="รายละเอียด"><i class="fas fa-list"></i></button>
+                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip"
+                                        titile="แก้ไข"><i class="fas fa-edit"></i></button>
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip"
+                                        titile="ลบ"><i class="fas fa-trash"></i></button>
 
                                 </td>
                             </tr>
