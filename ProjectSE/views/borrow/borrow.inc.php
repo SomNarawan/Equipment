@@ -9,7 +9,7 @@ try {
 require_once Router::getSourcePath()."inc/helper_func.inc.php";
 
 // เก็บข้อมูลจากสิ่งที่ controller เตรียมไว้ให้
-$products = $_SESSION['productList'];
+// $products = $_SESSION['productList'];
 
 // เริ่มต้นการเขียน view
 $title = "Type";
@@ -31,7 +31,7 @@ ob_start();
     <!-- Content Row -->
     <div class="row">
 
-        
+
     </div>
     <div>
         <!-- Content Row -->
@@ -65,46 +65,18 @@ ob_start();
 
                         </tfoot>
                         <tbody>
+                            <?php
+                            foreach ($equipmentList as $prod) { ?>
                             <tr>
-                                <td>เมาส์</td>
-                                <td>คอมพิวเตอร์</td>
-                                <td>Logitec</td>
-                                <td><a href="#">3</a></td>
-                                <td><input type='number' name='prod_$i' id='prod_$i' value='0' min='0'/></td>
-                                <td><button type="button" class="btn btn-success" style="width:150px;">เพิ่ม</button></td>
+                                <td><?= $prod->getName_e(); ?></td>
+                                <td><?= $prod->getName_t(); ?></td>
+                                <td><?= $prod->getNote(); ?></td>
+                                <td><a href="#"><?= $prod->getCount_remain_equipment(); ?></a></td>
+                                <td><input type='number' name='prod_$i' id='prod_$i' value='0' min='0' /></td>
+                                <td><button type="button" class="btn btn-success" style="width:150px;">เพิ่ม</button>
+                                </td>
                             </tr>
-                            <tr>
-                                <td>จอ</td>
-                                <td>คอมพิวเตอร์</td>
-                                <td>DELL</td>
-                                <td><a href="#">5</a></td>
-                                <td><input type='number' name='prod_$i' id='prod_$i' value='0' min='0'/></td>
-                                <td><button type="button" class="btn btn-success" style="width:150px;">เพิ่ม</button></td>
-                            </tr>
-                            <tr>
-                                <td>โน๊ตบุ๊ค</td>
-                                <td>คอมพิวเตอร์</td>
-                                <td>ACER</td>
-                                <td><a href="#">6</a></td>
-                                <td><input type='number' name='prod_$i' id='prod_$i' value='0' min='0'/></td>
-                                <td><button type="button" class="btn btn-success" style="width:150px;">เพิ่ม</button></td>
-                            </tr>
-                            <tr>
-                                <td>android</td>
-                                <td>โทรศัพท์</td>
-                                <td>OPPO A 38</td>
-                                <td><a href="#">3</a></td>
-                                <td><input type='number' name='prod_$i' id='prod_$i' value='0' min='0'/></td>
-                                <td><button type="button" class="btn btn-success" style="width:150px;">เพิ่ม</button></td>
-                            </tr>
-                            <tr>
-                                <td>IOS/td>
-                                <td>โทรศัพท์</td>
-                                <td>Iphone 6</td>
-                                <td><a href="#">2</a></td>
-                                <td><input type='number' name='prod_$i' id='prod_$i' value='0' min='0'/></td>
-                                <td><button type="button" class="btn btn-success" style="width:150px;">เพิ่ม</button></td>
-                            </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
@@ -146,14 +118,14 @@ ob_start();
                                 <td>เมาส์</td>
                                 <td>คอมพิวเตอร์</td>
                                 <td>Logitec</td>
-                                <td><input type='number' name='prod_$i' id='prod_$i' value='0' min='0'/></td>
+                                <td><input type='number' name='prod_$i' id='prod_$i' value='0' min='0' /></td>
                                 <td><button type="button" class="btn btn-danger" style="width:150px;">ลบ</button></td>
                             </tr>
                             <tr>
                                 <td>android</td>
                                 <td>โทรศัพท์</td>
                                 <td>OPPO A 38</td>
-                                <td><input type='number' name='prod_$i' id='prod_$i' value='0' min='0'/></td>
+                                <td><input type='number' name='prod_$i' id='prod_$i' value='0' min='0' /></td>
                                 <td><button type="button" class="btn btn-danger" style="width:150px;">ลบ</button></td>
                             </tr>
                         </tbody>
@@ -165,8 +137,8 @@ ob_start();
 </div>
 <!-- /.container-fluid -->
 <div align="center">
-<button type="button" class="btn btn-success" style="width:150px;">ยืนยัน</button>
-<button type="button" class="btn btn-danger" style="width:150px;">ยกเลิก</button>
+    <button type="button" class="btn btn-success" style="width:150px;">ยืนยัน</button>
+    <button type="button" class="btn btn-danger" style="width:150px;">ยกเลิก</button>
 </div>
 </br>
 
