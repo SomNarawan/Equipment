@@ -11,6 +11,7 @@ class Equipment {
     private $id_e;
     private $name_e;
     private $name_t;
+    private $id_t;
     private $note;
     private $count_equipment;
     private $count_lend_equipment;
@@ -23,6 +24,12 @@ class Equipment {
     }
     public function setId_e(int $id) {
         $this->id_e = $id;
+    }
+    public function getId_t():int {
+        return $this->id_t;
+    }
+    public function setId_t(int $id) {
+        $this->id_t = $id;
     }
     public function getName_e()
     {
@@ -65,7 +72,7 @@ class Equipment {
     //----------- CRUD
     public static function findAll(): array {
         $con = Db::getInstance();
-        $query = "SELECT t4.id_e,t4.name_e,type.name_t,t4.note,count_all as count_equipment,lend as count_lend_equipment,remain as count_remain_equipment FROM(SELECT t3.id_t,t3.id_e,t3.name_e,type.name_t,t3.note,count_all,lend,remain FROM (SELECT t2.id_t,t2.id_e,t2.name_e,t2.note,count_all,if(count_no IS NULL,0,count_no)AS lend,(count_all-if(count_no IS NULL,0,count_no))AS remain FROM 
+        $query = "SELECT type.id_t,t4.id_e,t4.name_e,type.name_t,t4.note,count_all as count_equipment,lend as count_lend_equipment,remain as count_remain_equipment FROM(SELECT t3.id_t,t3.id_e,t3.name_e,type.name_t,t3.note,count_all,lend,remain FROM (SELECT t2.id_t,t2.id_e,t2.name_e,t2.note,count_all,if(count_no IS NULL,0,count_no)AS lend,(count_all-if(count_no IS NULL,0,count_no))AS remain FROM 
         (SELECT equipment.id_t,equipment.id_e,COUNT(item.id_e) AS count_no FROM equipment 
         LEFT JOIN item ON equipment.id_e = item.id_e 
          WHERE item.status_i = 2 
@@ -73,7 +80,6 @@ class Equipment {
         RIGHT JOIN 
         (SELECT equipment.id_t,equipment.id_e,name_e,equipment.note,COUNT(item.id_e) AS count_all FROM equipment 
          LEFT JOIN item ON equipment.id_e = item.id_e 
-         WHERE item.status_i = 1 OR item.status_i = 2
         GROUP BY equipment.id_t,equipment.id_e,name_e,equipment.note) AS t2
         ON t1.id_e = t2.id_e)AS t3
         LEFT JOIN type
@@ -107,12 +113,12 @@ class Equipment {
         $con = Db::getInstance();
         $values = "";
         foreach ($this as $prop => $val) {
-            if($prop != "count_equipment")
+            if($prop != "count_equipment" && $prop != "count_lend_equipment" && $prop != "count_remain_equipment"  )
                 $values .= "'$val',";
         }
-        // print_r($values);
+        print_r($values);
         $values = substr($values,0,-1);
-        // print_r($values);
+        print_r($values);
 
         $query = "INSERT INTO ".self::TABLE." VALUES ($values)";
         //echo $query;
@@ -124,7 +130,7 @@ class Equipment {
     public function update() {
         $query = "UPDATE ".self::TABLE." SET ";
         foreach ($this as $prop => $val) {
-            if($prop != "count_equipment")
+            if($prop != "name_t" && $prop != "count_equipment" && $prop != "count_lend_equipment" && $prop != "count_remain_equipment")
                 $query .= " $prop='$val',";
         }
         $query = substr($query, 0, -1);

@@ -59,15 +59,17 @@ class EquipmentController {
     private function insert(){
         session_start();
         if ($_SESSION['member'] !== null){
-            // print_r($_POST);
+             print_r($_POST);
             $name_e = $_POST['name_e_add'];
+            $name_t=$_POST['name_t_edit'];
             $note = $_POST['note_add'];
             $equipment = new Equipment(); 
             $equipment->setName_e($name_e);
+            $equipment->setId_t($name_t);
             $equipment->setNote($note);
             // echo $type->getName_t();
             $equipment->insert();
-            $equipmentList = Type::findAll();
+            $equipmentList = Equipment::findAll();
 
             include Router::getSourcePath()."views/equipment/EquipmentOperator.inc.php";
 
@@ -79,13 +81,15 @@ class EquipmentController {
     private function update(){
         session_start();
         if ($_SESSION['member'] !== null){
-            // print_r($_POST);
-            $id_e = $_POST['id_e_edit'];
+            //print_r($_POST);
+            //$id_e = $_POST['id_e_edit'];
             $name_e = $_POST['name_e_edit'];
+            $name_t=$_POST['name_t_edit'];
             $note = $_POST['note_edit'];
             $equipment = new Equipment(); 
-            $equipment->setId_e($id_e);
+            //$equipment->setId_e($id_e);
             $equipment->setName_e($name_e);
+            $equipment->setName_t($name_t);
             $equipment->setNote($note);
             // echo $equipment->getName_e();
             $equipment->update();

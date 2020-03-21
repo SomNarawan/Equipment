@@ -9,10 +9,10 @@ try {
 require_once Router::getSourcePath()."inc/helper_func.inc.php";
 
 // เก็บข้อมูลจากสิ่งที่ controller เตรียมไว้ให้
-$products = $_SESSION['productList'];
+//$products = $_SESSION['productList'];
 
 // เริ่มต้นการเขียน view
-$title = "Type";
+$title = "Equipment";
 ob_start();
 
 ?>
@@ -90,7 +90,7 @@ ob_start();
 
         <!-- Pending Requests Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2" id="addEquipType" style="cursor:pointer;">
+            <div class="card border-left-success shadow h-100 py-2" id="addEquip" style="cursor:pointer;">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
@@ -150,14 +150,16 @@ ob_start();
                                 <td>
                                     <button type="button" class="btn btn-info btn-sm detail" data-toggle="tooltip"
                                         titile="รายละเอียด"><i class="fas fa-list"></i></button>
-                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip"
-                                        titile="แก้ไข"><i class="fas fa-edit"></i></button>
-                                    <button type="button" class="tt btn btn-danger btn-sm" onclick="delfunction('<?= $prod->getName_e(); ?>','<?= $prod->getId_e(); ?>')"
-                                data-toggle="tooltip" titile="ลบ"><i class="fas fa-trash"></i></button>
+                                    <button type="button" class="tt editEquip btn btn-warning btn-sm"
+                                        data-toggle="tooltip" id="<?= $prod->getId_e(); ?>"
+                                        id_e="<?= $prod->getId_e(); ?>" name_e="<?= $prod->getName_e(); ?>"
+                                        name_t="<?= $prod->getName_t(); ?>" note="<?= $prod->getNote(); ?>"
+                                        titile=" แก้ไข"><i class="fas fa-edit"></i></button>
+                                    <button type="button" class="tt btn btn-danger btn-sm"
+                                        onclick="delfunction('<?= $prod->getName_e(); ?>','<?= $prod->getId_e(); ?>')"
+                                        data-toggle="tooltip" titile="ลบ"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
-
-
                             <?php } ?>
                         </tbody>
                     </table>
