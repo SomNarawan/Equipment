@@ -84,6 +84,8 @@ class MemberController {
     private function menu_borrowOT(){
         session_start();
         if ($_SESSION['member'] !== null){
+
+            $equipmentList = Equipment::findAll();
             include Router::getSourcePath()."views/borrow/borrowOperator.inc.php";
         }
         else {
