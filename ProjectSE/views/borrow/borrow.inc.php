@@ -42,43 +42,46 @@ ob_start();
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>อุปกรณ์</th>
-                                <th>หมวดอุปกรณ์</th>
-                                <th>รายละเอียด</th>
-                                <th>คงเหลือ</th>
-                                <th>จำนวน(ชิ้น)</th>
-                                <th>เพิ่มการยืมอุปกรณ์</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th>อุปกรณ์</th>
-                                <th>หมวดอุปกรณ์</th>
-                                <th>รายละเอียด</th>
-                                <th>คงเหลือ</th>
-                                <th>จำนวน(ชิ้น)</th>
-                                <th>เพิ่มการยืมอุปกรณ์</th>
-                            </tr>
+                    <form method="post" action="./index.php?controller=Borrow&action=borrow">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>อุปกรณ์</th>
+                                    <th>หมวดอุปกรณ์</th>
+                                    <th>รายละเอียด</th>
+                                    <th>คงเหลือ</th>
+                                    <th>จำนวน(ชิ้น)</th>
+                                    <th>เพิ่มการยืมอุปกรณ์</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>อุปกรณ์</th>
+                                    <th>หมวดอุปกรณ์</th>
+                                    <th>รายละเอียด</th>
+                                    <th>คงเหลือ</th>
+                                    <th>จำนวน(ชิ้น)</th>
+                                    <th>เพิ่มการยืมอุปกรณ์</th>
+                                </tr>
 
-                        </tfoot>
-                        <tbody>
-                            <?php
+                            </tfoot>
+                            <tbody>
+                                <?php
                             foreach ($equipmentList as $prod) { ?>
-                            <tr>
-                                <td><?= $prod->getName_e(); ?></td>
-                                <td><?= $prod->getName_t(); ?></td>
-                                <td><?= $prod->getNote(); ?></td>
-                                <td><a href="#"><?= $prod->getCount_remain_equipment(); ?></a></td>
-                                <td><input type='number' name='prod_$i' id='prod_$i' value='0' min='0' /></td>
-                                <td><button type="button" class="btn btn-success" style="width:150px;">เพิ่ม</button>
-                                </td>
-                            </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
+                                <tr>
+                                    <td><?= $prod->getName_e(); ?></td>
+                                    <td><?= $prod->getName_t(); ?></td>
+                                    <td><?= $prod->getNote(); ?></td>
+                                    <td><a href="#"><?= $prod->getCount_remain_equipment(); ?></a></td>
+                                    <td><input type='number' name='prod_$i' id='prod_$i' value='0' min='0' /></td>
+                                    <td><button type="button" class="btn btn-success" name="add_borrow" value="เพิ่ม"
+                                            style="width:150px;">เพิ่ม</button>
+                                    </td>
+                                </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </form>
                 </div>
             </div>
         </div>
