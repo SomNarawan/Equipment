@@ -151,6 +151,9 @@ ob_start();
                                 <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" titile="ลบ"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
+
+
+                            
                             <tr>
                                 <td>จอ</td>
                                 <td>คอมพิวเตอร์</td>

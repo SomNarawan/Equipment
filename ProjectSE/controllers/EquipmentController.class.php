@@ -60,16 +60,16 @@ class EquipmentController {
         session_start();
         if ($_SESSION['member'] !== null){
             // print_r($_POST);
-            $name_t = $_POST['name_t_add'];
+            $name_e = $_POST['name_e_add'];
             $note = $_POST['note_add'];
-            $type = new Type(); 
-            $type->setName_t($name_t);
-            $type->setNote($note);
+            $equipment = new Equipment(); 
+            $equipment->setName_e($name_e);
+            $equipment->setNote($note);
             // echo $type->getName_t();
-            $type->insert();
-            $typeList = Type::findAll();
+            $equipment->insert();
+            $equipmentList = Type::findAll();
 
-            include Router::getSourcePath()."views/type/type.inc.php";
+            include Router::getSourcePath()."views/equipment/EquipmentOperator.inc.php";
 
         }
         else {
@@ -80,18 +80,18 @@ class EquipmentController {
         session_start();
         if ($_SESSION['member'] !== null){
             // print_r($_POST);
-            $id_t = $_POST['id_t_edit'];
-            $name_t = $_POST['name_t_edit'];
+            $id_e = $_POST['id_t_edit'];
+            $name_e = $_POST['name_t_edit'];
             $note = $_POST['note_edit'];
-            $type = new Type(); 
-            $type->setId_t($id_t);
-            $type->setName_t($name_t);
-            $type->setNote($note);
+            $equipment = new Equipment(); 
+            $equipment->setId_t($id_e);
+            $equipment->setName_t($name_e);
+            $equipment->setNote($note);
             // echo $type->getName_t();
-            $type->update();
-            $typeList = Type::findAll();
+            $equipment->update();
+            $equipmentList = Equipment::findAll();
 
-            include Router::getSourcePath()."views/type/type.inc.php";
+            include Router::getSourcePath()."views/equipment/EquipmentOperator.inc.php";
 
         }
         else {
@@ -104,7 +104,7 @@ class EquipmentController {
             session_start();
             $_SESSION['member'] = $member;
             $_SESSION['productList'] = Product::findAll();
-            include Router::getSourcePath()."views/type/type.inc.php";
+            include Router::getSourcePath()."views/equipment/EquipmentOperator.inc.php";
         }
         else {
             header("Location: ".Router::getSourcePath()."index.php?msg=invalid user");
