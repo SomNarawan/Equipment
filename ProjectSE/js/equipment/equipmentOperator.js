@@ -11,10 +11,12 @@ $( document ).ready(function() {
 
         var id_e = $(this).attr('id_e');
         var name_e = $(this).attr('name_e');
+        var id_t = $(this).attr('id_t');
         var note = $(this).attr('note');
         
         $("#id_e_edit").val(id_e);
         $("#name_e_edit").val(name_e);
+        $("#id_t_edit").val(id_t);
         $("#note_edit").val(note);
     });
     $('#add').click(function(){
@@ -81,6 +83,6 @@ function delfunction(_name_e,_id_e) {
     };
     xhttp.open("POST", "./index.php?controller=Equipment&action=delete", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send(`id_t=${_id_t}&request=delete&name_e=${_name_e}`);
+    xhttp.send(`id_e=${_id_e}&request=delete&name_e=${_name_e}`);
     
     }

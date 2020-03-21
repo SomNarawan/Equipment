@@ -45,7 +45,7 @@ class EquipmentController {
             echo $_POST['id_e'];
             $id_e = $_POST['id_e'];
             $equipment = new Equipment(); 
-            $equipment->setId_t($id_e);
+            $equipment->setId_e($id_e);
             $equipment->delete();
             $equipmentList = Equipment::findAll();
 
@@ -80,14 +80,14 @@ class EquipmentController {
         session_start();
         if ($_SESSION['member'] !== null){
             // print_r($_POST);
-            $id_e = $_POST['id_t_edit'];
-            $name_e = $_POST['name_t_edit'];
+            $id_e = $_POST['id_e_edit'];
+            $name_e = $_POST['name_e_edit'];
             $note = $_POST['note_edit'];
             $equipment = new Equipment(); 
-            $equipment->setId_t($id_e);
-            $equipment->setName_t($name_e);
+            $equipment->setId_e($id_e);
+            $equipment->setName_e($name_e);
             $equipment->setNote($note);
-            // echo $type->getName_t();
+            // echo $equipment->getName_e();
             $equipment->update();
             $equipmentList = Equipment::findAll();
 
@@ -104,7 +104,7 @@ class EquipmentController {
             session_start();
             $_SESSION['member'] = $member;
             $_SESSION['productList'] = Product::findAll();
-            include Router::getSourcePath()."views/equipment/EquipmentOperator.inc.php";
+            include Router::getSourcePath()."views/type/type.inc.php";
         }
         else {
             header("Location: ".Router::getSourcePath()."index.php?msg=invalid user");
