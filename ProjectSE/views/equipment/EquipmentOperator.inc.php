@@ -9,10 +9,10 @@ try {
 require_once Router::getSourcePath()."inc/helper_func.inc.php";
 
 // เก็บข้อมูลจากสิ่งที่ controller เตรียมไว้ให้
-$products = $_SESSION['productList'];
+//$products = $_SESSION['productList'];
 
 // เริ่มต้นการเขียน view
-$title = "Type";
+$title = "Equipment";
 ob_start();
 
 ?>
@@ -90,7 +90,7 @@ ob_start();
 
         <!-- Pending Requests Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2" id="addEquipType" style="cursor:pointer;">
+            <div class="card border-left-success shadow h-100 py-2" id="addEquip" style="cursor:pointer;">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
@@ -138,72 +138,29 @@ ob_start();
 
                         </tfoot>
                         <tbody>
+                            <?php
+                            foreach ($equipmentList as $prod) { ?>
                             <tr>
-                                <td>เมาส์</td>
-                                <td>คอมพิวเตอร์</td>
-                                <td>Logitec</td>
-                                <td><a href="#">4</a></td>
-                                <td><a href="#">1</a></td>
-                                <td><a href="#">3</a></td>
+                                <td><?= $prod->getName_e(); ?></td>
+                                <td><?= $prod->getName_t(); ?></td>
+                                <td><?= $prod->getNote(); ?></td>
+                                <td><a href="#"><?= $prod->getCount_equipment(); ?></a></td>
+                                <td><a href="#"><?= $prod->getCount_lend_equipment(); ?></a></td>
+                                <td><a href="#"><?= $prod->getCount_remain_equipment(); ?></a></td>
                                 <td>
-                                <button type="button" class="btn btn-info btn-sm detail" data-toggle="tooltip" titile="รายละเอียด"><i class="fas fa-list"></i></button>
-                                <button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip" titile="แก้ไข"><i class="fas fa-edit"></i></button>
-                                <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" titile="ลบ"><i class="fas fa-trash"></i></button>
+                                    <button type="button" class="btn btn-info btn-sm detail" data-toggle="tooltip"
+                                        titile="รายละเอียด"><i class="fas fa-list"></i></button>
+                                    <button type="button" class="tt editEquip btn btn-warning btn-sm"
+                                        data-toggle="tooltip" id="<?= $prod->getId_e(); ?>"
+                                        id_e="<?= $prod->getId_e(); ?>" name_e="<?= $prod->getName_e(); ?>"
+                                        id_t="<?= $prod->getId_t(); ?>" note="<?= $prod->getNote(); ?>"
+                                        titile=" แก้ไข"><i class="fas fa-edit"></i></button>
+                                    <button type="button" class="tt btn btn-danger btn-sm"
+                                        onclick="delfunction('<?= $prod->getName_e(); ?>','<?= $prod->getId_e(); ?>')"
+                                        data-toggle="tooltip" titile="ลบ"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>จอ</td>
-                                <td>คอมพิวเตอร์</td>
-                                <td>DELL</td>
-                                <td><a href="#">5</a></td>
-                                <td><a href="#">0</a></td>
-                                <td><a href="#">5</a></td>
-                                <td>
-                                <button type="button" class="btn btn-info btn-sm detail" data-toggle="tooltip" id="test" titile="รายละเอียด"><i class="fas fa-list"></i></button>
-                                <button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip" titile="แก้ไข"><i class="fas fa-edit"></i></button>
-                                <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" titile="ลบ"><i class="fas fa-trash"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>โน๊ตบุ๊ค</td>
-                                <td>คอมพิวเตอร์</td>
-                                <td>ACER</td>
-                                <td><a href="#">6</a></td>
-                                <td><a href="#">0</a></td>
-                                <td><a href="#">6</a></td>
-                                <td>
-                                <button type="button" class="btn btn-info btn-sm detail" data-toggle="tooltip" titile="รายละเอียด"><i class="fas fa-list"></i></button>
-                                <button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip" titile="แก้ไข"><i class="fas fa-edit"></i></button>
-                                <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" titile="ลบ"><i class="fas fa-trash"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>andriod</td>
-                                <td>โทรศัพท์</td>
-                                <td>OPPO A 38</td>
-                                <td><a href="#">5</a></td>
-                                <td><a href="#">2</a></td>
-                                <td><a href="#">3</a></td>
-                                <td>
-                                <button type="button" class="btn btn-info btn-sm detail" data-toggle="tooltip" titile="รายละเอียด"><i class="fas fa-list"></i></button>
-                                <button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip" titile="แก้ไข"><i class="fas fa-edit"></i></button>
-                                <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" titile="ลบ"><i class="fas fa-trash"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>IOS</td>
-                                <td>โทรศัพท์</td>
-                                <td>Iphone 6</td>
-                                <td><a href="#">2</a></td>
-                                <td><a href="#">0</a></td>
-                                <td><a href="#">2</a></td>
-                                <td>
-                                <button type="button" class="btn btn-info btn-sm detail" data-toggle="tooltip" titile="รายละเอียด"><i class="fas fa-list"></i></button>
-                                <button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip" titile="แก้ไข"><i class="fas fa-edit"></i></button>
-                                <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" titile="ลบ"><i class="fas fa-trash"></i></button>
-
-                                </td>
-                            </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
