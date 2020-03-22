@@ -14,7 +14,14 @@
                     <div>เลขครุภัณฑ์ <label style="color:red;">*</label><input type="text" id="id_i_add"
                             name="name_e_add" class="form-control"></input></div>
                     <div>รายละเอียด <input type="text" id="note_add" name="note_add" class="form-control"></input></div>
-                    <div>สถานะ <input type="text" id="status_i_add" name="status_i_add" class="form-control"></input></div>
+                    <div>สถานะ 
+                        <input type="radio" id="1" name="status_i_add" value="1">
+                        <label for="1">ยืมได้</label>
+                        <input type="radio" id="2" name="status_i_add" value="2">
+                        <label for="2">ถูกยืม</label>
+                        <input type="radio" id="3" name="status_i_add" value="3">
+                        <label for="3">ยืมไม่ได้</label>
+                    </div>
 
                 </div>
                 <div class="modal-footer">
@@ -42,8 +49,16 @@
                     <div>เลขครุภัณฑ์ <label style="color:red;">*</label><input type="text" id="id_i_edit"
                             name="id_i_edit" class="form-control"></input>
                     </div>
-                    <div>รายละเอียด <input type="text" id="note_edit" name="note_edit" class="form-control"></input></div>
-                   <div>สถานะ <input type="text" id="status_i_edit" name="status_i_edit" class="form-control"></input></div>-->
+                    <div>รายละเอียด <input type="text" id="note_edit" name="note_edit" class="form-control"></input>
+                    </div>
+                    <div>สถานะ 
+                        <input type="radio" id="1" name="status_i_edit" value="1">
+                        <label for="1">ยืมได้</label>
+                        <input type="radio" id="2" name="status_i_edit" value="2">
+                        <label for="2">ถูกยืม</label>
+                        <input type="radio" id="3" name="status_i_edit" value="3">
+                        <label for="3">ยืมไม่ได้</label>
+                    </div>
 
                 </div>
                 <input type="hidden" id="id_i_edit" name="id_i_edit" class="form-control"></input>

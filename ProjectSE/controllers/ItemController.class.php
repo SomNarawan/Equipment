@@ -27,7 +27,6 @@ class ItemController {
                 break;
             case "logout":
                 $this->$action();
-            case "item":
             case "insert":
             case "delete":
             case "update":
@@ -39,18 +38,6 @@ class ItemController {
                 break;
         }
 
-    }
-    private function item(){
-        session_start();
-        if ($_SESSION['member'] !== null){
-            $id_e = $_GET['id_e'];
-            $name_e=$_GET['name_e'];
-            include Router::getSourcePath()."views/item/item.inc.php";
-
-        }
-        else {
-            header("Location: ".Router::getSourcePath()."index.php?msg=invalid user");
-        }
     }
     private function delete(){
         session_start();

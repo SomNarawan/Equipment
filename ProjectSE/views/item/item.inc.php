@@ -100,7 +100,7 @@ ob_start();
                             <tr>
                                 <td><?= $prod->getId_i(); ?></td>
                                 <td><?= $prod->getNote(); ?></td>
-                                <td><a href="#">4</a></td>
+                                <td><a href="#"><?= $prod->getStatus_i(); ?></a></td>
                                 <td>
                                     <button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip"
                                         titile=" แก้ไข"><i class="fas fa-edit"></i></button>
