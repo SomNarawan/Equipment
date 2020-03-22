@@ -94,24 +94,43 @@ ob_start();
 
                         </tfoot>
                         <tbody>
-                            <?php 
+                        
+                            <?php
                             foreach ($itemList as $prod) { ?>
                             <tr>
                                 <td><?= $prod->getId_i(); ?></td>
                                 <td><?= $prod->getNote(); ?></td>
-                                <td><?= $prod->getStatus_i(); ?></td>
+                                <td><a href="#">4</a></td>
                                 <td>
-                                    <button type="button" class="tt editItem btn btn-warning btn-sm"
-                                        data-toggle="tooltip" id="<?= $prod->getId_i(); ?>"
-                                        id_i="<?= $prod->getId_i(); ?>" note="<?= $prod->getNote(); ?>"
-                                        id_e="<?= $prod->getId_e(); ?>" status_i="<?= $prod->getStatus_i(); ?>"
+                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip"
                                         titile=" แก้ไข"><i class="fas fa-edit"></i></button>
-                                    <button type="button" class="tt btn btn-danger btn-sm"
-                                        onclick="delfunction('<?= $prod->getId_i(); ?>')"
-                                        data-toggle="tooltip" titile="ลบ"><i class="fas fa-trash"></i></button>
-                                </td>
+                                    <button type="button" class="tt btn btn-danger btn-sm" data-toggle="tooltip"
+                                        titile="ลบ"><i class="fas fa-trash"></i></button>
+                                </td>   
                             </tr>
                             <?php } ?>
+                            <tr>
+                                <td>เมาส์</td>
+                                <td>คอมพิวเตอร์</td>
+                                <td><a href="#">4</a></td>
+                                <td>
+                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip"
+                                        titile=" แก้ไข"><i class="fas fa-edit"></i></button>
+                                    <button type="button" class="tt btn btn-danger btn-sm" data-toggle="tooltip"
+                                        titile="ลบ"><i class="fas fa-trash"></i></button>
+                                </td>   
+                            </tr>
+                            <tr>
+                                <td>เมาส์</td>
+                                <td>คอมพิวเตอร์</td>
+                                <td><a href="#">4</a></td>
+                                <td>
+                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip"
+                                        titile=" แก้ไข"><i class="fas fa-edit"></i></button>
+                                    <button type="button" class="tt btn btn-danger btn-sm" data-toggle="tooltip"
+                                        titile="ลบ"><i class="fas fa-trash"></i></button>
+                                </td>   
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -126,11 +145,11 @@ ob_start();
 <?php
 $content = ob_get_clean();
 ob_start();
-    include Router::getSourcePath()."views/equipment/EquipmentOperatorModal.inc.php"; 
+    include Router::getSourcePath()."views/item/ItemModal.inc.php"; 
 $modal = ob_get_clean();
 
 ob_start();
-    echo "<script src='js/equipment/equipmentOperator.js'></script>";
+    echo "<script src='js/equipment/itemOperator.js'></script>";
 $js = ob_get_clean();
 include Router::getSourcePath()."templates/layout.php";
 } catch (Throwable $e) { // PHP 7++

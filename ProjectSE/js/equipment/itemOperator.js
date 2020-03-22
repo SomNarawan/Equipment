@@ -12,23 +12,22 @@ $( document ).ready(function() {
 
         var id_i = $(this).attr('id_i');
         var note = $(this).attr('note');
-        //var id_e = $(this).attr('id_e');
-        //var status_i = $(this).attr('status_i');
+        var id_e = $(this).attr('id_e');
+        var status_i = $(this).attr('status_i');
         // document.getElementById("name_e_edit").value = name_t;
         $("#id_i_edit").val(id_i);
         $("#note_edit").val(note);
-        //$("#id_e_edit").val(id_e);
-        //$("#status_i_edit").val(status_i); //.attr("selected","selected");
-        
+        $("#id_e_edit").val(id_e);
+        $("#status_i_edit").val(status_i); //.attr("selected","selected");   
     });
-    $('#addIt_em').click(function(){
+    $('#addI').click(function(){
         // alert("ass");
-        $('#addIt_em').attr("type","submit");
+        $('#addI').attr("type","submit");
     });
-    $('#editIt_em').click(function(){
+    $('#editI').click(function(){
         // alert("ass");
         
-        $('#editIt_em').attr("type","submit");
+        $('#editI').attr("type","submit");
     });
 });
 

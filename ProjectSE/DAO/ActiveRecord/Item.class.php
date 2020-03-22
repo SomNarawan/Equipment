@@ -12,47 +12,44 @@ class Item {
     private $note;
     private $id_e;
     private $status_i;
-    private $name_e;
     private const TABLE = "item";
 
     //----------- Getters & Setters
-    public function getId_i():int {
+
+
+    public function getId_i():string {
         return $this->id_i;
     }
-    public function setId_i(int $id) {
+    public function setId_i($id) {
         $this->id_i = $id;
     }
-    public function getNote(){
+    public function getNote():string {
         return $this->note;
     }
-    public function setNote(string $note) {
+    public function setNote($note) {
         $this->note = $note;
     }
     public function getId_e():int {
-        return $this->id_e;
+        return $this->id_i;
     }
-    public function setId_e(int $id) {
+    public function setId_e($id) {
         $this->id_e = $id;
     }
-    public function getStatus_i():int {
+    public function getStatus_i():string {
         return $this->status_i;
     }
-    public function setStatus_i(int $status) {
-        $this->status_i = $status;
+    public function setStatus_i($status_i) {
+        $this->status_i = $status_i;
     }
-    public function getName_e()
-    {
-        return $this->name_e;
-    }
-    public function setName_e($name_e) {
-        $this->name_e = $name_e;
-    }
+    
+
    
     //----------- CRUD
     public static function findAll(): array {
+        echo "dsssscscsscscs";
         $con = Db::getInstance();
         $id_e=$_GET['id_e'];
-        $query = "SELECT item.id_i AS id_i,item.note AS note,item.id_e AS id_e,CASE item.status_i WHEN '1' THEN 'ยืมได้' WHEN '2' THEN 'ถูกยืม' ELSE 'ยืมไม่ได้' END AS status_i FROM item WHERE item.id_e=$id_e";
+        $query = "SELECT item.id_i ,item.note ,item.id_e ,CASE item.status_i WHEN '1' THEN 'ยืมได้' WHEN '2' THEN 'ถูกยืม' ELSE 'ยืมไม่ได้' END AS status_i FROM item WHERE item.id_e=$id_e";
         // $query = "SELECT * FROM ".self::TABLE;
         $stmt = $con->prepare($query);
         $stmt->setFetchMode(PDO::FETCH_CLASS, "Item");

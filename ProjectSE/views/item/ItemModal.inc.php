@@ -14,12 +14,12 @@
                     <div>เลขครุภัณฑ์ <label style="color:red;">*</label><input type="text" id="id_i_add"
                             name="name_e_add" class="form-control"></input></div>
                     <div>รายละเอียด <input type="text" id="note_add" name="note_add" class="form-control"></input></div>
-                    <!--<div>สถานะ <input type="text" id="note_add" name="note_add" class="form-control"></input></div>-->
+                    <div>สถานะ <input type="text" id="status_i_add" name="status_i_add" class="form-control"></input></div>
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
-                    <button type="button" class="btn btn-success" id="addIt_em">บันทึก</button>
+                    <button type="button" class="btn btn-success" id="addI">บันทึก</button>
                 </div>
             </div>
         </div>
@@ -43,13 +43,13 @@
                             name="id_i_edit" class="form-control"></input>
                     </div>
                     <div>รายละเอียด <input type="text" id="note_edit" name="note_edit" class="form-control"></input></div>
-                   <!-- <div>สถานะ <input type="text" id="note_edit" name="note_add" class="form-control"></input></div>-->
+                   <div>สถานะ <input type="text" id="status_i_edit" name="status_i_edit" class="form-control"></input></div>-->
 
                 </div>
                 <input type="hidden" id="id_i_edit" name="id_i_edit" class="form-control"></input>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
-                    <button type="button" id="editIt_em" class="btn btn-success">บันทึก</button>
+                    <button type="button" id="editI" class="btn btn-success">บันทึก</button>
                 </div>
             </div>
         </div>
