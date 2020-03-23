@@ -33,6 +33,7 @@ function number_format(number, decimals, dec_point, thousands_sep) {
     var default_mount = "01"
     var _year = sessionStorage.getItem("getYear");
     var _mount = sessionStorage.getItem("getMount");
+    var _type = sessionStorage.getItem("getType");
     var URL="";
     if( _year != null && _mount != null)
     {
@@ -172,6 +173,8 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 var ctxAll = document.getElementById("myBarChartAll");
 var ctxMount = document.getElementById("myBarChartMount");
 var ctxYear = document.getElementById("myBarChartYear");
+var ctxHigh = document.getElementById("myBarChartHigh");
+var ctxLow = document.getElementById("myBarChartLow");
 var myBarChartAll = new Chart(ctxAll, {
   type: 'bar',
   data: {
@@ -351,6 +354,180 @@ var myBarChartYear = new Chart(ctxYear, {
 
 //-------------3
 var myBarChartMount = new Chart(ctxMount, {
+  type: 'bar',
+  data: {
+       labels: itemNameArr,
+      datasets: [{
+      label: "จำนวน",
+      backgroundColor: "#3b5e8c",
+      hoverBackgroundColor: "#2e59d9",
+      borderColor: "#3b5e8c",
+      data: forNumArrM,
+    }],
+  
+  },
+  options: {
+    maintainAspectRatio: false,
+    layout: {
+      padding: {
+        left: 10,
+        right: 25,
+        top: 25,
+        bottom: 0
+      }
+    },
+    scales: {
+      xAxes: [{
+        time: {
+          //รายละเอียดแกน X
+          unit: 'หมวดอุปกรณ์'
+
+        },
+        gridLines: {
+          display: true,
+          drawBorder: false
+        },
+        ticks: {
+          //ลิมิตของตาราง ควรมีเท่ากับตารางคอลั่มที่มี
+          maxTicksLimit: testLen
+        },
+        //ความหนาของกราฟแต่ละแถว
+        maxBarThickness: 25,
+      }],
+      yAxes: [{
+        ticks: {
+          min: 0,
+          max: 5,
+          // จำนวนเส้นที่ไว้ใช้แบ่งความละเอียดแกน Y maxTicksLimit ยิ่งมาก ยิ่งละเอียด
+          maxTicksLimit: 10,
+          padding: 10,
+          // Include a dollar sign in the ticks
+          callback: function(value, index, values) {
+            return 'จำนวน ' + number_format(value) + ' ชิ้น';
+          }
+        },
+        gridLines: {
+          color: "rgb(245, 137, 196)",
+          zeroLineColor: "rgb(245, 137, 196)",
+          drawBorder: false,
+          borderDash: [2],
+          zeroLineBorderDash: [2]
+        }
+      }],
+    },
+    legend: {
+      display: false
+    },
+    tooltips: {
+      titleMarginBottom: 10,
+      titleFontColor: '#6e707e',
+      titleFontSize: 24,
+      backgroundColor: "rgb(255,255,255)",
+      bodyFontColor: "#858796",
+      borderColor: '#dddfeb',
+      borderWidth: 1,
+      xPadding: 15,
+      yPadding: 15,
+      displayColors: false,
+      caretPadding: 10,
+      callbacks: {
+        label: function(tooltipItem, chart) {
+          var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+          return datasetLabel + ': ' + number_format(tooltipItem.yLabel)+' ชิ้น';
+        }
+      }
+    },
+  }
+});
+//ค่ามากกกกกกกกกกกกกกกกกกกกกกก-ไปน้อย
+var myBarChartHigh = new Chart(ctxHigh, {
+  type: 'bar',
+  data: {
+       labels: itemNameArr,
+      datasets: [{
+      label: "จำนวน",
+      backgroundColor: "#3b5e8c",
+      hoverBackgroundColor: "#2e59d9",
+      borderColor: "#3b5e8c",
+      data: forNumArrM,
+    }],
+  
+  },
+  options: {
+    maintainAspectRatio: false,
+    layout: {
+      padding: {
+        left: 10,
+        right: 25,
+        top: 25,
+        bottom: 0
+      }
+    },
+    scales: {
+      xAxes: [{
+        time: {
+          //รายละเอียดแกน X
+          unit: 'หมวดอุปกรณ์'
+
+        },
+        gridLines: {
+          display: true,
+          drawBorder: false
+        },
+        ticks: {
+          //ลิมิตของตาราง ควรมีเท่ากับตารางคอลั่มที่มี
+          maxTicksLimit: testLen
+        },
+        //ความหนาของกราฟแต่ละแถว
+        maxBarThickness: 25,
+      }],
+      yAxes: [{
+        ticks: {
+          min: 0,
+          max: 5,
+          // จำนวนเส้นที่ไว้ใช้แบ่งความละเอียดแกน Y maxTicksLimit ยิ่งมาก ยิ่งละเอียด
+          maxTicksLimit: 10,
+          padding: 10,
+          // Include a dollar sign in the ticks
+          callback: function(value, index, values) {
+            return 'จำนวน ' + number_format(value) + ' ชิ้น';
+          }
+        },
+        gridLines: {
+          color: "rgb(245, 137, 196)",
+          zeroLineColor: "rgb(245, 137, 196)",
+          drawBorder: false,
+          borderDash: [2],
+          zeroLineBorderDash: [2]
+        }
+      }],
+    },
+    legend: {
+      display: false
+    },
+    tooltips: {
+      titleMarginBottom: 10,
+      titleFontColor: '#6e707e',
+      titleFontSize: 24,
+      backgroundColor: "rgb(255,255,255)",
+      bodyFontColor: "#858796",
+      borderColor: '#dddfeb',
+      borderWidth: 1,
+      xPadding: 15,
+      yPadding: 15,
+      displayColors: false,
+      caretPadding: 10,
+      callbacks: {
+        label: function(tooltipItem, chart) {
+          var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+          return datasetLabel + ': ' + number_format(tooltipItem.yLabel)+' ชิ้น';
+        }
+      }
+    },
+  }
+});
+// แสดงค่า top น้อยสุด
+var myBarChartLow = new Chart(ctxLow, {
   type: 'bar',
   data: {
        labels: itemNameArr,
