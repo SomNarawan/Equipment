@@ -31,25 +31,26 @@ function number_format(number, decimals, dec_point, thousands_sep) {
     // ค่าโดยปกติ
     var default_year  = "2020";
     var default_mount = "01"
+    var default_type = "a";
     var _year = sessionStorage.getItem("getYear");
     var _mount = sessionStorage.getItem("getMount");
     var _type = sessionStorage.getItem("getType");
     var URL="";
     if( _year != null && _mount != null)
     {
-      URL ="js/json/json_list.php?"+"id_year="+_year+"&id_mount="+_mount;
+      URL ="js/json/json_list.php?"+"id_year="+_year+"&id_mount="+_mount+"&id_type="+_type;
     }
     else if( _year == null && _mount != null )
     {
-      URL ="js/json/json_list.php?"+"id_year="+default_year+"&id_mount="+_mount;
+      URL ="js/json/json_list.php?"+"id_year="+default_year+"&id_mount="+_mount+"&id_type="+_type;
     }
     else if( _year != null && _mount == null)
     {
-      URL ="js/json/json_list.php?"+"id_year="+_year+"&id_mount="+default_mount;
+      URL ="js/json/json_list.php?"+"id_year="+_year+"&id_mount="+default_mount+"&id_type="+_type;
     }
     else
     {
-      URL ="js/json/json_list.php?"+"id_year="+default_year+"&id_mount="+default_mount;
+      URL ="js/json/json_list.php?"+"id_year="+default_year+"&id_mount="+default_mount+"&id_type="+_type;
     }
     //chack link URL to read qry at js/json/json_list.php path.
     console.log("PATH is :: "+URL);
@@ -443,13 +444,13 @@ var myBarChartMount = new Chart(ctxMount, {
 var myBarChartHigh = new Chart(ctxHigh, {
   type: 'bar',
   data: {
-       labels: itemNameArr,
+       labels: ["ยาบ้า","ยาอี","ยาไอซ์"],
       datasets: [{
       label: "จำนวน",
       backgroundColor: "#3b5e8c",
       hoverBackgroundColor: "#2e59d9",
       borderColor: "#3b5e8c",
-      data: forNumArrM,
+      data: [9,5,3],
     }],
   
   },
@@ -471,20 +472,20 @@ var myBarChartHigh = new Chart(ctxHigh, {
 
         },
         gridLines: {
-          display: true,
+          display: false,
           drawBorder: false
         },
         ticks: {
-          //ลิมิตของตาราง ควรมีเท่ากับตารางคอลั่มที่มี
-          maxTicksLimit: testLen
+          //ลิมิตของตาราง เท่ากับลำดับที่จะให้มี
+          maxTicksLimit: 3
         },
         //ความหนาของกราฟแต่ละแถว
-        maxBarThickness: 25,
+        maxBarThickness: 80,
       }],
       yAxes: [{
         ticks: {
           min: 0,
-          max: 5,
+          max: 10,
           // จำนวนเส้นที่ไว้ใช้แบ่งความละเอียดแกน Y maxTicksLimit ยิ่งมาก ยิ่งละเอียด
           maxTicksLimit: 10,
           padding: 10,
@@ -530,13 +531,13 @@ var myBarChartHigh = new Chart(ctxHigh, {
 var myBarChartLow = new Chart(ctxLow, {
   type: 'bar',
   data: {
-       labels: itemNameArr,
+       labels: ["ยาบ้า","ยาอี","ยาไอซ์"],
       datasets: [{
       label: "จำนวน",
       backgroundColor: "#3b5e8c",
       hoverBackgroundColor: "#2e59d9",
       borderColor: "#3b5e8c",
-      data: forNumArrM,
+      data: [1,4,7],
     }],
   
   },
@@ -558,20 +559,20 @@ var myBarChartLow = new Chart(ctxLow, {
 
         },
         gridLines: {
-          display: true,
+          display: false,
           drawBorder: false
         },
         ticks: {
-          //ลิมิตของตาราง ควรมีเท่ากับตารางคอลั่มที่มี
-          maxTicksLimit: testLen
+          //ลิมิตของตาราง top x
+          maxTicksLimit: 3
         },
         //ความหนาของกราฟแต่ละแถว
-        maxBarThickness: 25,
+        maxBarThickness: 80,
       }],
       yAxes: [{
         ticks: {
           min: 0,
-          max: 5,
+          max: 10,
           // จำนวนเส้นที่ไว้ใช้แบ่งความละเอียดแกน Y maxTicksLimit ยิ่งมาก ยิ่งละเอียด
           maxTicksLimit: 10,
           padding: 10,
