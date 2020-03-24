@@ -25,7 +25,7 @@
 </div>
 
 <!--Edit Modal -->
-<div class="modal fade" id="editBorrowingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <form method="post" id="formEdit" name="formEdit" action="./index.php?controller=Type&action=update">
     <div class="modal-dialog" role="document">

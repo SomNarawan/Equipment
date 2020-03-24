@@ -9,7 +9,7 @@ try {
 require_once Router::getSourcePath()."inc/helper_func.inc.php";
 
 // เก็บข้อมูลจากสิ่งที่ controller เตรียมไว้ให้
-$products = $_SESSION['productList'];
+// $products = $_SESSION['productList'];
 
 // เริ่มต้นการเขียน view
 $title = "Type";
@@ -40,7 +40,7 @@ ob_start();
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">จำนวนคำร้อง
                                 (คำร้อง)
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">2 คำร้อง</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $count_confirm; ?> คำร้อง</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -59,7 +59,7 @@ ob_start();
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">จำนวนนิสิต
                                 (คน)
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">1 คน</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $count_student; ?> คน</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -87,8 +87,8 @@ ob_start();
                                 <th>อุปกรณ์</th>
                                 <th>หมวดอุปกรณ์</th>
                                 <th>จำนวน</th>
-                                <th>วันที่ส่งคำร้อง</th>
-                                <th>เวลาที่ส่งคำร้อง</th>
+                                <th>วันที่-เวลาส่งคำร้อง</th>
+                                <th>เหตุผลการยืม</th>
                                 <th>การยืนยัน</th>
                                 <th>จัดการ</th>
                             </tr>
@@ -100,43 +100,40 @@ ob_start();
                                 <th>อุปกรณ์</th>
                                 <th>หมวดอุปกรณ์</th>
                                 <th>จำนวน</th>
-                                <th>วันที่ส่งคำร้อง</th>
-                                <th>เวลาที่ส่งคำร้อง</th>
+                                <th>วันที่-เวลาส่งคำร้อง</th>
+                                <th>เหตุผลการยืม</th>
                                 <th>การยืนยัน</th>
                                 <th>จัดการ</th>
                             </tr>
 
                         </tfoot>
                         <tbody>
+                        <?php
+                            foreach ($confirmList as $prod) { ?>
                             <tr>
-                                <td>b602050xxxx</td>
-                                <td>น.ส.นัก เรียน</td>
-                                <td>เมาส์</td>
-                                <td>คอมพิวเตอร์</td>
+                                <td><?= $prod->getUsername(); ?></td>
+                                <td><?= $prod->getTitle()." ".$prod->getName()." ".$prod->getSurname();?></td>
+                                <td><?= $prod->getName_e(); ?></td>
+                                <td><?= $prod->getName_t(); ?></td>
                                 <td><a href="#">1</a></td>
-                                <td>16/ม.ค./63</td>
-                                <td>10:40</td>
-                                <td>ยืนยันแล้ว</td>
+                                <td><?= $prod->getdateTime_c(); ?></td>
+                                <td><?= $prod->getReason(); ?></td>
+                                <td><?php 
+                                if($prod->getStatus() == '1'){ 
+                                    echo "ยืนยันแล้ว";
+                                }else if($prod->getStatus() == '2') {
+                                    echo "ปฏิเสธแล้ว";
+                                }else{
+                                    echo "<a href='#'>ยังไม่ยืนยัน</a>";        
+                                }                        
+                                ?>
+
                                 <td>
                                 <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" titile="รายละเอียด"><i class="fas fa-list"></i></button>
                                 <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" titile="ลบ"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>b602050xxxx</td>
-                                <td>น.ส.นัก เรียน</td>
-                                <td>andriod</td>
-                                <td>โทรศัพท์</td>
-                                <td><a href="#">1</a></td>
-                                <td>16/ม.ค./63</td>
-                                <td>10:40</td>
-                                <td>กดเพื่อยืนยัน</td>
-                                <td>
-                                <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" titile="รายละเอียด"><i class="fas fa-list"></i></button>
-                                <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" titile="ลบ"><i class="fas fa-trash"></i></button>
-                                </td>
-                            </tr>
-                            
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>

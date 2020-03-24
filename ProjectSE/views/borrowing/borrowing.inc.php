@@ -12,7 +12,7 @@ require_once Router::getSourcePath()."inc/helper_func.inc.php";
 //$products = $_SESSION['productList'];
 
 // เริ่มต้นการเขียน view
-$title = "Type";
+$title = "Borrowing";
 ob_start();
 
 ?>
@@ -37,10 +37,10 @@ ob_start();
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">จำนวนอุปกรณ์ที่ถูกยืม
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">จำนวนอุปกรณ์ที่ยืม
                                 (ชิ้น)
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">2 ชิ้น</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$count_equipment?> ชิ้น</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -82,10 +82,8 @@ ob_start();
                                 <th>หมวดอุปกรณ์</th>
                                 <th>จำนวน(ชิ้น)</th>
                                 <th>สถานะ</th>
-                                <th>วันที่ยืม</th>
-                                <th>เวลาที่ยืม</th>
-                                <th>วันที่คืน</th>
-                                <th>เวลาที่คืน</th>
+                                <th>วันที่-เวลายืม</th>
+                                <th>วันที่-เวลาคืน</th>
                                 <th>จัดการ</th>
                             </tr>
                         </thead>
@@ -95,44 +93,29 @@ ob_start();
                                 <th>หมวดอุปกรณ์</th>
                                 <th>จำนวน(ชิ้น)</th>
                                 <th>สถานะ</th>
-                                <th>วันที่ยืม</th>
-                                <th>เวลาที่ยืม</th>
-                                <th>วันที่คืน</th>
-                                <th>เวลาที่คืน</th>
+                                <th>วันที่-เวลายืม</th>
+                                <th>วันที่-เวลาคืน</th>
                                 <th>จัดการ</th>
                             </tr>
 
                         </tfoot>
                         <tbody>
+                        <?php
+                            foreach ($borrowingList as $prod) { ?>
                             <tr>
-                                <td>เมาส์</td>
-                                <td>คอมพิวเตอร์</td>
-                                <td><a href="#">1</a></td>
-                                <td>สำเร็จ</td>
-                                <td>17/ม.ค./63</td>
-                                <td>13.21</td>
-                                <td></td>
-                                <td></td>
+                                <td><?= $prod->getName_e(); ?></td>
+                                <td><?= $prod->getName_t(); ?></td>
+                                <td><a href="#"><?= $prod->getNum(); ?></a></td>
+                                <td><?= $prod->getstatus(); ?></td>
+                                <td><?= $prod->getDateTime_b(); ?></td>
+                                <td><?= $prod->getDateTime_r(); ?></td>
                                 <td>
                                 <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" id="detailE" titile="รายละเอียด"><i class="fas fa-list"></i></button>
                                 <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" titile="ลบ"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
                             
-                            <tr>
-                                <td>android</td>
-                                <td>โทรศัพท์</td>
-                                <td><a href="#">1</a></td>
-                                <td>สำเร็จ</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" titile="รายละเอียด"><i class="fas fa-list"></i></button>
-                                <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" titile="ลบ"><i class="fas fa-trash"></i></button>
-                                </td>
-                            </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>

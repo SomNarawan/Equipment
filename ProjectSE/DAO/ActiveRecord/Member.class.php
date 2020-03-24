@@ -1,20 +1,24 @@
 <?php
 class Member{
-    private $id;
+    private $id_u;
     private $username;
-    private $passwd;
+    private $title;
     private $name;
     private $surname;
-    private const TABLE = "members";
+    private $email;
+    private $phone;
+    private $role;
+    private $passwd;
+    private const TABLE = "user";
 
     //----------- Getters & Setters
-    public function getId()
+    public function getId_u()
     {
-        return $this->id;
+        return $this->id_u;
     }
-    public function setId($id)
+    public function setId_u($id)
     {
-        $this->id = $id;
+        $this->id_u = $id;
     }
     public function getUsername()
     {
@@ -23,6 +27,38 @@ class Member{
     public function setUsername($username)
     {
         $this->username = $username;
+    }
+    public function getTitle()
+    {
+        return $this->title;
+    }
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+    public function getEmail()
+    {
+        return $this->email;
+    }
+    public function setEmail($email)
+    {
+        $this->emial = $email;
+    }
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+    }
+    public function getRole()
+    {
+        return $this->role;
+    }
+    public function setRole($role)
+    {
+        $this->role = $role;
     }
     public function getPasswd()
     {

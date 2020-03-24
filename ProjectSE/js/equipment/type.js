@@ -8,6 +8,7 @@ $( document ).ready(function() {
         $("#addModal").modal();
     });
     $('.editType').click(function(){
+        // alert('edit');
         $("#editModal").modal();
 
         var id_t = $(this).attr('id_t');

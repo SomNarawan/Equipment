@@ -6,43 +6,26 @@
  * Time: 11:47
  */
 
-class Type {
+class Borrowing {
     //------------- Properties
-    private $id_b;
-    private $username;
-    private $fullname;
+    private $id_dc;
     private $name_e;
-    private $id_i;
+    private $name_t;
     private $num;
+    private $status;
     private $dateTime_b;
     private $dateTime_r;
-    private $id_dc;
+    private $reason;
     private const TABLE = "borrowing";
 
     //----------- Getters & Setters
-    public function getId_b():int {
-        return $this->id_b;
+    public function getId_dc():int {
+        return $this->id_dc;
     }
-    public function setId_b(int $id) {
-        $this->id_b = $id;
+    public function setId_dc(int $id) {
+        $this->id_dc = $id;
     }
-    public function getUsername()
-    {
-        return $this->username;
-    }
-
-    public function setUsername($username) {
-        $this->username = $username;
-    }
-    ublic function getFullname()
-    {
-        return $this->fullname;
-    }
-
-    public function setFullname($fullname) {
-        $this->fullname = $fullname;
-    }
-    ublic function getName_e()
+    public function getName_e()
     {
         return $this->name_e;
     }
@@ -50,52 +33,81 @@ class Type {
     public function setName_e($name_e) {
         $this->name_e = $name_e;
     }
-    public function getId_i():int {
-        return $this->id_i;
-    }
-    public function setId_i(int $id) {
-        $this->id_i = $id;
+    public function getName_t()
+    {
+        return $this->name_t;
     }
 
-    public function getNum(){
+    public function setName_t($name_t) {
+        $this->name_t = $name_t;
+    }
+    public function getNum()
+    {
         return $this->num;
     }
-    public function setNum(string $num) {
+
+    public function setNum($num) {
         $this->num = $num;
     }
-    public function getDateTime_b(): int {
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    public function setStatus($status) {
+        $this->status = $status;
+    }
+   
+    public function getDateTime_b(){
         return $this->dateTime_b;
     }
-    public function setDateTime_b(int $dateTime_b) {
+    public function setDateTime_b($dateTime_b) {
         $this->dateTime_b = $dateTime_b;
     }
-    public function getDateTime_r(): int {
+    public function getDateTime_r(){
         return $this->dateTime_r;
     }
-    public function setDateTime_r(int $dateTime_r) {
+    public function setDateTime_r($dateTime_r) {
         $this->dateTime_r = $dateTime_r;
     }
-    public function getId_dc():int {
-        return $this->id_dc;
+    public function getReason() {
+        return $this->reason;
     }
-    public function setId_dc(int $id) {
-        $this->id_dc = $id;
+    public function setReason($reason) {
+        $this->reason = $reason;
+    }
+    public static function Count_equipment($id_u){
+        $con = Db::getInstance();
+        $query = "SELECT SUM(detailconfirm.num) AS count_equipment FROM detailconfirm
+        JOIN confirm ON confirm.id_c = detailconfirm.id_c
+        WHERE confirm.id_u = $id_u";
+        // $query = "SELECT * FROM ".self::TABLE;
+        $stmt = $con->query($query);
+        while ($row = $stmt->fetch()) {
+            $count_equipment= $row['count_equipment'];
+        }
+        
+        return $count_equipment;
     }
     //----------- CRUD
-    public static function findAll(): array {
+    public static function findAll($id_u): array {
         $con = Db::getInstance();
-        $query = "SELECT type.id_t,type.name_t,type.note,COUNT(equipment.id_t) AS count_equipment FROM ".self::TABLE." LEFT JOIN equipment ON type.id_t = equipment.id_t
-        GROUP BY type.id_t,type.name_t,type.note";
+        $query = "SELECT detailconfirm.id_dc,equipment.name_e,type.name_t,detailconfirm.num,detailconfirm.status,borrowing.dateTime_b,borrowing.dateTime_r,detailconfirm.deny FROM detailconfirm
+        LEFT JOIN borrowing  ON borrowing.id_dc = detailconfirm.id_dc
+        LEFT JOIN confirm ON confirm.id_c = detailconfirm.id_c
+        LEFT JOIN equipment ON equipment.id_e = detailconfirm.id_e
+        LEFT JOIN type ON type.id_t = equipment.id_t
+        WHERE confirm.id_u = $id_u";
         // $query = "SELECT * FROM ".self::TABLE;
         $stmt = $con->prepare($query);
-        $stmt->setFetchMode(PDO::FETCH_CLASS, "Type");
+        $stmt->setFetchMode(PDO::FETCH_CLASS, "Borrowing");
         $stmt->execute();
-        $typeList  = array();
+        $borrowingList  = array();
         while ($prod = $stmt->fetch())
         {
-            $typeList[$prod->getId_t()] = $prod;
+            $borrowingList[$prod->getId_dc()] = $prod;
         }
-        return $typeList;
+        return $borrowingList;
     }
     public static function findById(int $id): ?Type {
         $con = Db::getInstance();
