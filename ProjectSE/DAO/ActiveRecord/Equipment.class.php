@@ -71,7 +71,7 @@ class Equipment {
     }
     public static function Count_type(){
         $con = Db::getInstance();
-        $query = "SELECT COUNT(*) FROM type";
+        $query = "SELECT COUNT(*) AS count_type FROM type";
         // $query = "SELECT * FROM ".self::TABLE;
         $stmt = $con->query($query);
         while ($row = $stmt->fetch()) {
@@ -82,7 +82,7 @@ class Equipment {
     }
     public static function Count_equipment(){
         $con = Db::getInstance();
-        $query = "SELECT COUNT(*) FROM equipment";
+        $query = "SELECT COUNT(*) AS count_equipment FROM equipment";
         // $query = "SELECT * FROM ".self::TABLE;
         $stmt = $con->query($query);
         while ($row = $stmt->fetch()) {
@@ -93,7 +93,7 @@ class Equipment {
     }
     public static function Count_item(){
         $con = Db::getInstance();
-        $query = "SELECT COUNT(*) FROM item";
+        $query = "SELECT COUNT(*) AS count_item FROM item";
         // $query = "SELECT * FROM ".self::TABLE;
         $stmt = $con->query($query);
         while ($row = $stmt->fetch()) {
