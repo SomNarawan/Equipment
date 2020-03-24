@@ -69,6 +69,39 @@ class Equipment {
     public function setCount_remain_equipment(int $count) {
         $this->count_remain_equipment = $count;
     }
+    public static function Count_type(){
+        $con = Db::getInstance();
+        $query = "SELECT COUNT(*) FROM type";
+        // $query = "SELECT * FROM ".self::TABLE;
+        $stmt = $con->query($query);
+        while ($row = $stmt->fetch()) {
+            $count_type= $row['count_type'];
+        }
+        
+        return $count_type;
+    }
+    public static function Count_equipment(){
+        $con = Db::getInstance();
+        $query = "SELECT COUNT(*) FROM equipment";
+        // $query = "SELECT * FROM ".self::TABLE;
+        $stmt = $con->query($query);
+        while ($row = $stmt->fetch()) {
+            $count_equipment= $row['count_equipment'];
+        }
+        
+        return $count_equipment;
+    }
+    public static function Count_item(){
+        $con = Db::getInstance();
+        $query = "SELECT COUNT(*) FROM item";
+        // $query = "SELECT * FROM ".self::TABLE;
+        $stmt = $con->query($query);
+        while ($row = $stmt->fetch()) {
+            $count_item= $row['count_item'];
+        }
+        
+        return $count_item;
+    }
     //----------- CRUD
     public static function findAll(): array {
         $con = Db::getInstance();
