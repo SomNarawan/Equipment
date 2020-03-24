@@ -136,6 +136,7 @@ class MemberController {
             $count_type = Equipment::Count_type();
             $count_equipment = Equipment::Count_equipment();
             $count_item = Equipment::Count_item();
+            $equipmentList = Equipment::findAll();
             include Router::getSourcePath()."views/equipment/equipment.inc.php";
         }
         else {
