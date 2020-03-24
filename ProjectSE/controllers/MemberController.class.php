@@ -136,7 +136,6 @@ class MemberController {
             $typeList = Type::findAll();
             // print_r($typeList);
             $equipmentList = Equipment::findAll();
-            $itemList=Item::findAll();
             include Router::getSourcePath()."views/equipment/equipmentOperator.inc.php";
         }
         else {
