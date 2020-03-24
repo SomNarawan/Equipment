@@ -147,6 +147,9 @@ class MemberController {
         if ($_SESSION['member'] !== null){
             $typeList = Type::findAll();
             // print_r($typeList);
+            $count_type = Equipment::Count_type();
+            $count_equipment = Equipment::Count_equipment();
+            $count_item = Equipment::Count_item();
             $equipmentList = Equipment::findAll();
             include Router::getSourcePath()."views/equipment/equipmentOperator.inc.php";
         }
@@ -157,6 +160,7 @@ class MemberController {
     private function menu_type(){
         session_start();
         if ($_SESSION['member'] !== null){
+            $count_type = Type::Count_type();
             $typeList = Type::findAll();
             include Router::getSourcePath()."views/type/type.inc.php";
 
@@ -171,6 +175,10 @@ class MemberController {
             session_start();
             // print_r($member);
             $_SESSION['member'] = $member;
+            $count_type = Equipment::Count_type();
+            $count_equipment = Equipment::Count_equipment();
+            $count_item = Equipment::Count_item();
+            $equipmentList = Equipment::findAll();
             $typeList = Type::findAll();
             if($member->getRole() == 'o')
                 include Router::getSourcePath()."views/type/type.inc.php";

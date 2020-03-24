@@ -41,6 +41,17 @@ class Type {
     public function setCount_equipment(int $count) {
         $this->count_equipment = $count;
     }
+    public static function Count_type(){
+        $con = Db::getInstance();
+        $query = "SELECT COUNT(*) AS count_type FROM type";
+        // $query = "SELECT * FROM ".self::TABLE;
+        $stmt = $con->query($query);
+        while ($row = $stmt->fetch()) {
+            $count_type= $row['count_type'];
+        }
+        
+        return $count_type;
+    }
     //----------- CRUD
     public static function findAll(): array {
         $con = Db::getInstance();

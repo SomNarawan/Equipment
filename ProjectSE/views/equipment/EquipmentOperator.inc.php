@@ -40,7 +40,7 @@ ob_start();
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">จำนวนหมวดอุปกรณ์
                                 (หมวด)
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">2 หมวด</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $count_type; ?> หมวด</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -59,7 +59,7 @@ ob_start();
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">จำนวนอุปกรณ์
                                 (อุปกรณ์)
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">5 อุปกรณ์</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $count_equipment; ?> อุปกรณ์</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -78,7 +78,7 @@ ob_start();
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">จำนวนอุปกรณ์ทั้งหมด
                                 (ชิ้น)
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">22 ชิ้น</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $count_item; ?> ชิ้น</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>

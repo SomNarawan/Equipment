@@ -39,7 +39,7 @@ ob_start();
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">จำนวนหมวดอุปกรณ์
                                 (หมวด)
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">2 หมวด</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $count_type; ?> หมวด</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -100,8 +100,8 @@ ob_start();
                                 <td><?= $prod->getNote(); ?></td>
                                 <td><a href="#"><?= $prod->getCount_equipment(); ?></a></td>
                                 <td>
-                                <button type="button" class="tt editType btn btn-info btn-sm" data-toggle="tooltip" id="<?= $prod->getId_t(); ?>" 
-                                id_t = "<?= $prod->getId_t(); ?>" name_t="<?= $prod->getName_t(); ?>" note="<?= $prod->getNote(); ?>" titile="รายละเอียด"><i class=" fas fa-list"></i></button>
+                                <button type="button" class="tt editType btn btn-warning btn-sm" data-toggle="tooltip" id="<?= $prod->getId_t(); ?>" 
+                                id_t = "<?= $prod->getId_t(); ?>" name_t="<?= $prod->getName_t(); ?>" note="<?= $prod->getNote(); ?>" titile="รายละเอียด"><i class=" fas fa-edit"></i></button>
                                 <button type="button" class="tt btn btn-danger btn-sm" onclick="delfunction('<?= $prod->getName_t(); ?>','<?= $prod->getId_t(); ?>')"
                                 data-toggle="tooltip" titile="ลบ"><i class="fas fa-trash"></i></button>
                                 </td>
