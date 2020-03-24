@@ -122,46 +122,17 @@ ob_start();
 
                         </tfoot>
                         <tbody>
+                            <?php
+                            foreach ($equipmentList as $prod) { ?>
                             <tr>
-                                <td>เมาส์</td>
-                                <td>คอมพิวเตอร์</td>
-                                <td>Logitec</td>
-                                <td><a href="#">4</a></td>
-                                <td><a href="#">1</a></td>
-                                <td><a href="#">3</a></td>
+                                <td><?= $prod->getName_e(); ?></td>
+                                <td><?= $prod->getName_t(); ?></td>
+                                <td><?= $prod->getNote(); ?></td>
+                                <td><a href="#"><?= $prod->getCount_equipment(); ?></a></td>
+                                <td><a href="#"><?= $prod->getCount_lend_equipment(); ?></a></td>
+                                <td><a href="#"><?= $prod->getCount_remain_equipment(); ?></a></td>
                             </tr>
-                            <tr>
-                                <td>จอ</td>
-                                <td>คอมพิวเตอร์</td>
-                                <td>DELL</td>
-                                <td><a href="#">5</a></td>
-                                <td><a href="#">0</a></td>
-                                <td><a href="#">5</a></td>
-                            </tr>
-                            <tr>
-                                <td>โน๊ตบุ๊ค</td>
-                                <td>คอมพิวเตอร์</td>
-                                <td>ACER</td>
-                                <td><a href="#">6</a></td>
-                                <td><a href="#">0</a></td>
-                                <td><a href="#">6</a></td>
-                            </tr>
-                            <tr>
-                                <td>andriod</td>
-                                <td>โทรศัพท์</td>
-                                <td>OPPO A 38</td>
-                                <td><a href="#">5</a></td>
-                                <td><a href="#">2</a></td>
-                                <td><a href="#">3</a></td>
-                            </tr>
-                            <tr>
-                                <td>IOS</td>
-                                <td>โทรศัพท์</td>
-                                <td>Iphone 6</td>
-                                <td><a href="#">2</a></td>
-                                <td><a href="#">0</a></td>
-                                <td><a href="#">2</a></td>
-                            </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
