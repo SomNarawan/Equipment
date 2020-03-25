@@ -18,8 +18,6 @@
                     <div>สถานะ 
                         <input type="radio" id="1_add" name="status_i_add" value="1">
                         <label for="1">ยืมได้</label>
-                        <input type="radio" id="2_add" name="status_i_add" value="2">
-                        <label for="2">ถูกยืม</label>
                         <input type="radio" id="3_add" name="status_i_add" value="3">
                         <label for="3">ยืมไม่ได้</label>
                     </div>
