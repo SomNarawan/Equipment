@@ -17,34 +17,34 @@ class Item {
 
     //----------- Getters & Setters
     
-    public function getId_i():string {
+    public function getId_i(){
         return $this->id_i;
     }
-    public function setId_i(string $id) {
+    public function setId_i($id) {
         $this->id_i = $id;
     }
-    public function getName_e():string {
+    public function getName_e() {
         return $this->id_i;
     }
-    public function setName_e(string $name_e) {
+    public function setName_e($name_e) {
         $this->name_e = $name_e;
     }
-    public function getNote():string {
+    public function getNote() {
         return $this->note;
     }
-    public function setNote(string $note) {
+    public function setNote($note) {
         $this->note = $note;
     }
-    public function getId_e():string {
+    public function getId_e(){
         return $this->id_i;
     }
-    public function setId_e(string $id) {
+    public function setId_e($id) {
         $this->id_e = $id;
     }
-    public function getStatus_i(): int {
+    public function getStatus_i(){
         return $this->status_i;
     }
-    public function setStatus_i(int $status_i) {
+    public function setStatus_i($status_i) {
         $this->status_i = $status_i;
     }
     

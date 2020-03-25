@@ -23,7 +23,7 @@ ob_start();
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800"><?php echo $name_e ?></h1>
+        <h1 class="h3 mb-0 text-gray-800">อุปกรณ์ : <?php echo $name_e ?></h1>
         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
     </div>
@@ -101,14 +101,14 @@ ob_start();
                             <tr>
                                 <td><?= $prod->getId_i(); ?></td>
                                 <td><?= $prod->getNote(); ?></td>
-                                <td><a href="#">
+                                <td>
                                         <?php if($prod->getStatus_i() == 1)
                                     echo "ยืมได้";
                                 if($prod->getStatus_i() == 2)
-                                    echo "ถูกยืม";
+                                    echo "<a href='#'>ถูกยืม</a>";
                                 if($prod->getStatus_i() == 3)
                                     echo "ยืมไม่ได้"; ?>
-                                    </a></td>
+                                    </td>
                                 <td>
                                     <button type="button" class="tt editItem btn btn-warning btn-sm"
                                         data-toggle="tooltip" titile=" แก้ไข"

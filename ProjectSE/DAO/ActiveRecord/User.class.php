@@ -19,10 +19,10 @@ class Type {
     private const TABLE = "user";
 
     //----------- Getters & Setters
-    public function getId_u():int {
+    public function getId_u(){
         return $this->id_u;
     }
-    public function setId_u(int $id) {
+    public function setId_u($id) {
         $this->id_u = $id;
     }
     public function getUsername()
@@ -37,13 +37,13 @@ class Type {
     {
         return $this->title;
     }
-    public function getTitle()
+    public function setTitle($title)
     {
-        return $this->title;
+        $this->title = $title;
     }
 
-    public function setName($name) {
-        $this->name = $name;
+    public function getName() {
+        return $this->name;
     }
     public function setName($name) {
         $this->name = $name;
@@ -52,11 +52,10 @@ class Type {
     {
         return $this->surname;
     }
-
     public function setSurname($surname) {
         $this->surname = $surname;
     }
-    ublic function getEmail()
+    public function getEmail()
     {
         return $this->email;
     }
@@ -67,13 +66,13 @@ class Type {
     public function getPhone(){
         return $this->phone;
     }
-    public function setPhone(string $phone) {
+    public function setPhone($phone) {
         $this->phone = $phone;
     }
-    public function getRole(): int {
+    public function getRole(){
         return $this->role;
     }
-    public function setRole(int $role) {
+    public function setRole($role) {
         $this->role = $role;
     }
     

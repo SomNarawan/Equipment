@@ -46,7 +46,7 @@ class EquipmentController {
             $id_e = $_GET['id_e'];
             $name_e=$_GET['name_e'];
             $itemList = Item::findAll($id_e);
-            var_dump($itemList);
+            // var_dump($itemList);
             
             include Router::getSourcePath()."views/item/item.inc.php";
 

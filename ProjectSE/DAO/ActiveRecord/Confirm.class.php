@@ -23,10 +23,10 @@ class Confirm {
     private const TABLE = "confirm";
 
     //----------- Getters & Setters
-    public function getId_dc():int {
+    public function getId_dc(){
         return $this->id_dc;
     }
-    public function setId_dc(int $id) {
+    public function setId_dc($id) {
         $this->id_dc = $id;
     }
     public function getUsername()
@@ -80,7 +80,7 @@ class Confirm {
     public function getNum(){
         return $this->num;
     }
-    public function setNum(string $num) {
+    public function setNum($num) {
         $this->num = $num;
     }
     public function getDateTime_c() {

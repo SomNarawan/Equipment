@@ -20,16 +20,16 @@ class Equipment {
     private const TABLE = "equipment";
 
     //----------- Getters & Setters
-    public function getId_e():int {
+    public function getId_e(){
         return $this->id_e;
     }
-    public function setId_e(int $id) {
+    public function setId_e($id) {
         $this->id_e = $id;
     }
-    public function getId_t():int {
+    public function getId_t(){
         return $this->id_t;
     }
-    public function setId_t(int $id) {
+    public function setId_t($id) {
         $this->id_t = $id;
     }
     public function getName_e()
@@ -49,31 +49,31 @@ class Equipment {
     public function getNote(){
         return $this->note;
     }
-    public function setNote(string $note) {
+    public function setNote($note) {
         $this->note = $note;
     }
-    public function getCount_equipment(): int {
+    public function getCount_equipment(){
         return $this->count_equipment;
     }
-    public function setCount_equipment(int $count) {
+    public function setCount_equipment($count) {
         $this->count_equipment = $count;
     }
-    public function getCount_lend_equipment(): int {
+    public function getCount_lend_equipment(){
         return $this->count_lend_equipment;
     }
-    public function setCount_lend_equipment(int $count) {
+    public function setCount_lend_equipment($count) {
         $this->count_lend_equipment = $count;
     }
-    public function getCount_no_equipment(): int {
+    public function getCount_no_equipment(){
         return $this->count_no_equipment;
     }
-    public function setCount_no_equipment(int $count) {
+    public function setCount_no_equipment($count) {
         $this->count_no_equipment = $count;
     }
-    public function getCount_remain_equipment(): int {
+    public function getCount_remain_equipment(){
         return $this->count_remain_equipment;
     }
-    public function setCount_remain_equipment(int $count) {
+    public function setCount_remain_equipment($count) {
         $this->count_remain_equipment = $count;
     }
     public static function Count_type(){
