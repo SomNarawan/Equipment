@@ -106,7 +106,13 @@ ob_start();
                                 <td><?= $prod->getName_e(); ?></td>
                                 <td><?= $prod->getName_t(); ?></td>
                                 <td><a href="#"><?= $prod->getNum(); ?></a></td>
-                                <td><?= $prod->getstatus(); ?></td>
+                                <td><?php
+                                if($prod->getstatus() == 1) 
+                                    echo "<div style='color:green'>สำเร็จ</div>";
+                                else if($prod->getstatus() == 2) 
+                                    echo "<div style='color:red'>ไม่สำเร็จ</div>";
+                                else 
+                                    echo "รออนุมัติ";?></td>
                                 <td><?= $prod->getDateTime_b(); ?></td>
                                 <td><?= $prod->getDateTime_r(); ?></td>
                                 <td>
