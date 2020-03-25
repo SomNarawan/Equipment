@@ -161,7 +161,7 @@ function number_format(number, decimals, dec_point, thousands_sep) {
      console.log(forNumArrM);
      
     //console.log(itemNameArr);
-    // <?php session_start(); ?>
+    
     // console.log(groupItems.ALL[1].name_e);
     // console.log(groupItems.YEAR.length);
     // console.log(_year);
