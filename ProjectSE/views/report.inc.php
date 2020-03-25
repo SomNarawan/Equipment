@@ -29,7 +29,7 @@ ob_start();
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Group (กลุ่มที่ต้องการสืบค้น)</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800"><p>กรุณาเลือก กลุ่ม ในการสืบค้นสถิติ
                         <label for="typeUser"> : </lable>
-                        <select id="typeUser">
+                        <select  class="form-control" id="typeUser"> 
                             <option value="a">ผู้ใช้งานทั้งหมด</option>
                             <option value="s">นักศึกษา</option>
                             <option value="t">อาจารย์</option>
@@ -120,11 +120,13 @@ ob_start();
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">DISPLAY HISTORY INFO :</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">
-                        <p>กดปุ่มเพื่อดำเนินการ <button type="button" onclick="myFunction()">ค้นหา</button></p>
+                        <p>กดปุ่มเพื่อดำเนินการ <button type="button" onclick="myFunction()">ค้นหา
+                        
+                        </button></p>
                          กลุ่มค้นหา :<p id="showTypeAt1" > </p>
                          สถิติของปี :<p id="showYearAt1" > </p>
                          สถิติของเดือน :<p id="showMountAt1" > </p>
-
+                         
                         </div>
                     </div>
                     <div class="col-auto">

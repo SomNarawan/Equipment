@@ -447,9 +447,9 @@ var myBarChartHigh = new Chart(ctxHigh, {
        labels: ["ยาบ้า","ยาอี","ยาไอซ์"],
       datasets: [{
       label: "จำนวน",
-      backgroundColor: "#3b5e8c",
+      backgroundColor: "#8a1226",
       hoverBackgroundColor: "#2e59d9",
-      borderColor: "#3b5e8c",
+      borderColor: "#8a1226",
       data: [9,5,3],
     }],
   
@@ -534,9 +534,9 @@ var myBarChartLow = new Chart(ctxLow, {
        labels: ["ยาบ้า","ยาอี","ยาไอซ์"],
       datasets: [{
       label: "จำนวน",
-      backgroundColor: "#3b5e8c",
+      backgroundColor: "#8a1226",
       hoverBackgroundColor: "#2e59d9",
-      borderColor: "#3b5e8c",
+      borderColor: "#8a1226",
       data: [1,4,7],
     }],
   
