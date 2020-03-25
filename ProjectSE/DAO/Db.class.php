@@ -8,7 +8,7 @@
 
 class Db {
     private static $instance = NULL;
-    private static $dsn = "mysql:dbname=equipment_update;host=localhost";
+    private static $dsn = "mysql:dbname=equipment;host=localhost";
     private static $user = "root";
     private static $pass = "";
     private function __construct() {}
