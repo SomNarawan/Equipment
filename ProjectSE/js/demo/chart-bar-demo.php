@@ -62,9 +62,10 @@ function number_format(number, decimals, dec_point, thousands_sep) {
     // ความยาวของเจสันแต่ละหมวด ที่ถูกแปลงเป็น js Obj.
     var LenObjALL = groupItems.ALL.length;
     var testLen = Object.keys(groupItems.ALL).length;
-    
     var LenObjYEAR =Object.keys(groupItems.YEAR).length
     var LenObjMOUNT =Object.keys(groupItems.MOUNT).length
+    var LenObjMax =Object.keys(groupItems.MAX).length
+    var LenObjMin =Object.keys(groupItems.MIN).length
     // var size = Object.size(groupItems);
     // console.log(LenObjALL);
     // console.log(testLen);
@@ -76,6 +77,10 @@ function number_format(number, decimals, dec_point, thousands_sep) {
     var itemNumArrY = [];
     var itemNameArrM = [];
     var itemNumArrM = [];
+    var itemNameArrMax = [];
+    var itemNumArrMax = [];
+    var itemNameArrMin = [];
+    var itemNumArrMin= [];
   
     if(groupItems.MOUNT[0] == null)
      {
@@ -124,6 +129,74 @@ function number_format(number, decimals, dec_point, thousands_sep) {
         break;
       }
      }
+     console.log(LenObjMax);
+     console.log(LenObjMin);
+     // loop Max 3
+     for(k=0;k<3;k++)
+     {
+      if(LenObjMax < 1)
+      {
+        itemNameArrMax.push(null);
+        itemNumArrMax.push(null);
+      }
+      else if(groupItems.MAX[k] != null)
+      {
+        itemNameArrMax.push(groupItems.MAX[k].name_e_max);
+        itemNumArrMax.push(groupItems.MAX[k].numItem_max);
+      }
+      else if(groupItems.MAX[k] == null)
+      {
+        break;
+      }
+     }
+     // loop Min 3
+     for(k=0;k<3;k++)
+     {
+      if(LenObjMin < 1)
+      {
+        itemNameArrMin.push(null);
+        itemNumArrMin.push(null);
+      }
+      else if(groupItems.MIN[k] != null)
+      {
+        itemNameArrMin.push(groupItems.MIN[k].name_e_min);
+        itemNumArrMin.push(groupItems.MIN[k].numItem_min);
+      }
+      else if(groupItems.MIN[k] == null)
+      {
+        break;
+      }
+     }
+     console.log(itemNameArrMax);
+     console.log(itemNumArrMax);
+     console.log(itemNameArrMin);
+     console.log(itemNumArrMin);
+     for(i=0;i<LenObjMax;i++)
+     {
+      if(i == 0){
+        itemNameArrMax[i]="1st high: "+itemNameArrMax[i];
+      }
+      else if( i ==1){
+        itemNameArrMax[i]="2nd high: "+itemNameArrMax[i];
+      }
+      else if(i== 2){
+        itemNameArrMax[i]="3rd high: "+itemNameArrMax[i];
+      }
+     }
+     for(i=0;i<LenObjMin;i++)
+     {
+      if(i == 0){
+        itemNameArrMin[i]="1st low: "+itemNameArrMin[i];
+      }
+      else if( i ==1){
+        itemNameArrMin[i]="2nd low: "+itemNameArrMin[i];
+      }
+      else if(i== 2){
+        itemNameArrMin[i]="3rd low: "+itemNameArrMin[i];
+      }
+     }
+
+
      //ex.var name = cars[0];
      var forNumArrY = [];
      var forNumArrM = [];
@@ -182,9 +255,9 @@ var myBarChartAll = new Chart(ctxAll, {
        labels: itemNameArr,
       datasets: [{
       label: "จำนวน",
-      backgroundColor: "#3b5e8c",
+      backgroundColor: "#ffc107",
       hoverBackgroundColor: "#2e59d9",
-      borderColor: "#3b5e8c",
+      borderColor: "#ffc107",
       data: itemNumArr
       ,
     }],
@@ -207,7 +280,7 @@ var myBarChartAll = new Chart(ctxAll, {
           unit: 'หมวดอุปกรณ์'
         },
         gridLines: {
-          display: true,
+          display: false,
           drawBorder: false
         },
         ticks: {
@@ -215,7 +288,7 @@ var myBarChartAll = new Chart(ctxAll, {
           maxTicksLimit: testLen
         },
         //ความหนาของกราฟแต่ละแถว
-        maxBarThickness: 25,
+        maxBarThickness: 60,
       }],
       yAxes: [{
         ticks: {
@@ -231,11 +304,11 @@ var myBarChartAll = new Chart(ctxAll, {
           }
         },
         gridLines: {
-          color: "rgb(245, 137, 196)",
-          zeroLineColor: "rgb(245, 137, 196)",
+          color: "rgb(232, 232, 232)",
+          zeroLineColor: "rgb(232, 232, 232)",
           drawBorder: false,
-          borderDash: [2],
-          zeroLineBorderDash: [2]
+          borderDash: [0],
+          zeroLineBorderDash: [0]
         }
       }],
     },
@@ -245,7 +318,7 @@ var myBarChartAll = new Chart(ctxAll, {
     tooltips: {
       titleMarginBottom: 10,
       titleFontColor: '#6e707e',
-      titleFontSize: 24,
+      titleFontSize: 30,
       backgroundColor: "rgb(255,255,255)",
       bodyFontColor: "#858796",
       borderColor: '#dddfeb',
@@ -272,9 +345,9 @@ var myBarChartYear = new Chart(ctxYear, {
        labels: itemNameArr,
       datasets: [{
       label: "จำนวน",
-      backgroundColor: "#3b5e8c",
+      backgroundColor: "#1cc88a",
       hoverBackgroundColor: "#2e59d9",
-      borderColor: "#3b5e8c",
+      borderColor: "#1cc88a",
       data: forNumArrY,
     }],
   
@@ -297,7 +370,7 @@ var myBarChartYear = new Chart(ctxYear, {
 
         },
         gridLines: {
-          display: true,
+          display: false,
           drawBorder: false
         },
         ticks: {
@@ -305,7 +378,7 @@ var myBarChartYear = new Chart(ctxYear, {
           maxTicksLimit: testLen
         },
         //ความหนาของกราฟแต่ละแถว
-        maxBarThickness: 25,
+        maxBarThickness: 45,
       }],
       yAxes: [{
         ticks: {
@@ -320,11 +393,11 @@ var myBarChartYear = new Chart(ctxYear, {
           }
         },
         gridLines: {
-          color: "rgb(245, 137, 196)",
-          zeroLineColor: "rgb(245, 137, 196)",
+          color: "rgb(232, 232, 232)",
+          zeroLineColor: "rgb(232, 232, 232)",
           drawBorder: false,
-          borderDash: [2],
-          zeroLineBorderDash: [2]
+          borderDash: [0],
+          zeroLineBorderDash: [0]
         }
       }],
     },
@@ -334,7 +407,7 @@ var myBarChartYear = new Chart(ctxYear, {
     tooltips: {
       titleMarginBottom: 10,
       titleFontColor: '#6e707e',
-      titleFontSize: 24,
+      titleFontSize: 30,
       backgroundColor: "rgb(255,255,255)",
       bodyFontColor: "#858796",
       borderColor: '#dddfeb',
@@ -360,9 +433,9 @@ var myBarChartMount = new Chart(ctxMount, {
        labels: itemNameArr,
       datasets: [{
       label: "จำนวน",
-      backgroundColor: "#3b5e8c",
+      backgroundColor: "#36b9cc",
       hoverBackgroundColor: "#2e59d9",
-      borderColor: "#3b5e8c",
+      borderColor: "#36b9cc",
       data: forNumArrM,
     }],
   
@@ -385,7 +458,7 @@ var myBarChartMount = new Chart(ctxMount, {
 
         },
         gridLines: {
-          display: true,
+          display: false,
           drawBorder: false
         },
         ticks: {
@@ -393,7 +466,7 @@ var myBarChartMount = new Chart(ctxMount, {
           maxTicksLimit: testLen
         },
         //ความหนาของกราฟแต่ละแถว
-        maxBarThickness: 25,
+        maxBarThickness: 45,
       }],
       yAxes: [{
         ticks: {
@@ -408,11 +481,11 @@ var myBarChartMount = new Chart(ctxMount, {
           }
         },
         gridLines: {
-          color: "rgb(245, 137, 196)",
-          zeroLineColor: "rgb(245, 137, 196)",
+          color: "rgb(232, 232, 232)",
+          zeroLineColor: "rgb(232, 232, 232)",
           drawBorder: false,
-          borderDash: [2],
-          zeroLineBorderDash: [2]
+          borderDash: [0],
+          zeroLineBorderDash: [0]
         }
       }],
     },
@@ -422,7 +495,7 @@ var myBarChartMount = new Chart(ctxMount, {
     tooltips: {
       titleMarginBottom: 10,
       titleFontColor: '#6e707e',
-      titleFontSize: 24,
+      titleFontSize: 30,
       backgroundColor: "rgb(255,255,255)",
       bodyFontColor: "#858796",
       borderColor: '#dddfeb',
@@ -444,13 +517,13 @@ var myBarChartMount = new Chart(ctxMount, {
 var myBarChartHigh = new Chart(ctxHigh, {
   type: 'bar',
   data: {
-       labels: ["ยาบ้า","ยาอี","ยาไอซ์"],
+       labels: itemNameArrMax,
       datasets: [{
       label: "จำนวน",
-      backgroundColor: "#8a1226",
+      backgroundColor: "#fa6f61",
       hoverBackgroundColor: "#2e59d9",
-      borderColor: "#8a1226",
-      data: [9,5,3],
+      borderColor: "#fa6f61",
+      data: itemNumArrMax,
     }],
   
   },
@@ -485,7 +558,7 @@ var myBarChartHigh = new Chart(ctxHigh, {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 10,
+          max: 5,
           // จำนวนเส้นที่ไว้ใช้แบ่งความละเอียดแกน Y maxTicksLimit ยิ่งมาก ยิ่งละเอียด
           maxTicksLimit: 10,
           padding: 10,
@@ -495,11 +568,11 @@ var myBarChartHigh = new Chart(ctxHigh, {
           }
         },
         gridLines: {
-          color: "rgb(245, 137, 196)",
-          zeroLineColor: "rgb(245, 137, 196)",
+          color: "rgb(232, 232, 232)",
+          zeroLineColor: "rgb(232, 232, 232)",
           drawBorder: false,
-          borderDash: [2],
-          zeroLineBorderDash: [2]
+          borderDash: [0],
+          zeroLineBorderDash: [0]
         }
       }],
     },
@@ -509,7 +582,7 @@ var myBarChartHigh = new Chart(ctxHigh, {
     tooltips: {
       titleMarginBottom: 10,
       titleFontColor: '#6e707e',
-      titleFontSize: 24,
+      titleFontSize: 30,
       backgroundColor: "rgb(255,255,255)",
       bodyFontColor: "#858796",
       borderColor: '#dddfeb',
@@ -531,13 +604,13 @@ var myBarChartHigh = new Chart(ctxHigh, {
 var myBarChartLow = new Chart(ctxLow, {
   type: 'bar',
   data: {
-       labels: ["ยาบ้า","ยาอี","ยาไอซ์"],
+       labels: itemNameArrMin,
       datasets: [{
       label: "จำนวน",
-      backgroundColor: "#8a1226",
+      backgroundColor: "#db61fa",
       hoverBackgroundColor: "#2e59d9",
-      borderColor: "#8a1226",
-      data: [1,4,7],
+      borderColor: "#db61fa",
+      data: itemNumArrMin,
     }],
   
   },
@@ -572,7 +645,7 @@ var myBarChartLow = new Chart(ctxLow, {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 10,
+          max: 5,
           // จำนวนเส้นที่ไว้ใช้แบ่งความละเอียดแกน Y maxTicksLimit ยิ่งมาก ยิ่งละเอียด
           maxTicksLimit: 10,
           padding: 10,
@@ -582,11 +655,11 @@ var myBarChartLow = new Chart(ctxLow, {
           }
         },
         gridLines: {
-          color: "rgb(245, 137, 196)",
-          zeroLineColor: "rgb(245, 137, 196)",
+          color: "rgb(232, 232, 232)",
+          zeroLineColor: "rgb(232, 232, 232)",
           drawBorder: false,
-          borderDash: [2],
-          zeroLineBorderDash: [2]
+          borderDash: [0],
+          zeroLineBorderDash: [0]
         }
       }],
     },
@@ -596,7 +669,7 @@ var myBarChartLow = new Chart(ctxLow, {
     tooltips: {
       titleMarginBottom: 10,
       titleFontColor: '#6e707e',
-      titleFontSize: 24,
+      titleFontSize: 30,
       backgroundColor: "rgb(255,255,255)",
       bodyFontColor: "#858796",
       borderColor: '#dddfeb',
