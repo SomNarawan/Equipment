@@ -15,7 +15,7 @@ $( document ).ready(function() {
         var note = $(this).attr('note');
         //alert(note);
         var id_e = $(this).attr('id_e');
-        alert(id_e)
+        //alert(id_e)
         var status_i = $(this).attr('status_i');
         // document.getElementById("name_e_edit").value = name_t;
         $("#id_i_edit").val(id_i);
@@ -36,7 +36,7 @@ $( document ).ready(function() {
 });
 
 function delfunction(_id_e,_id_i,_name_e) {
-    alert(_name_e);
+    //alert(_name_e);
     swal({
             title: "คุณต้องการลบ",
             text: `${_id_i} หรือไม่ ?`,

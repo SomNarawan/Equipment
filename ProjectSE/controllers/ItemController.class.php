@@ -63,7 +63,7 @@ class ItemController {
         //echo "testtt";
         session_start();
         if ($_SESSION['member'] !== null){
-            print_r($_POST);
+            //print_r($_POST);
             $id_i = $_POST['id_i_add'];
             $note=$_POST['note_add'];
             $id_e=$_POST['id_e_add'];

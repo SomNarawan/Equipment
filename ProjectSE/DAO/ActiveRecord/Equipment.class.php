@@ -175,9 +175,9 @@ class Equipment {
             if($prop != "name_t" && $prop != "count_equipment" && $prop != "count_lend_equipment" && $prop != "count_remain_equipment"  )
                 $values .= "'$val',";
         }
-        print_r($values);
+        //print_r($values);
         $values = substr($values,0,-1);
-        print_r($values);
+        //print_r($values);
 
         $query = "INSERT INTO ".self::TABLE." VALUES ($values)";
         //echo $query;
