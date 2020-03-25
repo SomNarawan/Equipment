@@ -12,18 +12,18 @@
                 </div>
                 <div class="modal-body">
                     <div>เลขครุภัณฑ์ <label style="color:red;">*</label><input type="text" id="id_i_add"
-                            name="name_e_add" class="form-control"></input></div>
+                            name="id_i_add" class="form-control"></input></div>
                     <div>รายละเอียด <input type="text" id="note_add" name="note_add" class="form-control"></input></div>
+                    <br>
                     <div>สถานะ 
-                        <input type="radio" id="1" name="status_i_add" value="1">
+                        <input type="radio" id="1_add" name="status_i_add" value="1">
                         <label for="1">ยืมได้</label>
-                        <input type="radio" id="2" name="status_i_add" value="2">
-                        <label for="2">ถูกยืม</label>
-                        <input type="radio" id="3" name="status_i_add" value="3">
+                        <input type="radio" id="3_add" name="status_i_add" value="3">
                         <label for="3">ยืมไม่ได้</label>
                     </div>
 
                 </div>
+                <input type="hidden" id="id_e_add" name="id_e_add" class="form-control"></input>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
                     <button type="button" class="btn btn-success" id="addI">บันทึก</button>
@@ -51,17 +51,18 @@
                     </div>
                     <div>รายละเอียด <input type="text" id="note_edit" name="note_edit" class="form-control"></input>
                     </div>
-                    <div>สถานะ 
-                        <input type="radio" id="1" name="status_i_edit" value="1">
+                    <br>
+                    <div>สถานะ
+                        <input type="radio" id="1_edit" name="status_i_edit" value="1">
                         <label for="1">ยืมได้</label>
-                        <input type="radio" id="2" name="status_i_edit" value="2">
+                        <input type="radio" id="2_edit" name="status_i_edit" value="2">
                         <label for="2">ถูกยืม</label>
-                        <input type="radio" id="3" name="status_i_edit" value="3">
+                        <input type="radio" id="3_edit" name="status_i_edit" value="3">
                         <label for="3">ยืมไม่ได้</label>
                     </div>
 
                 </div>
-                <input type="hidden" id="id_i_edit" name="id_i_edit" class="form-control"></input>
+                <input type="hidden" id="id_i" name="id_i" class="form-control"></input>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
                     <button type="button" id="editI" class="btn btn-success">บันทึก</button>

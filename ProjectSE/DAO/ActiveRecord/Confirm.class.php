@@ -6,24 +6,28 @@
  * Time: 11:47
  */
 
-class Type {
+class Confirm {
     //------------- Properties
-    private $id_c;
+    private $id_dc;
     private $username;
-    private $fullname;
+    private $title;
+    private $name;
+    private $surname;
     private $name_e;
     private $name_t;
     private $num;
     private $dateTime_c;
     private $status;
+    private $reason;
+
     private const TABLE = "confirm";
 
     //----------- Getters & Setters
-    public function getId_c():int {
-        return $this->id_c;
+    public function getId_dc(){
+        return $this->id_dc;
     }
-    public function setId_t(int $id) {
-        $this->id_c = $id;
+    public function setId_dc($id) {
+        $this->id_dc = $id;
     }
     public function getUsername()
     {
@@ -33,20 +37,36 @@ class Type {
     public function setUsername($username) {
         $this->username = $username;
     }
-    public function getFullname()
+    public function getTitle()
     {
-        return $this->fullname;
+        return $this->title;
     }
 
-    public function setFullname($fullname) {
-        $this->fullname = $fullname;
+    public function setTitle($title) {
+        $this->title = $title;
+    }
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function setName($name) {
+        $this->name = $name;
+    }
+    public function getSurname()
+    {
+        return $this->surname;
+    }
+
+    public function setSurname($surname) {
+        $this->surname = $surname;
     }
     public function getName_e()
     {
         return $this->name_e;
     }
     
-    public function setName_t($name_e) {
+    public function setName_e($name_e) {
         $this->name_e = $name_e;
     }
     public function getName_t()
@@ -60,13 +80,13 @@ class Type {
     public function getNum(){
         return $this->num;
     }
-    public function setNum(string $num) {
+    public function setNum($num) {
         $this->num = $num;
     }
-    public function getDateTime_c(): int {
-        return $this->count_equipment;
+    public function getDateTime_c() {
+        return $this->dateTime_c;
     }
-    public function setDateTime_c(int $dateTime_c) {
+    public function setDateTime_c($dateTime_c) {
         $this->dateTime_c = $dateTime_c;
     }
     public function getStatus()
@@ -77,27 +97,66 @@ class Type {
     public function setStatus($status) {
         $this->status = $status;
     }
+    public function getReason()
+    {
+        return $this->reason;
+    }
+    
+    public function setReason($reason) {
+        $this->reason = $reason;
+    }
+
     //----------- CRUD
-    public static function findAll(): array {
+    public static function findAll($id_resp): array {
         $con = Db::getInstance();
-        $query = "SELECT type.id_t,type.name_t,type.note,COUNT(equipment.id_t) AS count_equipment FROM ".self::TABLE." LEFT JOIN equipment ON type.id_t = equipment.id_t
-        GROUP BY type.id_t,type.name_t,type.note";
+        $query = "SELECT  detailconfirm.id_dc,user.username,user.title,user.name,user.surname,equipment.name_e,type.name_t,detailconfirm.num,confirm.dateTime_c,detailconfirm.status,confirm.reason FROM confirm 
+        JOIN user ON confirm.id_u = user.id_u
+        JOIN detailconfirm ON confirm.id_c = detailconfirm.id_c
+        JOIN equipment ON detailconfirm.id_e = equipment.id_e
+        JOIN type ON equipment.id_t = type.id_t
+        WHERE confirm.id_resp = $id_resp";
         // $query = "SELECT * FROM ".self::TABLE;
         $stmt = $con->prepare($query);
-        $stmt->setFetchMode(PDO::FETCH_CLASS, "Type");
+        $stmt->setFetchMode(PDO::FETCH_CLASS, "Confirm");
         $stmt->execute();
-        $typeList  = array();
+        $confirmList  = array();
         while ($prod = $stmt->fetch())
         {
-            $typeList[$prod->getId_t()] = $prod;
+            $confirmList[$prod->getId_dc()] = $prod;
         }
-        return $typeList;
+        return $confirmList;
     }
-    public static function findById(int $id): ?Type {
+    public static function Count_confirm($id_resp){
+        $con = Db::getInstance();
+        $query = "SELECT COUNT(*) AS count_confirm FROM confirm 
+        JOIN detailconfirm ON confirm.id_c = detailconfirm.id_c
+        WHERE id_resp = $id_resp";
+        // $query = "SELECT * FROM ".self::TABLE;
+        $stmt = $con->query($query);
+        while ($row = $stmt->fetch()) {
+            $count_confirm= $row['count_confirm'];
+        }
+        
+        return $count_confirm;
+    }
+    public static function Count_student($id_resp){
+        $con = Db::getInstance();
+        $query = "SELECT COUNT(*) AS count_student FROM confirm 
+        JOIN user ON confirm.id_u = user.id_u
+        WHERE confirm.id_resp = $id_resp";
+        // $query = "SELECT * FROM ".self::TABLE;
+        $stmt = $con->query($query);
+        while ($row = $stmt->fetch()) {
+            $count_student = $row['count_student'];
+        }
+        
+        return $count_student;
+    }
+    public static function findById(int $id): array {
         $con = Db::getInstance();
         $query = "SELECT * FROM ".self::TABLE." WHERE id_t = $id";
         $stmt = $con->prepare($query);
-        $stmt->setFetchMode(PDO::FETCH_CLASS, "Type");
+        $stmt->setFetchMode(PDO::FETCH_CLASS, "Confirm");
         $stmt->execute();
         if ($prod = $stmt->fetch())
         {

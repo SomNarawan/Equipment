@@ -4,7 +4,8 @@ $( document ).ready(function() {
 
     $('#addBorrowingType').click(function(){
         console.log("hh");
-        $("#addBorrowingModal").modal();
+        window.location.href = './index.php?controller=Member&action=menu_borrow';
+
     });
     $('#detailE').click(function(){
         console.log("ee6523");

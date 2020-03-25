@@ -4,6 +4,6 @@ $( document ).ready(function() {
 
     $('#addBorrowOpeType').click(function(){
         console.log("hh");
-        $("#addBorrowingOperationModal").modal();
+        window.location.href = './index.php?controller=Member&action=menu_borrow';
     });
 });

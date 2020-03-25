@@ -45,6 +45,9 @@ class EquipmentController {
         if ($_SESSION['member'] !== null){
             $id_e = $_GET['id_e'];
             $name_e=$_GET['name_e'];
+            $itemList = Item::findAll($id_e);
+            // var_dump($itemList);
+            
             include Router::getSourcePath()."views/item/item.inc.php";
 
         }
@@ -71,10 +74,10 @@ class EquipmentController {
         }
     }
     private function insert(){
-        echo "testtt";
+        //echo "testtt";
         session_start();
         if ($_SESSION['member'] !== null){
-            print_r($_POST);
+            //print_r($_POST);
             $name_e = $_POST['name_e_add'];
             $id_t=$_POST['id_t_add'];
             $note = $_POST['note_add'];

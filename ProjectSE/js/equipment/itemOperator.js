@@ -4,15 +4,18 @@ $( document ).ready(function() {
 
     $('#addItem').click(function(){
         console.log("hh");
+        var id_e = $(this).attr('id_e');
+        //alert(id_e);
+        $("#id_e_add").val(id_e);
         $("#addItemModal").modal();
     });
     $('.editItem').click(function(){
-
         $("#editItemModal").modal();
-
         var id_i = $(this).attr('id_i');
         var note = $(this).attr('note');
+        //alert(note);
         var id_e = $(this).attr('id_e');
+        //alert(id_e)
         var status_i = $(this).attr('status_i');
         // document.getElementById("name_e_edit").value = name_t;
         $("#id_i_edit").val(id_i);
@@ -22,6 +25,7 @@ $( document ).ready(function() {
     });
     $('#addI').click(function(){
         // alert("ass");
+
         $('#addI').attr("type","submit");
     });
     $('#editI').click(function(){
@@ -31,8 +35,8 @@ $( document ).ready(function() {
     });
 });
 
-function delfunction(_id_i) {
-    // alert(_did);
+function delfunction(_id_e,_id_i,_name_e) {
+    //alert(_name_e);
     swal({
             title: "คุณต้องการลบ",
             text: `${_id_i} หรือไม่ ?`,
@@ -64,7 +68,7 @@ function delfunction(_id_i) {
     
                 }, function(isConfirm) {
                     if (isConfirm) {
-                        delete_1(_id_i)
+                        delete_1(_id_e,_id_i,_name_e)
                     }
     
                 });
@@ -74,16 +78,17 @@ function delfunction(_id_i) {
         });
     
     }
-    function delete_1(_id_i) {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            window.location.href = './index.php?controller=Member&action=menu_equipmentO';
-            // alert(this.responseText);
+    function delete_1(_id_e,_id_i,_name_e) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                // alert(this.responseText);
+
+                window.location.href = './index.php?controller=Equipment&action=item&id_e='+_id_e+'&name_e='+_name_e;
+            }
+        };
+        xhttp.open("POST", "./index.php?controller=Item&action=delete", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send(`id_i=${_id_i}&request=delete&id_e=${_id_e}&name_e=${_name_e}`);
+        
         }
-    };
-    xhttp.open("POST", "./index.php?controller=Item&action=delete", true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send(`id_i=${_id_i}&request=delete&name_i=${_name_i}`);
-    
-    }

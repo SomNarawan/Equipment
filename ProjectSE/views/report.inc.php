@@ -9,7 +9,7 @@ try {
 require_once Router::getSourcePath()."inc/helper_func.inc.php";
 
 // เก็บข้อมูลจากสิ่งที่ controller เตรียมไว้ให้
-$products = $_SESSION['productList'];
+// $products = $_SESSION['productList'];
 
 // เริ่มต้นการเขียน view
 $title = "Type";

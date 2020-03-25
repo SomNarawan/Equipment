@@ -68,6 +68,11 @@ class MemberController {
     private function menu_confirm(){
         session_start();
         if ($_SESSION['member'] !== null){
+            // print_r($_SESSION['member']);
+            $count_student = Confirm::Count_student($_SESSION['member']->getId_u());
+            $count_confirm = Confirm::Count_confirm($_SESSION['member']->getId_u());
+            $confirmList = Confirm::findAll($_SESSION['member']->getId_u());
+            // print_r($confirmList);
             include Router::getSourcePath()."views/confirm/confirm.inc.php";
         }
         else {
@@ -97,6 +102,9 @@ class MemberController {
     private function menu_borrowingST(){
         session_start();
         if ($_SESSION['member'] !== null){
+
+            $count_equipment = Borrowing::Count_equipment($_SESSION['member']->getId_u());
+            $borrowingList = Borrowing::FindAll($_SESSION['member']->getId_u());
             include Router::getSourcePath()."views/borrowing/borrowing.inc.php";
         }
         else {
@@ -124,6 +132,11 @@ class MemberController {
     private function menu_equipmentST(){
         session_start();
         if ($_SESSION['member'] !== null){
+
+            $count_type = Equipment::Count_type();
+            $count_equipment = Equipment::Count_equipment();
+            $count_item = Equipment::Count_item();
+            $equipmentList = Equipment::findAll();
             include Router::getSourcePath()."views/equipment/equipment.inc.php";
         }
         else {
@@ -135,8 +148,10 @@ class MemberController {
         if ($_SESSION['member'] !== null){
             $typeList = Type::findAll();
             // print_r($typeList);
+            $count_type = Equipment::Count_type();
+            $count_equipment = Equipment::Count_equipment();
+            $count_item = Equipment::Count_item();
             $equipmentList = Equipment::findAll();
-            $itemList=Item::findAll();
             include Router::getSourcePath()."views/equipment/equipmentOperator.inc.php";
         }
         else {
@@ -146,6 +161,7 @@ class MemberController {
     private function menu_type(){
         session_start();
         if ($_SESSION['member'] !== null){
+            $count_type = Type::Count_type();
             $typeList = Type::findAll();
             include Router::getSourcePath()."views/type/type.inc.php";
 
@@ -158,9 +174,18 @@ class MemberController {
         $member = Member::findByAccount($username,$password) ;
         if ($member !== null){
             session_start();
+            // print_r($member);
             $_SESSION['member'] = $member;
+            $count_type = Equipment::Count_type();
+            $count_equipment = Equipment::Count_equipment();
+            $count_item = Equipment::Count_item();
+            $equipmentList = Equipment::findAll();
             $typeList = Type::findAll();
-            include Router::getSourcePath()."views/type/type.inc.php";
+            if($member->getRole() == 'o')
+                include Router::getSourcePath()."views/type/type.inc.php";
+            if($member->getRole() == 't' || $member->getRole() == 's')
+                include Router::getSourcePath()."views/equipment/equipment.inc.php";
+
         }
         else {
             header("Location: ".Router::getSourcePath()."index.php?msg=invalid user");

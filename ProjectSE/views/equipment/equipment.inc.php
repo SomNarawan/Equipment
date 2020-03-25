@@ -9,10 +9,10 @@ try {
 require_once Router::getSourcePath()."inc/helper_func.inc.php";
 
 // เก็บข้อมูลจากสิ่งที่ controller เตรียมไว้ให้
-$products = $_SESSION['productList'];
+// $products = $_SESSION['productList'];
 
 // เริ่มต้นการเขียน view
-$title = "Type";
+$title = "Equipment";
 ob_start();
 
 ?>
@@ -41,7 +41,7 @@ ob_start();
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">จำนวนหมวดอุปกรณ์
                                 (หมวด)
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">2 หมวด</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $count_type; ?> หมวด</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -60,7 +60,7 @@ ob_start();
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">จำนวนอุปกรณ์
                                 (อุปกรณ์)
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">5 อุปกรณ์</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $count_equipment; ?> อุปกรณ์</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -79,7 +79,7 @@ ob_start();
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">จำนวนอุปกรณ์ทั้งหมด
                                 (ชิ้น)
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">22 ชิ้น</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $count_item; ?> ชิ้น</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -107,6 +107,7 @@ ob_start();
                                 <th>รายละเอียด</th>
                                 <th>จำนวนอุปกรณ์</th>
                                 <th>ถูกยืม</th>
+                                <th>ยืมไม่ได้</th>
                                 <th>คงเหลือ</th>
                             </tr>
                         </thead>
@@ -117,51 +118,24 @@ ob_start();
                                 <th>รายละเอียด</th>
                                 <th>จำนวนอุปกรณ์</th>
                                 <th>ถูกยืม</th>
+                                <th>ยืมไม่ได้</th>
                                 <th>คงเหลือ</th>
                             </tr>
 
                         </tfoot>
                         <tbody>
+                            <?php
+                            foreach ($equipmentList as $prod) { ?>
                             <tr>
-                                <td>เมาส์</td>
-                                <td>คอมพิวเตอร์</td>
-                                <td>Logitec</td>
-                                <td><a href="#">4</a></td>
-                                <td><a href="#">1</a></td>
-                                <td><a href="#">3</a></td>
+                                <td><?= $prod->getName_e(); ?></td>
+                                <td><?= $prod->getName_t(); ?></td>
+                                <td><?= $prod->getNote(); ?></td>
+                                <td><a href="#"><?= $prod->getCount_equipment(); ?></a></td>
+                                <td><a href="#"><?= $prod->getCount_lend_equipment(); ?></a></td>
+                                <td><a href="#"><?= $prod->getCount_no_equipment(); ?></a></td>
+                                <td><a href="#"><?= $prod->getCount_remain_equipment(); ?></a></td>
                             </tr>
-                            <tr>
-                                <td>จอ</td>
-                                <td>คอมพิวเตอร์</td>
-                                <td>DELL</td>
-                                <td><a href="#">5</a></td>
-                                <td><a href="#">0</a></td>
-                                <td><a href="#">5</a></td>
-                            </tr>
-                            <tr>
-                                <td>โน๊ตบุ๊ค</td>
-                                <td>คอมพิวเตอร์</td>
-                                <td>ACER</td>
-                                <td><a href="#">6</a></td>
-                                <td><a href="#">0</a></td>
-                                <td><a href="#">6</a></td>
-                            </tr>
-                            <tr>
-                                <td>andriod</td>
-                                <td>โทรศัพท์</td>
-                                <td>OPPO A 38</td>
-                                <td><a href="#">5</a></td>
-                                <td><a href="#">2</a></td>
-                                <td><a href="#">3</a></td>
-                            </tr>
-                            <tr>
-                                <td>IOS</td>
-                                <td>โทรศัพท์</td>
-                                <td>Iphone 6</td>
-                                <td><a href="#">2</a></td>
-                                <td><a href="#">0</a></td>
-                                <td><a href="#">2</a></td>
-                            </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>

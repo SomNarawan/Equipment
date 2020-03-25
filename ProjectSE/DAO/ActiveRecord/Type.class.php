@@ -15,10 +15,10 @@ class Type {
     private const TABLE = "type";
 
     //----------- Getters & Setters
-    public function getId_t():int {
+    public function getId_t(){
         return $this->id_t;
     }
-    public function setId_t(int $id) {
+    public function setId_t($id) {
         $this->id_t = $id;
     }
     public function getName_t()
@@ -32,14 +32,25 @@ class Type {
     public function getNote(){
         return $this->note;
     }
-    public function setNote(string $note) {
+    public function setNote($note) {
         $this->note = $note;
     }
-    public function getCount_equipment(): int {
+    public function getCount_equipment(){
         return $this->count_equipment;
     }
-    public function setCount_equipment(int $count) {
+    public function setCount_equipment($count) {
         $this->count_equipment = $count;
+    }
+    public static function Count_type(){
+        $con = Db::getInstance();
+        $query = "SELECT COUNT(*) AS count_type FROM type";
+        // $query = "SELECT * FROM ".self::TABLE;
+        $stmt = $con->query($query);
+        while ($row = $stmt->fetch()) {
+            $count_type= $row['count_type'];
+        }
+        
+        return $count_type;
     }
     //----------- CRUD
     public static function findAll(): array {

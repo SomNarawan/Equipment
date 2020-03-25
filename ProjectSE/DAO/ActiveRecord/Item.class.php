@@ -11,31 +11,37 @@ class Item {
     private $id_i;
     private $note;
     private $id_e;
+    private $name_e;
     private $status_i;
     private const TABLE = "item";
 
     //----------- Getters & Setters
-
-
-    public function getId_i():string {
+    
+    public function getId_i(){
         return $this->id_i;
     }
     public function setId_i($id) {
         $this->id_i = $id;
     }
-    public function getNote():string {
+    public function getName_e() {
+        return $this->id_i;
+    }
+    public function setName_e($name_e) {
+        $this->name_e = $name_e;
+    }
+    public function getNote() {
         return $this->note;
     }
     public function setNote($note) {
         $this->note = $note;
     }
-    public function getId_e():int {
+    public function getId_e(){
         return $this->id_i;
     }
     public function setId_e($id) {
         $this->id_e = $id;
     }
-    public function getStatus_i():string {
+    public function getStatus_i(){
         return $this->status_i;
     }
     public function setStatus_i($status_i) {
@@ -45,11 +51,12 @@ class Item {
 
    
     //----------- CRUD
-    public static function findAll(): array {
-        echo "dsssscscsscscs";
+    public static function findAll(int $id_e): array {
         $con = Db::getInstance();
-        $id_e=$_GET['id_e'];
-        $query = "SELECT item.id_i ,item.note ,item.id_e ,CASE item.status_i WHEN '1' THEN 'ยืมได้' WHEN '2' THEN 'ถูกยืม' ELSE 'ยืมไม่ได้' END AS status_i FROM item WHERE item.id_e=$id_e";
+        $query = "SELECT item.id_i ,item.note ,item.id_e,equipment.name_e ,item.status_i FROM item 
+        INNER JOIN equipment
+        ON item.id_e = equipment.id_e
+        WHERE item.id_e=$id_e";
         // $query = "SELECT * FROM ".self::TABLE;
         $stmt = $con->prepare($query);
         $stmt->setFetchMode(PDO::FETCH_CLASS, "Item");
@@ -78,12 +85,12 @@ class Item {
         $con = Db::getInstance();
         $values = "";
         foreach ($this as $prop => $val) {
-            if($prop != "name_e" && $prop != "id_e")
-                $values .= "'$val',";
+        if($prop != "name_e")
+            $values .= "'$val',";
         }
-        print_r($values);
+        //print_r($values);
         $values = substr($values,0,-1);
-        print_r($values);
+        //print_r($values);
 
         $query = "INSERT INTO ".self::TABLE." VALUES ($values)";
         //echo $query;
@@ -95,8 +102,8 @@ class Item {
     public function update() {
         $query = "UPDATE ".self::TABLE." SET ";
         foreach ($this as $prop => $val) {
-            if($prop != "name_e" && $prop != "id_e")
-                $query .= " $prop='$val',";
+        if($prop != "name_e")
+            $query .= " $prop='$val',";
         }
         $query = substr($query, 0, -1);
         //echo $query;
@@ -107,7 +114,8 @@ class Item {
     }
     public function delete() {
         $con = Db::getInstance();
-        $query = "DELETE FROM ".self::TABLE." WHERE id_i = ".$this->getId_i();
+        //$query = "DELETE FROM ".self::TABLE." WHERE id_i = ".$this->getId_i();
+        $query = "DELETE FROM item WHERE id_i = ".$this->getId_i();
         $res = $con->exec($query);
         return $res;
     }

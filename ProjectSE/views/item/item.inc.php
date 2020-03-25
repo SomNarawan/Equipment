@@ -23,7 +23,7 @@ ob_start();
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800"><?php echo $name_e ?></h1>
+        <h1 class="h3 mb-0 text-gray-800">อุปกรณ์ : <?php echo $name_e ?></h1>
         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
     </div>
@@ -52,7 +52,8 @@ ob_start();
 
         <!-- Pending Requests Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2" id="addItem" style="cursor:pointer;">
+            <div class="card border-left-success shadow h-100 py-2" id="addItem" id_e="<?php echo $id_e; ?>"
+                style="cursor:pointer;">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
@@ -94,43 +95,33 @@ ob_start();
 
                         </tfoot>
                         <tbody>
-                        
+
                             <?php
                             foreach ($itemList as $prod) { ?>
                             <tr>
                                 <td><?= $prod->getId_i(); ?></td>
                                 <td><?= $prod->getNote(); ?></td>
-                                <td><a href="#"><?= $prod->getStatus_i(); ?></a></td>
                                 <td>
-                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip"
-                                        titile=" แก้ไข"><i class="fas fa-edit"></i></button>
-                                    <button type="button" class="tt btn btn-danger btn-sm" data-toggle="tooltip"
-                                        titile="ลบ"><i class="fas fa-trash"></i></button>
-                                </td>   
+                                        <?php if($prod->getStatus_i() == 1)
+                                    echo "ยืมได้";
+                                if($prod->getStatus_i() == 2)
+                                    echo "<a href='#'>ถูกยืม</a>";
+                                if($prod->getStatus_i() == 3)
+                                    echo "ยืมไม่ได้"; ?>
+                                    </td>
+                                <td>
+                                    <button type="button" class="tt editItem btn btn-warning btn-sm"
+                                        data-toggle="tooltip" titile=" แก้ไข"
+                                        id="<?= $prod->getId_i(); ?>" id_i="<?= $prod->getId_i(); ?>"
+                                            id_e="<?= $id_e; ?>" note="<?= $prod->getNote(); ?>"
+                                            status_i="<?= $prod->getStatus_i(); ?>">
+                                        <i class="fas fa-edit"></i></button>
+                                    <button type="button" class="tt btn btn-danger btn-sm"
+                                        onclick="delfunction('<?= $id_e; ?>','<?= $prod->getId_i(); ?>','<?= $name_e; ?>')" 
+                                        data-toggle="tooltip" titile="ลบ"><i class="fas fa-trash"></i></button>
+                                </td>
                             </tr>
                             <?php } ?>
-                            <tr>
-                                <td>เมาส์</td>
-                                <td>คอมพิวเตอร์</td>
-                                <td><a href="#">4</a></td>
-                                <td>
-                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip"
-                                        titile=" แก้ไข"><i class="fas fa-edit"></i></button>
-                                    <button type="button" class="tt btn btn-danger btn-sm" data-toggle="tooltip"
-                                        titile="ลบ"><i class="fas fa-trash"></i></button>
-                                </td>   
-                            </tr>
-                            <tr>
-                                <td>เมาส์</td>
-                                <td>คอมพิวเตอร์</td>
-                                <td><a href="#">4</a></td>
-                                <td>
-                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip"
-                                        titile=" แก้ไข"><i class="fas fa-edit"></i></button>
-                                    <button type="button" class="tt btn btn-danger btn-sm" data-toggle="tooltip"
-                                        titile="ลบ"><i class="fas fa-trash"></i></button>
-                                </td>   
-                            </tr>
                         </tbody>
                     </table>
                 </div>
