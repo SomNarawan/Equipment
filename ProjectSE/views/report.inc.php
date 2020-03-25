@@ -78,8 +78,8 @@ ob_start();
                         <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Mount (เดือนที่ต้องการสืบค้น)</div>
                         <div class="row no-gutters align-items-center">
                             <div class="col-auto">
-                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><p>กรุณาเลือก เดือน ในการสืบค้นสถิติ
-                        <label for="Mount"> : </lable>
+                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><p>กรุณาเลือก เดือน ในการสืบค้น
+                        <label for="Mount">:</lable>
                         <select class="form-control" id="Mount">
                             <option value="01">(1) January</option>
                             <option value="02">(2) February</option>
@@ -120,12 +120,11 @@ ob_start();
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">DISPLAY HISTORY INFO :</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">
-                        <p>กดปุ่มเพื่อดำเนินการ. <button class="form-control" type="button" onclick="myFunction()">ค้นหา
-                        
+                        <p>กดปุ่มเพื่อดำเนินการ <button class="form-control" type="button" onclick="myFunction()">ค้นหา
                         </button></p>
-                         กลุ่มค้นหา :<p id="showTypeAt1" > </p>
-                         สถิติของปี :<p id="showYearAt1" > </p>
-                         สถิติของเดือน :<p id="showMountAt1" > </p>
+                         กลุ่มค้นหา :<p class="text-primary" id="showTypeAt1" > </p>
+                         สถิติของปี :<p class="text-primary" id="showYearAt1" > </p>
+                         สถิติของเดือน :<p class="text-primary" id="showMountAt1" > </p>
                          
                         </div>
                     </div>
@@ -151,7 +150,7 @@ ob_start();
             <canvas id="myBarChartAll"></canvas>
         </div>
         <hr>
-        จำนวนชนิดสิ่งของที่มี <code> ทั้งหมด </code> ****
+        จำนวนสิ่งของที่มี <code> ทั้งหมด </code> ตามชนิดอุปกรณ์
     </div>
 
 </div>
@@ -185,7 +184,7 @@ ob_start();
                 <div class="chart-bar">
                     <canvas id="myBarChartMount"></canvas></div>
                 <hr>
-                ประวัติการยืม  <code>รายเดือน</code> จากในปีที่ค้นหา
+                ประวัติการยืม  <code> รายเดือน </code> จากใน <code>ปี</code> ที่ค้นหา
             </div>
         </div>
     </div>
@@ -197,14 +196,14 @@ ob_start();
     <div class="col-xl-6 col-md-6 mb-6">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">สถิติประวัติการยืมสูงสุด-ต่ำสุด</h6>
+                <h6 class="m-0 font-weight-bold text-primary">สถิติประวัติการยืมสูงสุด 3 ลำดับแรก</h6>
             </div>
             <div class="card-body">
                 <div class="chart-bar">
                     <canvas id="myBarChartHigh"></canvas>
                 </div>
                 <hr>
-                Top <code> ยืมสูงสุด </code> x ตัว
+                Top <code> ยืมสูงสุด </code> 3 ลำดับ
             </div>
         </div>
     </div>
@@ -214,14 +213,14 @@ ob_start();
 
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">สถิติประวัติการยืมต่ำสุด-สูงสุด</h6>
+                <h6 class="m-0 font-weight-bold text-primary">สถิติประวัติการยืมต่ำสุด 3 ลำดับแรก</h6>
 
             </div>
             <div class="card-body">
                 <div class="chart-bar">
                     <canvas id="myBarChartLow"></canvas></div>
                 <hr>
-                Top  <code> ยืมสูงสุด </code> x ตัว
+                Top  <code> ยืมต่ำสุด </code> 3 ลำดับ
             </div>
         </div>
     </div>
