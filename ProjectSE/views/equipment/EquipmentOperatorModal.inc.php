@@ -36,8 +36,7 @@
 <!--Edit Modal -->
 <div class="modal fade" id="editEquipmentOperatorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
-    <form method="post" id="formEdit" name="formEdit" action="./index.php?controller=Equipment&action=update">
-        <div class="modal-dialog" role="document">
+v        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header" style="background-color:#4e73df;">
                     <h5 class="modal-title" id="exampleModalLabel" style="color:white">แก้ไขอุปกรณ์</h5>

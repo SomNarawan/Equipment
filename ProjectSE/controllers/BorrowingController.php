@@ -6,7 +6,7 @@
  * Time: 15:07
  */
 
-class BorrowController {
+class BorrowingController {
 
     /**
      * handleRequest จะทำการตรวจสอบ action และพารามิเตอร์ที่ส่งเข้ามาจาก Router
@@ -27,8 +27,6 @@ class BorrowController {
             case "logout":
                 $this->$action();
             case "insertGet":
-            case "insertReturn":
-            case "addBorrow":
             case "insert":
             case "delete":
             case "update":
@@ -42,82 +40,20 @@ class BorrowController {
 
     }
     private function insertGet(){
-        print_r($_POST);
-        $id_b = $_POST['id_b_get'];
-        $id_i = $_POST['id_i_get'];
+        $id_b = $_POST['id_b'];
+        $id_i = $_POST['id_i'];
         date_default_timezone_set('asia/bangkok');
         $dateTime_b = date('d-m-y h:i:s');
-        // print_r($dateTime_b );
-        $borrowing = new BorrowingO(); 
+        $borrowing = new Borrowing(); 
         $borrowing->setId_b($id_b);
         $borrowing->setId_i($id_i);
         $borrowing->setDateTime_b($dateTime_b);
         $borrowing->updateDateTimeB();
 
-        // $borrowList = BorrowingO::findAll();
+        $borrowList = BorrowingO::findAll();
 
-        header("Location: ".Router::getSourcePath()."index.php?controller=Member&action=menu_borrowingO");
+        include Router::getSourcePath()."views/borrowing/borrowingOperator.inc.php";
 
-        // include Router::getSourcePath()."views/borrowing/borrowingOperator.inc.php";
-
-    }
-    private function insertReturn(){
-        // print_r($_POST);
-        $id_b = $_POST['id_b_return'];
-        date_default_timezone_set('asia/bangkok');
-        $dateTime_r = date('d-m-y h:i:s');
-        // print_r($dateTime_r);
-        $borrowing = new BorrowingO(); 
-        $borrowing->setId_b($id_b);
-        $borrowing->setDateTime_r($dateTime_r);
-        $borrowing->updateDateTimeR();
-
-        // $borrowList = BorrowingO::findAll();
-
-        header("Location: ".Router::getSourcePath()."index.php?controller=Member&action=menu_borrowingO");
-
-        // include Router::getSourcePath()."views/borrowing/borrowingOperator.inc.php";
-
-    }
-    private function addBorrow(){
-        session_start();
-        if ($_SESSION['member'] !== null){
-            if($_POST['action'] == "add"){
-            $id_e = $_POST['id_e'];
-            $name_e = $_POST['name_e'];
-            $name_t = $_POST['name_t'];
-            $note = $_POST['note'];
-            $num = $_POST['num'];
-
-            $add_b = array();
-
-            $add_b['id_e'] = $id_e;
-            $add_b['name_e'] = $name_e;
-            $add_b['name_t'] = $name_t;
-            $add_b['note'] = $note;
-            $add_b['num'] = $num;
-
-            $_SESSION['equipment_borrow'][]= $add_b;
-            header('Content-Type: application/json');
-            echo json_encode($_SESSION['equipment_borrow']);
-            }else if($_POST['action'] == "del"){
-                $id_e = $_POST['id_e'];
-                $arr_ok = array();
-                foreach($_SESSION['equipment_borrow'] as $eq){
-                    // echo $eq['id_e'];
-                    if($eq['id_e'] != $id_e){
-                        // echo "yes ";
-                        $arr_ok[]=$eq;
-                    }
-                }
-                $_SESSION['equipment_borrow']= $arr_ok;
-                header('Content-Type: application/json');
-                echo json_encode($_SESSION['equipment_borrow']);
-            }
-        }
-        else {
-            header("Location: ".Router::getSourcePath()."index.php?msg=invalid user");
-        }
     }
     
     private function delete(){

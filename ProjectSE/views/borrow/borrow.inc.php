@@ -43,69 +43,15 @@ ob_start();
             <div class="card-body">
                 <div class="table-responsive">
                     <!-- <form method="post" action="./index.php?controller=Borrow&action=borrow"> -->
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th>อุปกรณ์</th>
-                                    <th>หมวดอุปกรณ์</th>
-                                    <th>รายละเอียด</th>
-                                    <th>คงเหลือ</th>
-                                    <th>จำนวน(ชิ้น)</th>
-                                    <th>เพิ่มการยืมอุปกรณ์</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>อุปกรณ์</th>
-                                    <th>หมวดอุปกรณ์</th>
-                                    <th>รายละเอียด</th>
-                                    <th>คงเหลือ</th>
-                                    <th>จำนวน(ชิ้น)</th>
-                                    <th>เพิ่มการยืมอุปกรณ์</th>
-                                </tr>
-
-                            </tfoot>
-                            <tbody>
-                                <?php
-                            foreach ($equipmentList as $prod) { ?>
-                                <tr>
-                                    <td><?= $prod->getName_e(); ?></td>
-                                    <td><?= $prod->getName_t(); ?></td>
-                                    <td><?= $prod->getNote(); ?></td>
-                                    <td><a href="#"><?= $prod->getCount_remain_equipment(); ?></a></td>
-                                    <td><input type='number' name='<?= $prod->getId_e(); ?>' id='<?= $prod->getId_e(); ?>' value='0' min='0' /></td>
-                                    <td><button type="submit" class="btn btn-success addBorrow" name="add_borrow" value="เพิ่ม"
-                                    id_e ="<?= $prod->getId_e(); ?>" name_e="<?= $prod->getName_e(); ?>" name_t="<?= $prod->getName_t(); ?>" 
-                                    note="<?= $prod->getNote(); ?>"
-                                            style="width:150px;">เพิ่ม</button>
-                                    </td>
-                                </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
-                    <!-- </form> -->
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div>
-        <!-- Content Row -->
-        <!-- DataTales Example -->
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">อุปกรณ์ที่ทำการยืม</h6>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>อุปกรณ์</th>
                                 <th>หมวดอุปกรณ์</th>
                                 <th>รายละเอียด</th>
+                                <th>คงเหลือ</th>
                                 <th>จำนวน(ชิ้น)</th>
-                                <th>จัดการ</th>
+                                <th>เพิ่มการยืมอุปกรณ์</th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -113,24 +59,83 @@ ob_start();
                                 <th>อุปกรณ์</th>
                                 <th>หมวดอุปกรณ์</th>
                                 <th>รายละเอียด</th>
+                                <th>คงเหลือ</th>
                                 <th>จำนวน(ชิ้น)</th>
-                                <th>จัดการ</th>
+                                <th>เพิ่มการยืมอุปกรณ์</th>
                             </tr>
 
                         </tfoot>
-                        <tbody id="borrow_e">
-                            
+                        <tbody>
+                            <?php
+                            foreach ($equipmentList as $prod) { ?>
+                            <tr>
+                                <td><?= $prod->getName_e(); ?></td>
+                                <td><?= $prod->getName_t(); ?></td>
+                                <td><?= $prod->getNote(); ?></td>
+                                <td><a href="#"><?= $prod->getCount_remain_equipment(); ?></a></td>
+                                <td><input type='number' name='<?= $prod->getId_e(); ?>' id='<?= $prod->getId_e(); ?>'
+                                        value='0' min='0' /></td>
+                                <td><button type="submit" class="btn btn-success addBorrow" name="add_borrow"
+                                        value="เพิ่ม" id_e="<?= $prod->getId_e(); ?>"
+                                        name_e="<?= $prod->getName_e(); ?>" name_t="<?= $prod->getName_t(); ?>"
+                                        note="<?= $prod->getNote(); ?>" style="width:150px;">เพิ่ม</button>
+                                </td>
+                            </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
+                    <!-- </form> -->
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- /.container-fluid -->
-<div align="center">
-    <button type="button" class="btn btn-success" style="width:150px;">ยืนยัน</button>
-    <button type="button" class="btn btn-danger" style="width:150px;">ยกเลิก</button>
+
+    <form method="post" id="formBorrow" name="formBorrow" action="./index.php?controller=Borrow&action=insert">
+
+        <div>
+            <!-- Content Row -->
+            <!-- DataTales Example -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">อุปกรณ์ที่ทำการยืม</h6>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>อุปกรณ์</th>
+                                    <th>หมวดอุปกรณ์</th>
+                                    <th>รายละเอียด</th>
+                                    <th>จำนวน(ชิ้น)</th>
+                                    <th>จัดการ</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>อุปกรณ์</th>
+                                    <th>หมวดอุปกรณ์</th>
+                                    <th>รายละเอียด</th>
+                                    <th>จำนวน(ชิ้น)</th>
+                                    <th>จัดการ</th>
+                                </tr>
+
+                            </tfoot>
+                            <tbody id="borrow_e">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- /.container-fluid -->
+        <div align="center">
+            <button type="button" class="btn btn-success" style="width:150px;">ยืนยัน</button>
+            <button type="button" class="btn btn-danger" style="width:150px;">ยกเลิก</button>
+        </div>
+    </form>
 </div>
 </br>
 

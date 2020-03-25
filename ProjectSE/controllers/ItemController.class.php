@@ -27,6 +27,7 @@ class ItemController {
                 break;
             case "logout":
                 $this->$action();
+            case "pull":
             case "insert":
             case "delete":
             case "update":
@@ -38,6 +39,18 @@ class ItemController {
                 break;
         }
 
+    }
+    private function pull(){
+        $id_e = $_POST["id_e"];
+        $itemList = Item::findAllItem($id_e);
+        $i = array();
+        foreach($itemList as $prod){
+            $i[] = $prod->getId_e();
+        }
+        header('Content-Type: application/json');
+        echo json_encode($i);
+        // print_r($i);
+        // print_r($itemList );
     }
     private function delete(){
         session_start();
