@@ -22,11 +22,11 @@ ob_start();
 <div class="row">
     <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card border-left-warning shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Group (กลุ่มที่ต้องการสืบค้น)</div>
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Group (กลุ่มที่ต้องการสืบค้น)</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800"><p>กรุณาเลือก กลุ่ม ในการสืบค้นสถิติ
                         <label for="typeUser"> : </lable>
                         <select  class="form-control" id="typeUser"> 
@@ -54,7 +54,7 @@ ob_start();
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Year (ปีที่ต้องการสืบค้น)</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800"><p>กรุณาเลือก ปี ในการสืบค้นสถิติ
                         <label for="Year"> : </lable>
-                        <select id="Year">
+                        <select class="form-control" id="Year">
                             <option value="2020">ปี 2563</option>
                             <option value="2019">ปี 2562</option>
                             <option value="2018">ปี 2561</option>
@@ -80,7 +80,7 @@ ob_start();
                             <div class="col-auto">
                                 <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><p>กรุณาเลือก เดือน ในการสืบค้นสถิติ
                         <label for="Mount"> : </lable>
-                        <select id="Mount">
+                        <select class="form-control" id="Mount">
                             <option value="01">(1) January</option>
                             <option value="02">(2) February</option>
                             <option value="03">(3) March</option>
@@ -114,13 +114,13 @@ ob_start();
 
     <!-- Pending Requests Card Example -->
     <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-warning shadow h-100 py-2">
+        <div class="card border-left-primary shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">DISPLAY HISTORY INFO :</div>
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">DISPLAY HISTORY INFO :</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">
-                        <p>กดปุ่มเพื่อดำเนินการ. <button type="button" onclick="myFunction()">ค้นหา
+                        <p>กดปุ่มเพื่อดำเนินการ. <button class="form-control" type="button" onclick="myFunction()">ค้นหา
                         
                         </button></p>
                          กลุ่มค้นหา :<p id="showTypeAt1" > </p>
