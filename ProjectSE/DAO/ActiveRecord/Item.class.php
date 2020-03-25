@@ -107,7 +107,7 @@ class Item {
         }
         $query = substr($query, 0, -1);
         //echo $query;
-        $query .= " WHERE id_i = ".$this->getId_i();
+        $query .= " WHERE id_i = '".$this->getId_i()."'";
         $con = Db::getInstance();
         $res = $con->exec($query);
         return $res;
@@ -115,7 +115,7 @@ class Item {
     public function delete() {
         $con = Db::getInstance();
         //$query = "DELETE FROM ".self::TABLE." WHERE id_i = ".$this->getId_i();
-        $query = "DELETE FROM item WHERE id_i = ".$this->getId_i();
+        $query = "DELETE FROM item WHERE id_i = '".$this->getId_i()."'";
         $res = $con->exec($query);
         return $res;
     }

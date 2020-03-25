@@ -5,23 +5,46 @@ $( document ).ready(function() {
     $('#addItem').click(function(){
         console.log("hh");
         var id_e = $(this).attr('id_e');
+        var name_e = $(this).attr('name_e');
+
         //alert(id_e);
         $("#id_e_add").val(id_e);
+        $("#name_e_add").val(name_e);
         $("#addItemModal").modal();
     });
     $('.editItem').click(function(){
         $("#editItemModal").modal();
         var id_i = $(this).attr('id_i');
         var note = $(this).attr('note');
+        var name_e = $(this).attr('name_e');
+
         //alert(note);
         var id_e = $(this).attr('id_e');
         //alert(id_e)
         var status_i = $(this).attr('status_i');
-        // document.getElementById("name_e_edit").value = name_t;
+        // alert(status_i);
+        $("#name_e_edit").val(name_e);
         $("#id_i_edit").val(id_i);
         $("#note_edit").val(note);
         $("#id_e_edit").val(id_e);
-        $("#status_i_edit").val(status_i); //.attr("selected","selected");   
+        $("#id_i_e").val(id_i);
+
+        if(status_i == 1){
+            document.getElementById("1_edit").disabled = false;
+            $('input:radio[name="status_i_edit"][value="1"]').prop('checked', true);
+            document.getElementById("3_edit").disabled = false;
+
+        }else if(status_i == 2){
+            document.getElementById("1_edit").disabled = true;
+            $('input:radio[name="status_i_edit"][value="2"]').prop('checked', true);
+            document.getElementById("3_edit").disabled = true;
+
+        }else{
+            document.getElementById("1_edit").disabled = false;
+            $('input:radio[name="status_i_edit"][value="3"]').prop('checked', true);
+            document.getElementById("3_edit").disabled = false;
+
+        }
     });
     $('#addI').click(function(){
         // alert("ass");

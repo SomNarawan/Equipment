@@ -52,7 +52,7 @@ ob_start();
 
         <!-- Pending Requests Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2" id="addItem" id_e="<?php echo $id_e; ?>"
+            <div class="card border-left-success shadow h-100 py-2" id="addItem" id_e="<?php echo $id_e; ?>" name_e="<?php echo $name_e; ?>"
                 style="cursor:pointer;">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -103,17 +103,17 @@ ob_start();
                                 <td><?= $prod->getNote(); ?></td>
                                 <td>
                                         <?php if($prod->getStatus_i() == 1)
-                                    echo "ยืมได้";
+                                    echo "<div style='color:green'>ยืมได้</div>";
                                 if($prod->getStatus_i() == 2)
                                     echo "<a href='#'>ถูกยืม</a>";
                                 if($prod->getStatus_i() == 3)
-                                    echo "ยืมไม่ได้"; ?>
+                                    echo "<div style='color:red'>ยืมไม่ได้</div>"; ?>
                                     </td>
                                 <td>
                                     <button type="button" class="tt editItem btn btn-warning btn-sm"
                                         data-toggle="tooltip" titile=" แก้ไข"
                                         id="<?= $prod->getId_i(); ?>" id_i="<?= $prod->getId_i(); ?>"
-                                            id_e="<?= $id_e; ?>" note="<?= $prod->getNote(); ?>"
+                                            id_e="<?= $id_e; ?>" name_e="<?= $name_e; ?>" note="<?= $prod->getNote(); ?>"
                                             status_i="<?= $prod->getStatus_i(); ?>">
                                         <i class="fas fa-edit"></i></button>
                                     <button type="button" class="tt btn btn-danger btn-sm"

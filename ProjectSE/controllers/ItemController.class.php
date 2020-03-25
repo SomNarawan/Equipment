@@ -63,7 +63,8 @@ class ItemController {
         //echo "testtt";
         session_start();
         if ($_SESSION['member'] !== null){
-            //print_r($_POST);
+            print_r($_POST);
+            $name_e = $_POST['name_e_add'];
             $id_i = $_POST['id_i_add'];
             $note=$_POST['note_add'];
             $id_e=$_POST['id_e_add'];
@@ -72,7 +73,7 @@ class ItemController {
             $item->setId_i($id_i);
             $item->setNote($note);
             $item->setId_e($id_e);
-            $item->set($status_i);
+            $item->setStatus_i($status_i);
             // echo $type->getName_t();
             $item->insert();
             $itemList = Item::findAll($id_e);
@@ -90,16 +91,17 @@ class ItemController {
         //echo "this";
         session_start();
         if ($_SESSION['member'] !== null){
-            //print_r($_POST);
-            $id_i = $_POST['id_i_add'];
-            $note=$_POST['note_add'];
-            $id_e=$_POST['id_e'];
-            $status_i = $_POST['status_i_add'];
+            print_r($_POST);
+            $name_e = $_POST['name_e_edit'];
+            $id_i = $_POST['id_i_e'];
+            $note=$_POST['note_edit'];
+            $id_e=$_POST['id_e_edit'];
+            $status_i = $_POST['status_i_edit'];
             $item = new Item(); 
             $item->setId_i($id_i);
             $item->setNote($note);
             $item->setId_e($id_e);
-            $item->set($status_i);
+            $item->setStatus_i($status_i);
             // echo $equipment->getName_e();
             $item->update();
             $itemList = Item::findAll($id_e);
