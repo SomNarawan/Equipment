@@ -121,6 +121,7 @@ ob_start();
                                 <th>รายละเอียด</th>
                                 <th>จำนวนอุปกรณ์</th>
                                 <th>ถูกยืม</th>
+                                <th>ยืมไม่ได้</th>
                                 <th>คงเหลือ</th>
                                 <th>จัดการ</th>
                             </tr>
@@ -132,6 +133,7 @@ ob_start();
                                 <th>รายละเอียด</th>
                                 <th>จำนวนอุปกรณ์</th>
                                 <th>ถูกยืม</th>
+                                <th>ยืมไม่ได้</th>
                                 <th>คงเหลือ</th>
                                 <th>จัดการ</th>
                             </tr>
@@ -146,6 +148,7 @@ ob_start();
                                 <td><?= $prod->getNote(); ?></td>
                                 <td><a href="#"><?= $prod->getCount_equipment(); ?></a></td>
                                 <td><a href="#"><?= $prod->getCount_lend_equipment(); ?></a></td>
+                                <td><a href="#"><?= $prod->getCount_no_equipment(); ?></a></td>
                                 <td><a href="#"><?= $prod->getCount_remain_equipment(); ?></a></td>
                                 <td>
                                     <button type="button" class="btn btn-info btn-sm item" data-toggle="tooltip"

@@ -31,16 +31,16 @@
     <li class="nav-item active">
         <a class="nav-link" href="<?= Router::getSourcePath()."index.php?controller=Member&action=menu_borrowingO" ?>">
             <i class="fas fa-fw fa-table"></i>
-            <span>การยืม</span></a>
+            <span>การยืมทั้งหมด</span></a>
     </li>
     <li class="nav-item active">
-        <a class="nav-link" href="<?= Router::getSourcePath()."index.php?controller=Member&action=menu_borrow" ?>">
+        <a class="nav-link" href="<?= Router::getSourcePath()."index.php?controller=Member&action=menu_borrowingST" ?>">
             <i class="fas fa-fw fa-table"></i>
-            <span>ยืม</span></a>
+            <span>การยืมของฉัน</span></a>
     </li>
     <li class="nav-item active">
         <a class="nav-link" href="<?= Router::getSourcePath()."index.php?controller=Member&action=menu_report" ?>">
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fas fa-fw fa-chart-area"></i>
             <span>รายงานสถิติ</span></a>
     </li>
     <?php } 
