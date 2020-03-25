@@ -152,8 +152,8 @@ ob_start();
                                 <td>
                                     <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip"
                                         titile="รายละเอียด"><i class="fas fa-list"></i></button>
-                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip"
-                                        titile="ลบ"><i class="fas fa-trash"></i></button>
+                                    <!-- <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip"
+                                        titile="ลบ"><i class="fas fa-trash"></i></button> -->
                                 </td>
                             </tr>
                             <?php } ?>
