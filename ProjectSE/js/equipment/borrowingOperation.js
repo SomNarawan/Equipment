@@ -6,9 +6,10 @@ $( document ).ready(function() {
         var name_e = $(this).attr('name_e');
         var id_b = $(this).attr('id_b');
         var id_i = $(this).attr('id_i');
-
+        // alert(id_i);
         $("#name_e_return").val(name_e);
         $("#id_i_return").val(id_i);
+        $("#id_i_r").val(id_i);
         $("#id_b_return").val(id_b);
         $("#returnEquipmentModal").modal();
 
@@ -18,17 +19,17 @@ $( document ).ready(function() {
 
     });
     $('.editId_i').click(function(){
-
+        console.log("editI")
         var id_e = $(this).attr('id_e');
-        var id_i = $(this).attr('id_i');
 
         var name_e = $(this).attr('name_e');
-        alert(name);
         var id_b = $(this).attr('id_b');
+        var id_i = $(this).attr('id_i');
+        console.log(id_i);
 
         $("#name_e_edit").val(name_e);
         $("#id_b_edit").val(id_b);
-
+        $('#id_i_edit').val(id_i);
 
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
@@ -44,19 +45,23 @@ $( document ).ready(function() {
                 for(o in obj){
                     show += "<option value='"+obj[o]+"'>"+obj[o]+"</option>";
                 }
-                $('#id_i_get').html(show);
+                $('#id_i_edit').html(show);
 
-                $('#id_i_get').val(id_i);
+                $('#id_i_edit').val(id_i);
 
 
             }
         };
-        xhttp.open("POST", "./index.php?controller=Item&action=pull", true);
+        xhttp.open("POST", "./index.php?controller=Item&action=pullAll", true);
         xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
         xhttp.send(`id_e=${id_e}`);
     
        
-        $("#getEquipmentModal").modal();
+        $("#editId_iModal").modal();
+
+    });
+    $('#editEqu').click(function(){
+        $('#editEqu').attr("type","submit");
 
     });
 

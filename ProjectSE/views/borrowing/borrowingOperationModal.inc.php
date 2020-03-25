@@ -25,7 +25,7 @@
                 <input type="hidden" id="id_b_edit" name="id_b_edit" class="form-control"></input>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
-                    <button type="button" id="getEqu" class="btn btn-success">บันทึก</button>
+                    <button type="button" id="editEqu" class="btn btn-success">บันทึก</button>
                 </div>
             </div>
         </div>
@@ -87,6 +87,8 @@
 
                 </div>
                 <input type="hidden" id="id_b_return" name="id_b_return" class="form-control"></input>
+                <input type="hidden" id="id_i_r" name="id_i_r" class="form-control"></input>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
                     <button type="button" id="returnEqu" class="btn btn-success">บันทึก</button>

@@ -179,6 +179,12 @@ class BorrowingO {
         $query .= " WHERE id_b = ".$this->getId_b();
         $con = Db::getInstance();
         $res = $con->exec($query);
+
+        $query = "UPDATE item SET item.status_i = 2 WHERE id_i = '".$this->getId_i()."'";
+        echo $query;
+        $con = Db::getInstance();
+        $res = $con->exec($query);
+
         return $res;
     }
     public function updateDateTimeR() {
@@ -189,6 +195,11 @@ class BorrowingO {
         }
         $query = substr($query, 0, -1);
         $query .= " WHERE id_b = ".$this->getId_b();
+        $con = Db::getInstance();
+        $res = $con->exec($query);
+
+        $query = "UPDATE item SET item.status_i = 1 WHERE id_i = '".$this->getId_i()."'";
+        echo $query;
         $con = Db::getInstance();
         $res = $con->exec($query);
         return $res;

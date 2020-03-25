@@ -130,15 +130,7 @@ ob_start();
                                 <td><?= $prod->getUsername(); ?></td>
                                 <td><?= $prod->getTitile()." ".$prod->getName()." ".$prod->getSurname(); ?></td>
                                 <td><?= $prod->getName_e(); ?></td>
-                                <td><?= $prod->getId_i(); ?>
-                                    <?php  if($prod->getId_i() != null){ ?>
-                                    <button type="button" class="btn btn-warning btn-sm editId_i" data-toggle="tooltip"
-                                        titile="แก้ไข" id_b='<?= $id_b; ?>' id_e='<?= $id_e; ?>' 
-                                        name_e = '<?= $prod->getName_e(); ?>' id_i = <?= $id_i; ?>>
-                                        <i class="fas fa-edit"></i></button>
-                                    <?php } ?>
-
-                                </td>
+                                <td><?= $prod->getId_i(); ?></td>
                                 <td><?php
                                 if($prod->getDateTime_b() == null){
                                     echo "<button type='button' class='btn btn-success getEquipment' id_b='$id_b' id_e='$id_e' 
