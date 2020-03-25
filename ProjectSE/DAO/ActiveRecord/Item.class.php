@@ -68,6 +68,24 @@ class Item {
         }
         return $itemList;
     }
+    public static function findAllItem(int $id_e): array {
+        $con = Db::getInstance();
+        $query = "SELECT item.id_i ,item.note ,item.id_e,equipment.name_e ,item.status_i FROM item 
+        INNER JOIN equipment
+        ON item.id_e = equipment.id_e
+        WHERE item.status_i = 1 AND item.id_e=$id_e";
+        // $query = "SELECT * FROM ".self::TABLE;
+        $stmt = $con->prepare($query);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, "Item");
+        $stmt->execute();
+        $itemList  = array();
+        while ($prod = $stmt->fetch())
+        {
+            $itemList[$prod->getId_i()] = $prod;
+        }
+        return $itemList;
+    }
+    
     public static function findById(int $id): ?Item {
         $con = Db::getInstance();
         $query = "SELECT * FROM ".self::TABLE." WHERE id_i = $id";
