@@ -1,6 +1,6 @@
 <?php
 
-$db_name = "equipment"; 
+$db_name = "equipment_update"; 
 $mysql_username = "root";
 $mysql_password = "12345678";
 $server_name = "localhost";

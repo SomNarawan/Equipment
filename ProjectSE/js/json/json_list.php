@@ -5,7 +5,7 @@ $year = $_GET['id_year'];
 $mount = $_GET['id_mount'];
 $type = $_GET['id_type'];
 
-//-------------qry---ALL
+//-------------qry---ALL ยังใช้ได้อยู่ อัพเดต 25/3/63
 $mysql_qry = "SELECT equipment.name_e,COUNT(item.id_i) as numItem 
             FROM equipment JOIN item 
             WHERE item.id_e = equipment.id_e 
@@ -29,21 +29,31 @@ else
 
 if( $type == 'a')
 {
-    $mysql_qry_year = "SELECT t2.mountBorrow,COUNT(t2.mountBorrow) as numItem_y ,t2.id_equip,t2.name_e as name_e_y ,user.role  FROM(SELECT t1.mountBorrow ,t1.id_equip ,equipment.name_e,t1.id_u FROM(SELECT borrowing.id_u,borrowing.dateTime_b as mountBorrow,item.id_e as id_equip 
-FROM borrowing JOIN item ON item.id_i = borrowing.id_i )AS t1
-JOIN equipment ON equipment.id_e = t1.id_equip ) as t2 JOIN user ON user.id_u = t2.id_u
-WHERE t2.mountBorrow LIKE '$year%'
-GROUP BY t2.name_e
-ORDER BY t2.name_e";
+    $mysql_qry_year = "SELECT t4.dateTime_b,t4.name_e as name_e_y ,t4.id_u,user.role , COUNT(t4.dateTime_b) as numItem_y FROM
+    (SELECT t3.dateTime_b,t3.id_i,t3.name_e,t3.id_dc,t3.id_c,confirm.id_u FROM
+    (SELECT t2.dateTime_b,t2.id_i,t2.name_e,t2.id_dc,detailconfirm.id_c FROM 
+    (SELECT t1.dateTime_b,t1.id_i,equipment.name_e,t1.id_dc FROM (
+    SELECT borrowing.dateTime_b,borrowing.id_i,item.id_e,borrowing.id_dc FROM borrowing JOIN item ON item.id_i = borrowing.id_i) AS T1 JOIN equipment ON t1.id_e = equipment.id_e)
+    AS t2 JOIN detailconfirm ON detailconfirm.id_dc = t2.id_dc)
+    AS t3 JOIN confirm ON confirm.id_c = t3.id_c)
+    AS t4 JOIN user ON user.id_u = t4.id_u
+    WHERE t4.dateTime_b LIKE '$year%' 
+    GROUP BY t4.name_e
+    ORDER BY t4.name_e";
 }
 else
 {
-    $mysql_qry_year = "SELECT t2.mountBorrow,COUNT(t2.mountBorrow) as numItem_y ,t2.id_equip , t2.name_e as name_e_y ,user.role  FROM(SELECT t1.mountBorrow ,t1.id_equip ,equipment.name_e,t1.id_u FROM(SELECT borrowing.id_u,borrowing.dateTime_b as mountBorrow,item.id_e as id_equip 
-FROM borrowing JOIN item ON item.id_i = borrowing.id_i )AS t1
-JOIN equipment ON equipment.id_e = t1.id_equip ) as t2 JOIN user ON user.id_u = t2.id_u
-WHERE t2.mountBorrow LIKE '$year%' and user.role = '$type' 
-GROUP BY t2.name_e
-ORDER BY t2.name_e";
+    $mysql_qry_year = "SELECT t4.dateTime_b,t4.name_e as name_e_y ,t4.id_u,user.role , COUNT(t4.dateTime_b) as numItem_y FROM
+    (SELECT t3.dateTime_b,t3.id_i,t3.name_e,t3.id_dc,t3.id_c,confirm.id_u FROM
+    (SELECT t2.dateTime_b,t2.id_i,t2.name_e,t2.id_dc,detailconfirm.id_c FROM 
+    (SELECT t1.dateTime_b,t1.id_i,equipment.name_e,t1.id_dc FROM (
+    SELECT borrowing.dateTime_b,borrowing.id_i,item.id_e,borrowing.id_dc FROM borrowing JOIN item ON item.id_i = borrowing.id_i) AS T1 JOIN equipment ON t1.id_e = equipment.id_e)
+    AS t2 JOIN detailconfirm ON detailconfirm.id_dc = t2.id_dc)
+    AS t3 JOIN confirm ON confirm.id_c = t3.id_c)
+    AS t4 JOIN user ON user.id_u = t4.id_u
+    WHERE t4.dateTime_b LIKE '$year%' and user.role = '$type'
+    GROUP BY t4.name_e,user.role
+    ORDER BY t4.name_e";
 
 }
 
@@ -64,21 +74,31 @@ else
 
 if($type == 'a')
 {
-$mysql_qry_mount = "SELECT t2.mountBorrow,COUNT(t2.mountBorrow) as numItem_m ,t2.id_equip,t2.name_e as name_e_m ,user.role FROM(SELECT t1.mountBorrow ,t1.id_equip ,equipment.name_e,t1.id_u FROM(SELECT borrowing.id_u,borrowing.dateTime_b as mountBorrow,item.id_e as id_equip 
-              FROM borrowing JOIN item ON item.id_i = borrowing.id_i )AS t1
-              JOIN equipment ON equipment.id_e = t1.id_equip ) as t2 JOIN user ON user.id_u = t2.id_u
-              WHERE t2.mountBorrow LIKE '$year-$mount-%' 
-              GROUP BY t2.name_e
-	      	  ORDER BY t2.name_e";
+    $mysql_qry_mount = "SELECT t4.dateTime_b,t4.name_e as name_e_m ,t4.id_u,user.role , COUNT(t4.dateTime_b) as numItem_m FROM
+    (SELECT t3.dateTime_b,t3.id_i,t3.name_e,t3.id_dc,t3.id_c,confirm.id_u FROM
+    (SELECT t2.dateTime_b,t2.id_i,t2.name_e,t2.id_dc,detailconfirm.id_c FROM 
+    (SELECT t1.dateTime_b,t1.id_i,equipment.name_e,t1.id_dc FROM (
+    SELECT borrowing.dateTime_b,borrowing.id_i,item.id_e,borrowing.id_dc FROM borrowing JOIN item ON item.id_i = borrowing.id_i) AS T1 JOIN equipment ON t1.id_e = equipment.id_e)
+    AS t2 JOIN detailconfirm ON detailconfirm.id_dc = t2.id_dc)
+    AS t3 JOIN confirm ON confirm.id_c = t3.id_c)
+    AS t4 JOIN user ON user.id_u = t4.id_u
+    WHERE t4.dateTime_b LIKE '$year-$mount-%'
+    GROUP BY t4.name_e
+    ORDER BY t4.name_e";
 }
 else
 {
-    $mysql_qry_mount = "SELECT t2.mountBorrow,COUNT(t2.mountBorrow) as numItem_m ,t2.id_equip,t2.name_e as name_e_m ,user.role FROM(SELECT t1.mountBorrow ,t1.id_equip ,equipment.name_e,t1.id_u FROM(SELECT borrowing.id_u,borrowing.dateTime_b as mountBorrow,item.id_e as id_equip 
-    FROM borrowing JOIN item ON item.id_i = borrowing.id_i )AS t1
-    JOIN equipment ON equipment.id_e = t1.id_equip ) as t2 JOIN user ON user.id_u = t2.id_u
-    WHERE t2.mountBorrow LIKE '$year-$mount-%' and user.role = '$type'
-    GROUP BY t2.name_e
-    ORDER BY t2.name_e";
+    $mysql_qry_mount = "SELECT t4.dateTime_b,t4.name_e as name_e_m ,t4.id_u,user.role , COUNT(t4.dateTime_b) as numItem_m FROM
+    (SELECT t3.dateTime_b,t3.id_i,t3.name_e,t3.id_dc,t3.id_c,confirm.id_u FROM
+    (SELECT t2.dateTime_b,t2.id_i,t2.name_e,t2.id_dc,detailconfirm.id_c FROM 
+    (SELECT t1.dateTime_b,t1.id_i,equipment.name_e,t1.id_dc FROM (
+    SELECT borrowing.dateTime_b,borrowing.id_i,item.id_e,borrowing.id_dc FROM borrowing JOIN item ON item.id_i = borrowing.id_i) AS T1 JOIN equipment ON t1.id_e = equipment.id_e)
+    AS t2 JOIN detailconfirm ON detailconfirm.id_dc = t2.id_dc)
+    AS t3 JOIN confirm ON confirm.id_c = t3.id_c)
+    AS t4 JOIN user ON user.id_u = t4.id_u
+    WHERE t4.dateTime_b LIKE '$year-$mount-%' and user.role = '$type'
+    GROUP BY t4.name_e,user.role
+    ORDER BY t4.name_e";
 }
 
 $result = mysqli_query($conn,$mysql_qry_mount);
