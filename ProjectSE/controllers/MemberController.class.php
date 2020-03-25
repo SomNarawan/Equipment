@@ -123,6 +123,8 @@ class MemberController {
     private function menu_borrowingO(){
         session_start();
         if ($_SESSION['member'] !== null){
+            $count_borrow = BorrowingO::Count_borrow();
+            $count_equipment = BorrowingO::Count_equipment();
             $borrowList = BorrowingO::findAll();
 
             include Router::getSourcePath()."views/borrowing/borrowingOperator.inc.php";

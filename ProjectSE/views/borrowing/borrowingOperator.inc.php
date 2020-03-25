@@ -40,7 +40,7 @@ ob_start();
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">จำนวนอุปกรณ์ที่ถูกยืม
                                 (ชิ้น)
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">4 ชิ้น</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $count_equipment;?> ชิ้น</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -59,7 +59,7 @@ ob_start();
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">จำนวนคนยืม
                                 (คน)
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">3 คน</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $count_borrow; ?> คน</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>

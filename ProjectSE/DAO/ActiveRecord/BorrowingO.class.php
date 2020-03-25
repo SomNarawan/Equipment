@@ -105,6 +105,19 @@ class BorrowingO {
         
         return $count_equipment;
     }
+    public static function Count_borrow(){
+        $con = Db::getInstance();
+        $query = "SELECT COUNT(DISTINCT(confirm.id_u)) AS count_borrow FROM borrowing 
+        JOIN detailconfirm ON borrowing.id_dc = detailconfirm.id_dc
+        JOIN confirm ON confirm.id_c = detailconfirm.id_c";
+        // $query = "SELECT * FROM ".self::TABLE;
+        $stmt = $con->query($query);
+        while ($row = $stmt->fetch()) {
+            $count_borrow= $row['count_borrow'];
+        }
+        
+        return $count_borrow;
+    }
     //----------- CRUD
     public static function findAll(): array {
         $con = Db::getInstance();
