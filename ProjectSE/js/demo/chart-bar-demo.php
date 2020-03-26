@@ -471,7 +471,7 @@ var myBarChartMount = new Chart(ctxMount, {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 5,
+          max: 10,
           // จำนวนเส้นที่ไว้ใช้แบ่งความละเอียดแกน Y maxTicksLimit ยิ่งมาก ยิ่งละเอียด
           maxTicksLimit: 10,
           padding: 10,
