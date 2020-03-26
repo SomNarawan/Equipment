@@ -172,7 +172,7 @@ class Equipment {
         $con = Db::getInstance();
         $values = "";
         foreach ($this as $prop => $val) {
-            if($prop != "name_t"&& $prop != "id_e" && $prop != "count_equipment" && $prop != "count_lend_equipment" && $prop != "count_remain_equipment"  )
+            if($prop != "name_t" && $prop != "name_e" && $prop != "id_e" && $prop != "count_equipment" && $prop != "count_lend_equipment" && $prop != "count_remain_equipment"  )
                 $values .= "'$val',";
         }
         //print_r($values);
