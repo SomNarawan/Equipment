@@ -9,3 +9,6 @@ password: student
 อาจารย์
 user: teacher
 password: teacher
+
+เพิ่มเติม
+หน้า แสดงสถิติ ตอนอยู่ใน localhost แสดงผล แต่พออัพขึ้น server ไม่แสดง ยังไม่ทราบสาเหตุ
