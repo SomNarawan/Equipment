@@ -168,11 +168,11 @@ class Equipment {
         return null;
     }
     public function insert() {
-        echo "insert";
+        // echo "insert";
         $con = Db::getInstance();
         $values = "";
         foreach ($this as $prop => $val) {
-            if($prop != "name_t" && $prop != "name_e" && $prop != "id_e" && $prop != "count_equipment" && $prop != "count_lend_equipment" && $prop != "count_remain_equipment"  )
+            if($prop != "name_t" && $prop != "id_e" && $prop != "count_equipment" && $prop != "count_lend_equipment" && $prop != "count_no_equipment" && $prop != "count_remain_equipment"  )
                 $values .= "'$val',";
         }
         //print_r($values);
@@ -180,7 +180,7 @@ class Equipment {
         //print_r($values);
 
         $query = "INSERT INTO ".self::TABLE." (name_e,id_t,note) VALUES ($values)";
-        //echo $query;
+        // echo $query;
         $res = $con->exec($query);
         $this->product_id = $con->lastInsertId();
         return $res;
