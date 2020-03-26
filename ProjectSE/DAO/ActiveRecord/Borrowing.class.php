@@ -78,7 +78,7 @@ class Borrowing {
     }
     public static function Count_equipment($id_u){
         $con = Db::getInstance();
-        $query = "SELECT if(SUM(detailconfirm.num) != null,SUM(detailconfirm.num),0) AS count_equipment FROM detailconfirm
+        $query = "SELECT if(SUM(detailconfirm.num) IS NULL,0,SUM(detailconfirm.num)) AS count_equipment FROM detailconfirm
         JOIN confirm ON confirm.id_c = detailconfirm.id_c
         WHERE confirm.id_u = $id_u";
         // $query = "SELECT * FROM ".self::TABLE;
