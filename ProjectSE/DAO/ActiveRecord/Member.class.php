@@ -9,7 +9,7 @@ class Member{
     private $phone;
     private $role;
     private $passwd;
-    private const TABLE = "user";
+    private const TABLE = "users";
 
     //----------- Getters & Setters
     public function getId_u()
