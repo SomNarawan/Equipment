@@ -48,6 +48,7 @@ class TypeController {
             $type->setId_t($id_t);
             $type->delete();
             $typeList = Type::findAll();
+            $count_type = Type::Count_type();
 
             include Router::getSourcePath()."views/type/type.inc.php";
 
@@ -59,7 +60,7 @@ class TypeController {
     private function insert(){
         session_start();
         if ($_SESSION['member'] !== null){
-            // print_r($_POST);
+            print_r($_POST);
             $name_t = $_POST['name_t_add'];
             $note = $_POST['note_add'];
             $type = new Type(); 
@@ -68,6 +69,7 @@ class TypeController {
             // echo $type->getName_t();
             $type->insert();
             $typeList = Type::findAll();
+            $count_type = Type::Count_type();
 
             include Router::getSourcePath()."views/type/type.inc.php";
 
@@ -90,6 +92,7 @@ class TypeController {
             // echo $type->getName_t();
             $type->update();
             $typeList = Type::findAll();
+            $count_type = Type::Count_type();
 
             include Router::getSourcePath()."views/type/type.inc.php";
 

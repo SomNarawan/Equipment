@@ -84,15 +84,15 @@ class Type {
         $con = Db::getInstance();
         $values = "";
         foreach ($this as $prop => $val) {
-            if($prop != "count_equipment")
+            if($prop != "count_equipment" && $prop != "id_t")
                 $values .= "'$val',";
         }
         // print_r($values);
         $values = substr($values,0,-1);
         // print_r($values);
 
-        $query = "INSERT INTO ".self::TABLE." VALUES ($values)";
-        //echo $query;
+        $query = "INSERT INTO ".self::TABLE." (name_t,note) VALUES ($values)";
+        echo $query;
         $res = $con->exec($query);
         $this->product_id = $con->lastInsertId();
         return $res;
