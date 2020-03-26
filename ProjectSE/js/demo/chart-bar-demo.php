@@ -553,7 +553,7 @@ var myBarChartHigh = new Chart(ctxHigh, {
           maxTicksLimit: 3
         },
         //ความหนาของกราฟแต่ละแถว
-        maxBarThickness: 80,
+        maxBarThickness: 45,
       }],
       yAxes: [{
         ticks: {
@@ -640,7 +640,7 @@ var myBarChartLow = new Chart(ctxLow, {
           maxTicksLimit: 3
         },
         //ความหนาของกราฟแต่ละแถว
-        maxBarThickness: 80,
+        maxBarThickness: 45,
       }],
       yAxes: [{
         ticks: {
