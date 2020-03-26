@@ -51,7 +51,7 @@ else
     AS t2 JOIN detailconfirm ON detailconfirm.id_dc = t2.id_dc)
     AS t3 JOIN confirm ON confirm.id_c = t3.id_c)
     AS t4 JOIN users ON users.id_u = t4.id_u
-    WHERE t4.dateTime_b LIKE '$year%' and user.role = '$type'
+    WHERE t4.dateTime_b LIKE '$year%' and users.role = '$type'
     GROUP BY t4.name_e,users.role
     ORDER BY t4.name_e";
 
@@ -96,7 +96,7 @@ else
     AS t2 JOIN detailconfirm ON detailconfirm.id_dc = t2.id_dc)
     AS t3 JOIN confirm ON confirm.id_c = t3.id_c)
     AS t4 JOIN users ON users.id_u = t4.id_u
-    WHERE t4.dateTime_b LIKE '$year-$mount-%' and user.role = '$type'
+    WHERE t4.dateTime_b LIKE '$year-$mount-%' and users.role = '$type'
     GROUP BY t4.name_e,users.role
     ORDER BY t4.name_e";
 }
@@ -182,7 +182,7 @@ else
     AS t3 JOIN confirm ON confirm.id_c = t3.id_c)
     AS t4 JOIN users ON users.id_u = t4.id_u
     WHERE t4.dateTime_b LIKE '$year-$mount-%' and users.role = '$type'
-    GROUP BY t4.name_e,user.role
+    GROUP BY t4.name_e,users.role
     ORDER BY numItem_min ";
 }
 
