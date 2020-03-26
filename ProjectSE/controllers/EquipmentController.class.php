@@ -65,6 +65,9 @@ class EquipmentController {
             $equipment->setId_e($id_e);
             $equipment->delete();
             $equipmentList = Equipment::findAll();
+            $count_type = Equipment::Count_type();
+            $count_equipment = Equipment::Count_equipment();
+            $count_item = Equipment::Count_item();
 
             include Router::getSourcePath()."views/equipment/EquipmentOperator.inc.php";
 
@@ -89,6 +92,9 @@ class EquipmentController {
             $equipment->insert();
             $equipmentList = Equipment::findAll();
             $typeList = Type::findAll();
+            $count_type = Equipment::Count_type();
+            $count_equipment = Equipment::Count_equipment();
+            $count_item = Equipment::Count_item();
 
             include Router::getSourcePath()."views/equipment/EquipmentOperator.inc.php";
 
@@ -115,6 +121,9 @@ class EquipmentController {
             $equipment->update();
             $equipmentList = Equipment::findAll();
             $typeList = Type::findAll();
+            $count_type = Equipment::Count_type();
+            $count_equipment = Equipment::Count_equipment();
+            $count_item = Equipment::Count_item();
 
             include Router::getSourcePath()."views/equipment/EquipmentOperator.inc.php";
 
