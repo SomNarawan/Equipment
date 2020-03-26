@@ -121,12 +121,12 @@ class BorrowingO {
     //----------- CRUD
     public static function findAll(): array {
         $con = Db::getInstance();
-        $query = "SELECT borrowing.id_b,user.username,user.title,user.name,user.surname,equipment.name_e,borrowing.id_i,equipment.id_e,borrowing.dateTime_b,borrowing.dateTime_r FROM detailconfirm 
+        $query = "SELECT borrowing.id_b,users.username,users.title,users.name,users.surname,equipment.name_e,borrowing.id_i,equipment.id_e,borrowing.dateTime_b,borrowing.dateTime_r FROM detailconfirm 
         JOIN confirm ON detailconfirm.id_c = confirm.id_c
         JOIN borrowing ON borrowing.id_dc = detailconfirm.id_dc
         LEFT JOIN item ON item.id_i = borrowing.id_i
         LEFT JOIN equipment ON equipment.id_e = detailconfirm.id_e
-        LEFT JOIN user ON user.id_u = confirm.id_u";
+        LEFT JOIN users ON users.id_u = confirm.id_u";
         // $query = "SELECT * FROM ".self::TABLE;
         $stmt = $con->prepare($query);
         $stmt->setFetchMode(PDO::FETCH_CLASS, "BorrowingO");

@@ -16,7 +16,7 @@ class Type {
     private $email;
     private $phone;
     private $role;
-    private const TABLE = "user";
+    private const TABLE = "users";
 
     //----------- Getters & Setters
     public function getId_u(){
