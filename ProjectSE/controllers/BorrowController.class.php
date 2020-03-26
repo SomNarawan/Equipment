@@ -64,11 +64,14 @@ class BorrowController {
     private function insertReturn(){
         // print_r($_POST);
         $id_b = $_POST['id_b_return'];
+        $id_i = $_POST['id_i_r'];
+
         date_default_timezone_set('asia/bangkok');
         $dateTime_r = date('d-m-y h:i:s');
         // print_r($dateTime_r);
         $borrowing = new BorrowingO(); 
         $borrowing->setId_b($id_b);
+        $borrowing->setId_i($id_i);
         $borrowing->setDateTime_r($dateTime_r);
         $borrowing->updateDateTimeR();
 
