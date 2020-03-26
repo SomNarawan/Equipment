@@ -7,8 +7,8 @@ $( document ).ready(function() {
         window.location.href = './index.php?controller=Member&action=menu_borrow';
 
     });
-    $('#detailE').click(function(){
-        console.log("ee6523");
-        $("#editBorrowingModal").modal();
-    });
+    // $('#detailE').click(function(){
+    //     console.log("ee6523");
+    //     $("#editBorrowingModal").modal();
+    // });
 });

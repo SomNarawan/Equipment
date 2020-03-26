@@ -114,7 +114,7 @@ class MemberController {
     private function menu_borrowingOT(){
         session_start();
         if ($_SESSION['member'] !== null){
-            include Router::getSourcePath()."views/equipment/equipmentOperator.inc.php";
+            include Router::getSourcePath()."views/equipment/EquipmentOperator.inc.php";
         }
         else {
             header("Location: ".Router::getSourcePath()."index.php?msg=invalid user");
@@ -126,7 +126,7 @@ class MemberController {
             $count_borrow = BorrowingO::Count_borrow();
             $count_equipment = BorrowingO::Count_equipment();
             $borrowList = BorrowingO::findAll();
-
+            // print_r($borrowList);
             include Router::getSourcePath()."views/borrowing/borrowingOperator.inc.php";
         }
         else {
@@ -156,7 +156,8 @@ class MemberController {
             $count_equipment = Equipment::Count_equipment();
             $count_item = Equipment::Count_item();
             $equipmentList = Equipment::findAll();
-            include Router::getSourcePath()."views/equipment/equipmentOperator.inc.php";
+            // print_r($equipmentList);
+            include Router::getSourcePath()."views/equipment/EquipmentOperator.inc.php";
         }
         else {
             header("Location: ".Router::getSourcePath()."index.php?msg=invalid user");

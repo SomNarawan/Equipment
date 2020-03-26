@@ -109,8 +109,8 @@ class Confirm {
     //----------- CRUD
     public static function findAll($id_resp): array {
         $con = Db::getInstance();
-        $query = "SELECT  detailconfirm.id_dc,user.username,user.title,user.name,user.surname,equipment.name_e,type.name_t,detailconfirm.num,confirm.dateTime_c,detailconfirm.status,confirm.reason FROM confirm 
-        JOIN user ON confirm.id_u = user.id_u
+        $query = "SELECT  detailconfirm.id_dc,users.username,users.title,users.name,users.surname,equipment.name_e,type.name_t,detailconfirm.num,confirm.dateTime_c,detailconfirm.status,confirm.reason FROM confirm 
+        JOIN users ON confirm.id_u = users.id_u
         JOIN detailconfirm ON confirm.id_c = detailconfirm.id_c
         JOIN equipment ON detailconfirm.id_e = equipment.id_e
         JOIN type ON equipment.id_t = type.id_t
@@ -142,7 +142,7 @@ class Confirm {
     public static function Count_student($id_resp){
         $con = Db::getInstance();
         $query = "SELECT COUNT(*) AS count_student FROM confirm 
-        JOIN user ON confirm.id_u = user.id_u
+        JOIN users ON confirm.id_u = users.id_u
         WHERE confirm.id_resp = $id_resp";
         // $query = "SELECT * FROM ".self::TABLE;
         $stmt = $con->query($query);
