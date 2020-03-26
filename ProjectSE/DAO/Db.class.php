@@ -8,9 +8,9 @@
 
 class Db {
     private static $instance = NULL;
-    private static $dsn = "mysql:dbname=equipment;host=localhost";
+    private static $dsn = "mysql:dbname=equipment_update2;host=localhost";
     private static $user = "root";
-    private static $pass = "";
+    private static $pass = "12345678";
     private function __construct() {}
     private function __clone() {}
     public static function getInstance() {
